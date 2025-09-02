@@ -1,0 +1,214 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { ChevronDown, Sparkles, Bot, Code, Zap } from 'lucide-react'
+
+const HeroSection = () => {
+  const [currentText, setCurrentText] = useState('')
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isDeleting, setIsDeleting] = useState(false)
+  
+  const texts = [
+    'Desarrollo Web con IA',
+    'ChatBots Inteligentes',
+    'Automatizaciones',
+    'Soluciones Innovadoras'
+  ]
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const current = texts[currentIndex]
+      
+      if (!isDeleting) {
+        setCurrentText(current.substring(0, currentText.length + 1))
+        
+        if (currentText === current) {
+          setTimeout(() => setIsDeleting(true), 2000)
+        }
+      } else {
+        setCurrentText(current.substring(0, currentText.length - 1))
+        
+        if (currentText === '') {
+          setIsDeleting(false)
+          setCurrentIndex((prev) => (prev + 1) % texts.length)
+        }
+      }
+    }, isDeleting ? 50 : 100)
+
+    return () => clearTimeout(timeout)
+  }, [currentText, currentIndex, isDeleting])
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  }
+
+  const floatingIcons = [
+    { Icon: Bot, delay: 0, position: { top: '20%', left: '10%' } },
+    { Icon: Code, delay: 2, position: { top: '30%', right: '15%' } },
+    { Icon: Zap, delay: 4, position: { bottom: '30%', left: '15%' } },
+    { Icon: Sparkles, delay: 1, position: { top: '60%', right: '10%' } },
+  ]
+
+  return (
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 px-4">
+      {/* Animated background */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+        
+        {/* Floating particles */}
+        {[...Array(20)].map((_, i) => {
+          // Posiciones fijas basadas en el índice para evitar hidration mismatch
+          const positions = [
+            { left: 15, top: 20 }, { left: 85, top: 35 }, { left: 45, top: 60 }, { left: 70, top: 15 },
+            { left: 25, top: 75 }, { left: 90, top: 80 }, { left: 10, top: 45 }, { left: 60, top: 90 },
+            { left: 35, top: 25 }, { left: 80, top: 55 }, { left: 20, top: 85 }, { left: 65, top: 10 },
+            { left: 40, top: 70 }, { left: 95, top: 40 }, { left: 5, top: 65 }, { left: 75, top: 30 },
+            { left: 30, top: 95 }, { left: 85, top: 20 }, { left: 50, top: 50 }, { left: 15, top: 80 }
+          ];
+          const position = positions[i] || { left: 50, top: 50 };
+          
+          return (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-blue-400 rounded-full"
+            style={{
+              left: `${position.left}%`,
+              top: `${position.top}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 3 + (i % 3),
+              repeat: Infinity,
+              delay: i * 0.2,
+            }}
+          />
+        )})}
+      </div>
+
+      {/* Floating tech icons */}
+      {floatingIcons.map(({ Icon, delay, position }, index) => (
+        <motion.div
+          key={index}
+          className="absolute text-blue-400/30"
+          style={position}
+          animate={{
+            y: [0, -20, 0],
+            rotate: [0, 360],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            delay: delay,
+          }}
+        >
+          <Icon size={24} />
+        </motion.div>
+      ))}
+
+      {/* Main content */}
+      <motion.div
+        className="relative z-10 text-center max-w-6xl mx-auto px-6 py-12"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* Greeting */}
+        <motion.div
+          variants={itemVariants}
+          className="mb-8 pt-8"
+        >
+          <span className="text-blue-400 font-mono text-2xl tracking-wider">
+            ¡Hola! Soy
+          </span>
+        </motion.div>
+
+        {/* Name */}
+        <motion.h1
+          variants={itemVariants}
+          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
+        >
+          <span className="gradient-text">Nixon López</span>
+        </motion.h1>
+
+        {/* Animated subtitle */}
+        <motion.div
+          variants={itemVariants}
+          className="mb-8"
+        >
+          <h2 className="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-2">
+            Especialista en{' '}
+            <span className="text-blue-400 font-semibold">
+              {currentText}
+              <motion.span
+                animate={{ opacity: [1, 0] }}
+                transition={{ duration: 0.8, repeat: Infinity }}
+                className="ml-1"
+              >
+                |
+              </motion.span>
+            </span>
+          </h2>
+          <p className="pt-5 text-gray-400 max-w-2xl mx-auto text-lg"> 
+            Desarrollo web, ChatBots inteligentes y automatizaciones que impulsan tu negocio al futuro.
+          </p>
+        </motion.div>
+
+
+
+        {/* CTA Buttons */}
+        <motion.div
+          variants={itemVariants}
+          className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+        >
+          <motion.button
+            className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            Ver Mis Servicios
+          </motion.button>
+          
+          <motion.button
+            className="border-2 border-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            Contactar Ahora
+          </motion.button>
+        </motion.div>
+
+
+      </motion.div>
+
+      {/* Gradient overlay */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-900 to-transparent" />
+    </section>
+  )
+}
+
+export default HeroSection
