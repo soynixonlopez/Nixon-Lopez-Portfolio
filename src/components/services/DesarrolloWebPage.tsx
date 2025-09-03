@@ -1,13 +1,16 @@
 'use client'
 
 import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
+import React, { useRef } from 'react'
 import { CheckCircle, Globe, Zap, Shield, Users, Star, ChevronRight, Globe as GlobeIcon, Bot, Code, Sparkles } from 'lucide-react'
 import ContactSection from '@/components/ContactSection'
+import TechnologiesCarousel from '@/components/TechnologiesCarousel'
+import ProcessFlow from '@/components/ProcessFlow'
 
 const DesarrolloWebPage = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const [selectedProject, setSelectedProject] = React.useState(0)
 
   const features = [
     {
@@ -84,54 +87,55 @@ const DesarrolloWebPage = () => {
     {
       step: "01",
       title: "Análisis y Planificación",
-      description: "Evaluamos tus necesidades, objetivos y competencia para crear la estrategia perfecta"
+      description: "Evaluamos tus necesidades, objetivos y competencia para crear la estrategia perfecta",
+      color: "#3B82F6"
     },
     {
       step: "02",
       title: "Diseño y Wireframes",
-      description: "Creamos mockups y prototipos interactivos para validar la experiencia del usuario"
+      description: "Creamos mockups y prototipos interactivos para validar la experiencia del usuario",
+      color: "#8B5CF6"
     },
     {
       step: "03",
       title: "Desarrollo Frontend",
-      description: "Construimos la interfaz con las mejores tecnologías y estándares web"
+      description: "Construimos la interfaz con las mejores tecnologías y estándares web",
+      color: "#06B6D4"
     },
     {
       step: "04",
       title: "Desarrollo Backend",
-      description: "Implementamos la lógica del servidor, base de datos y funcionalidades"
+      description: "Implementamos la lógica del servidor, base de datos y funcionalidades",
+      color: "#10B981"
     },
     {
       step: "05",
       title: "Testing y Optimización",
-      description: "Probamos exhaustivamente y optimizamos rendimiento, SEO y seguridad"
+      description: "Probamos exhaustivamente y optimizamos rendimiento, SEO y seguridad",
+      color: "#F59E0B"
     },
     {
       step: "06",
       title: "Lanzamiento y Mantenimiento",
-      description: "Desplegamos tu sitio web y proporcionamos soporte continuo"
+      description: "Desplegamos tu sitio web y proporcionamos soporte continuo",
+      color: "#EF4444"
     }
   ]
 
-  const technologies = [
-    {
-      name: "Frontend",
-      icon: "🎨",
-      description: "Tecnologías modernas para interfaces atractivas y responsivas",
-      tools: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"]
-    },
-    {
-      name: "Backend",
-      icon: "⚙️",
-      description: "Servidores robustos y APIs escalables para tu negocio",
-      tools: ["Node.js", "Python", "PostgreSQL", "MongoDB", "Redis"]
-    },
-    {
-      name: "DevOps",
-      icon: "🚀",
-      description: "Despliegue automático y monitoreo continuo",
-      tools: ["Docker", "Vercel", "AWS", "CI/CD", "Monitoring"]
-    }
+  const webTechnologies = [
+    { name: "JavaScript", icon: "⚡", color: "#F7DF1E" },
+    { name: "HTML5", icon: "🌐", color: "#E34F26" },
+    { name: "CSS3", icon: "🎨", color: "#1572B6" },
+    { name: "Tailwind CSS", icon: "🎯", color: "#06B6D4" },
+    { name: "Bootstrap", icon: "🎪", color: "#7952B3" },
+    { name: "Node.js", icon: "🟢", color: "#339933" },
+    { name: "Supabase", icon: "💚", color: "#3ECF8E" },
+    { name: "Docker", icon: "🐳", color: "#2496ED" },
+    { name: "Firebase", icon: "🔥", color: "#FFCA28" },
+    { name: "SQL", icon: "🗄️", color: "#336791" },
+    { name: "TypeScript", icon: "🔷", color: "#3178C6" },
+    { name: "Next.js", icon: "⚛️", color: "#000000" },
+    { name: "React", icon: "⚛️", color: "#61DAFB" }
   ]
 
   return (
@@ -229,156 +233,86 @@ const DesarrolloWebPage = () => {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-900 to-transparent" />
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 bg-white dark:bg-slate-900">
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              ¿Por qué elegir mi{' '}
-              <span className="gradient-text">Desarrollo Web</span>?
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Cada sitio web que desarrollo está optimizado para el rendimiento, la conversión 
-              y la experiencia del usuario, utilizando las tecnologías más modernas del mercado.
-            </p>
-          </motion.div>
+             {/* Features Section */}
+       <section className="py-16 bg-white dark:bg-slate-900">
+         <div className="container mx-auto px-4">
+           <motion.div
+             className="text-center mb-12"
+             initial={{ opacity: 0, y: 30 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             transition={{ duration: 0.8 }}
+             viewport={{ once: true }}
+           >
+             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+               ¿Por qué elegir mi{' '}
+               <span className="gradient-text">Desarrollo Web</span>?
+             </h2>
+             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+               Explora las características únicas que hacen que mis sitios web 
+               destaquen y conviertan visitantes en clientes.
+             </p>
+           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <motion.div
-                key={index}
-                className="text-center p-6 rounded-2xl bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-gray-700"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5, scale: 1.02 }}
-              >
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <feature.icon className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  {feature.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+           <div className="max-w-7xl mx-auto">
+             <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+               <div className="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-gray-200 dark:divide-gray-700">
+                 {features.map((feature, index) => (
+                   <motion.div
+                     key={index}
+                     className="group relative p-6 cursor-pointer hover:bg-gradient-to-br hover:from-blue-50 hover:to-cyan-50 dark:hover:from-blue-900/20 dark:hover:to-cyan-900/20 transition-all duration-300"
+                     initial={{ opacity: 0, y: 20 }}
+                     whileInView={{ opacity: 1, y: 0 }}
+                     transition={{ duration: 0.5, delay: index * 0.1 }}
+                     viewport={{ once: true }}
+                     whileHover={{ y: -4, scale: 1.02 }}
+                   >
+                     {/* Icon container */}
+                     <div className="text-center mb-4">
+                       <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                         <motion.div
+                           animate={{ rotate: [0, 3, -3, 0] }}
+                           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                         >
+                           <feature.icon className="w-8 h-8 text-white" />
+                         </motion.div>
+                       </div>
+                     </div>
+
+                     {/* Content */}
+                     <div className="text-center">
+                       <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                         {feature.title}
+                       </h3>
+                       <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
+                         {feature.description}
+                       </p>
+                     </div>
+
+                     {/* Hover indicator */}
+                     <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-600 group-hover:w-1/2 transition-all duration-300 rounded-t-full" />
+                   </motion.div>
+                 ))}
+               </div>
+             </div>
+           </div>
+         </div>
+       </section>
 
       {/* Technologies Section */}
-      <section className="py-20 bg-gray-50 dark:bg-slate-800">
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Tecnologías{' '}
-              <span className="gradient-text">Utilizadas</span>
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Utilizo las tecnologías más modernas y confiables para crear sitios web 
-              de alta calidad y rendimiento excepcional.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {technologies.map((tech, index) => (
-              <motion.div
-                key={index}
-                className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700 text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5, scale: 1.02 }}
-              >
-                <div className="text-6xl mb-4">{tech.icon}</div>
-                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3">
-                  {tech.name}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
-                  {tech.description}
-                </p>
-                <div className="flex flex-wrap gap-2 justify-center">
-                  {tech.tools.map((tool, toolIndex) => (
-                    <span
-                      key={toolIndex}
-                      className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-sm rounded-full"
-                    >
-                      {tool}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TechnologiesCarousel
+        technologies={webTechnologies}
+        title="Tecnologías de Desarrollo Web"
+        subtitle="Utilizo las tecnologías más modernas y confiables para crear sitios web de alta calidad y rendimiento excepcional."
+      />
 
       {/* Process Section */}
-      <section className="py-20 bg-white dark:bg-slate-900">
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Mi{' '}
-              <span className="gradient-text">Proceso</span> de Desarrollo
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Un enfoque sistemático y probado que garantiza sitios web de alta calidad 
-              y resultados excepcionales para tu negocio.
-            </p>
-          </motion.div>
+      <ProcessFlow
+        steps={processSteps}
+        title="Mi Proceso de Desarrollo"
+        subtitle="Un enfoque sistemático y probado que garantiza sitios web de alta calidad y resultados excepcionales para tu negocio."
+      />
 
-          <div className="max-w-6xl mx-auto">
-            {processSteps.map((step, index) => (
-              <motion.div
-                key={index}
-                className="flex items-start gap-6 mb-12 last:mb-0"
-                initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-full flex items-center justify-center text-white font-bold text-xl">
-                    {step.step}
-                  </div>
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
-                    {step.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-lg">
-                    {step.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Related Projects Section */}
+      {/* Projects Gallery Section */}
       <section className="py-20 bg-gray-50 dark:bg-slate-800">
         <div className="container mx-auto px-4">
           <motion.div
@@ -389,59 +323,107 @@ const DesarrolloWebPage = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Proyectos{' '}
-              <span className="gradient-text">Relacionados</span>
+              Proyectos de{' '}
+              <span className="gradient-text">Desarrollo Web</span>
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Ejemplos de sitios web que he desarrollado para diferentes industrias y necesidades.
+              Explora mi portafolio de sitios web y aplicaciones web desarrollados para diferentes industrias.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {relatedProjects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5, scale: 1.02 }}
-              >
-                <div className="h-48 bg-gradient-to-br from-blue-500 to-cyan-600 relative overflow-hidden">
-                  <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-20" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <GlobeIcon className="w-16 h-16 text-white opacity-80" />
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-sm rounded-full"
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Columna izquierda - Proyecto principal */}
+              <div className="lg:col-span-2">
+                <motion.div
+                  className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden h-full"
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="h-64 bg-gradient-to-br from-blue-500 to-cyan-600 relative overflow-hidden group">
+                    <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-20" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <GlobeIcon className="w-20 h-20 text-white opacity-80" />
+                    </div>
+                    
+                    {/* Overlay con botón "Ver Página" */}
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <motion.button
+                        className="bg-white text-blue-600 px-6 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors duration-200 flex items-center gap-2"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
                       >
-                        {tech}
-                      </span>
-                    ))}
+                        <Globe className="w-4 h-4" />
+                        Ver Página
+                      </motion.button>
+                    </div>
                   </div>
-                  <div className="space-y-1">
-                    {project.results.map((result, resultIndex) => (
-                      <div key={resultIndex} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                        <CheckCircle className="w-4 h-4 text-blue-500" />
-                        {result}
+                  <div className="p-8">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                      {relatedProjects[selectedProject].title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+                      {relatedProjects[selectedProject].description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {relatedProjects[selectedProject].technologies.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 text-sm rounded-full font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="space-y-3">
+                      {relatedProjects[selectedProject].results.map((result, resultIndex) => (
+                        <div key={resultIndex} className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
+                          <CheckCircle className="w-5 h-5 text-blue-500 flex-shrink-0" />
+                          <span className="text-base">{result}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Columna derecha - Miniaturas de proyectos */}
+              <div className="space-y-6">
+                {relatedProjects.map((project, index) => (
+                  <motion.div
+                    key={project.id}
+                    className={`cursor-pointer transition-all duration-300 rounded-xl overflow-hidden border-2 ${
+                      selectedProject === index
+                        ? 'border-blue-500 shadow-lg scale-105'
+                        : 'border-gray-200 dark:border-gray-700 hover:border-blue-300 hover:scale-102'
+                    }`}
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    onClick={() => setSelectedProject(index)}
+                    whileHover={{ y: -2 }}
+                  >
+                    <div className="h-24 bg-gradient-to-br from-blue-500 to-cyan-600 relative overflow-hidden">
+                      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-20" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <GlobeIcon className="w-8 h-8 text-white opacity-80" />
                       </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                    </div>
+                    <div className="p-4 bg-white dark:bg-slate-800">
+                      <h4 className="font-semibold text-gray-900 dark:text-white text-sm mb-1 line-clamp-2">
+                        {project.title}
+                      </h4>
+                      <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2">
+                        {project.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
