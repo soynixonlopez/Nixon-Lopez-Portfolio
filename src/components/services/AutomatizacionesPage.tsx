@@ -2,15 +2,18 @@
 
 import { motion, useInView } from 'framer-motion'
 import React, { useRef } from 'react'
-import { CheckCircle, Zap, Bot, Database, Workflow, Shield, Star, Cog, TrendingUp, Code, Sparkles, Globe } from 'lucide-react'
+import { CheckCircle, Zap, Bot, Database, Workflow, Shield, Star, Cog, TrendingUp, Code, Sparkles, Globe, Calculator, MessageSquare, Send } from 'lucide-react'
 import ContactSection from '@/components/ContactSection'
 import TechnologiesCarousel from '@/components/TechnologiesCarousel'
 import ProcessFlow from '@/components/ProcessFlow'
+import { useQuoteModal } from '@/hooks/useQuoteModal'
+import QuoteModal from '@/components/QuoteModal'
 
 const AutomatizacionesPage = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
   const [selectedProject, setSelectedProject] = React.useState(0)
+  const { isOpen, serviceType, openModal, closeModal } = useQuoteModal()
 
   const features = [
     {
@@ -185,96 +188,131 @@ const AutomatizacionesPage = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900">
       {/* Hero Section */}
-      <section className="relative pt-36 pb-20 overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-        {/* Animated background */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-          
-          {/* Floating particles */}
-          {[...Array(20)].map((_, i) => {
-            // Posiciones fijas basadas en el índice para evitar hidration mismatch
-            const positions = [
-              { left: 15, top: 20 }, { left: 85, top: 35 }, { left: 45, top: 60 }, { left: 70, top: 15 },
-              { left: 25, top: 75 }, { left: 90, top: 80 }, { left: 10, top: 45 }, { left: 60, top: 90 },
-              { left: 35, top: 25 }, { left: 80, top: 55 }, { left: 20, top: 85 }, { left: 65, top: 10 },
-              { left: 40, top: 70 }, { left: 95, top: 40 }, { left: 5, top: 65 }, { left: 75, top: 30 },
-              { left: 30, top: 95 }, { left: 85, top: 20 }, { left: 50, top: 50 }, { left: 15, top: 80 }
-            ];
-            const position = positions[i] || { left: 50, top: 50 };
-            
-            return (
+      <section className="py-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column - Title and Description */}
             <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-blue-400 rounded-full"
-              style={{
-                left: `${position.left}%`,
-                top: `${position.top}%`,
-              }}
-              animate={{
-                y: [0, -30, 0],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: 3 + (i % 3),
-                repeat: Infinity,
-                delay: i * 0.2,
-              }}
-            />
-          )})}
+              className="text-white"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                Integración de{' '}
+                <span className="gradient-text">Sistemas y Automatizaciones</span>
+              </h1>
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+                Transformo tu negocio con sistemas inteligentes que automatizan procesos, conectan todas 
+                tus herramientas y te permiten enfocarte en lo que realmente importa: hacer crecer tu empresa.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <motion.button
+                  onClick={() => openModal('automation')}
+                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-3"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Calculator className="w-5 h-5" />
+                  Solicitar Cotización
+                </motion.button>
+                <motion.button
+                  className="border-2 border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-3"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Bot className="w-5 h-5" />
+                  Ver Portafolio
+                </motion.button>
+              </div>
+            </motion.div>
+
+            {/* Right Column - Contact Form */}
+            <motion.div
+              className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <MessageSquare className="w-6 h-6 text-blue-400" />
+                <h2 className="text-2xl font-bold text-white">Cuéntame sobre tu Proyecto</h2>
+              </div>
+              
+              <form className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-white mb-2">
+                      Nombre *
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300"
+                      placeholder="Tu nombre completo"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-white mb-2">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300"
+                      placeholder="tu@email.com"
+                    />
+                  </div>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Servicio de Interés
+                  </label>
+                  <select className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300">
+                    <option value="" className="text-gray-900">Selecciona un servicio</option>
+                    <option value="chatbot" className="text-gray-900">Chatbot Inteligente</option>
+                    <option value="workflow" className="text-gray-900">Automatización de Procesos</option>
+                    <option value="integration" className="text-gray-900">Integración de Sistemas</option>
+                    <option value="custom" className="text-gray-900">Solución Personalizada</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Mensaje *
+                  </label>
+                  <textarea
+                    rows={4}
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 resize-none"
+                    placeholder="Cuéntame sobre tu proyecto, objetivos y cómo puedo ayudarte..."
+                  />
+                </div>
+                
+                <div className="flex gap-4">
+                  <motion.button
+                    type="submit"
+                    className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-2"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Send className="w-5 h-5" />
+                    Enviar Mensaje
+                  </motion.button>
+                  
+                  <motion.button
+                    type="button"
+                    onClick={() => openModal('automation')}
+                    className="flex-1 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center gap-3"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Calculator className="w-5 h-5" />
+                    Cotización
+                  </motion.button>
+                </div>
+              </form>
+            </motion.div>
+          </div>
         </div>
-
-        {/* Floating tech icons */}
-        {[
-          { Icon: Bot, delay: 0, position: { top: '20%', left: '10%' } },
-          { Icon: Code, delay: 2, position: { top: '30%', right: '15%' } },
-          { Icon: Zap, delay: 4, position: { bottom: '30%', left: '15%' } },
-          { Icon: Sparkles, delay: 1, position: { top: '60%', right: '10%' } },
-        ].map(({ Icon, delay, position }, index) => (
-          <motion.div
-            key={index}
-            className="absolute text-blue-400/30"
-            style={position}
-            animate={{
-              y: [0, -20, 0],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              delay: delay,
-            }}
-          >
-            <Icon size={24} />
-          </motion.div>
-        ))}
-
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            className="text-center max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-                         <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-               Integración de{' '}
-               <span className="gradient-text">Sistemas y Automatizaciones</span>
-             </h1>
-             <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-               Transformo tu negocio con sistemas inteligentes que automatizan procesos, conectan todas 
-               tus herramientas y te permiten enfocarte en lo que realmente importa: hacer crecer tu empresa.
-             </p>
-             <motion.button
-               className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
-               whileHover={{ scale: 1.05, y: -2 }}
-               whileTap={{ scale: 0.95 }}
-             >
-               Solicitar Cotización
-             </motion.button>
-          </motion.div>
-        </div>
-
-        {/* Gradient overlay */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-900 to-transparent" />
       </section>
 
              {/* Features Section */}
@@ -342,8 +380,124 @@ const AutomatizacionesPage = () => {
          </div>
        </section>
 
-      {/* Benefits Section */}
+      {/* Projects Gallery Section */}
       <section className="py-20 bg-gray-50 dark:bg-slate-800">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Proyectos de{' '}
+              <span className="gradient-text">Automatización</span>
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Explora mi portafolio de sistemas de automatización implementados para diferentes industrias.
+            </p>
+          </motion.div>
+
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Columna izquierda - Proyecto principal */}
+              <div className="lg:col-span-2">
+                <motion.div
+                  className="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden h-full"
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="h-64 bg-gradient-to-br from-purple-500 to-pink-600 relative overflow-hidden group">
+                    <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-20" />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Bot className="w-20 h-20 text-white opacity-80" />
+                    </div>
+                    
+                    {/* Overlay con botón "Ver Página" */}
+                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <motion.button
+                        className="bg-white text-purple-600 px-6 py-3 rounded-full font-semibold hover:bg-purple-50 transition-colors duration-200 flex items-center gap-2"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <Globe className="w-4 h-4" />
+                        Ver Página
+                      </motion.button>
+                    </div>
+                  </div>
+                  <div className="p-8">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                      {relatedProjects[selectedProject].title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-6 text-lg leading-relaxed">
+                      {relatedProjects[selectedProject].description}
+                    </p>
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {relatedProjects[selectedProject].technologies.map((tech, techIndex) => (
+                        <span
+                          key={techIndex}
+                          className="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 text-sm rounded-full font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="space-y-3">
+                      {relatedProjects[selectedProject].results.map((result, resultIndex) => (
+                        <div key={resultIndex} className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
+                          <CheckCircle className="w-5 h-5 text-purple-500 flex-shrink-0" />
+                          <span className="text-base">{result}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Columna derecha - Miniaturas de proyectos */}
+              <div className="space-y-6">
+                {relatedProjects.map((project, index) => (
+                  <motion.div
+                    key={project.id}
+                    className={`cursor-pointer transition-all duration-300 rounded-xl overflow-hidden border-2 ${
+                      selectedProject === index
+                        ? 'border-purple-500 shadow-lg scale-105'
+                        : 'border-gray-200 dark:border-gray-700 hover:border-purple-300 hover:scale-102'
+                    }`}
+                    initial={{ opacity: 0, x: 30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    onClick={() => setSelectedProject(index)}
+                    whileHover={{ y: -2 }}
+                  >
+                    <div className="h-24 bg-gradient-to-br from-purple-500 to-pink-600 relative overflow-hidden">
+                      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-20" />
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <Bot className="w-8 h-8 text-white opacity-80" />
+                      </div>
+                    </div>
+                    <div className="p-4 bg-white dark:bg-slate-800">
+                      <h4 className="font-semibold text-gray-900 dark:text-white text-sm mb-1 line-clamp-2">
+                        {project.title}
+                      </h4>
+                      <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2">
+                        {project.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-20 bg-white dark:bg-slate-900">
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center mb-16"
@@ -442,12 +596,71 @@ const AutomatizacionesPage = () => {
         </div>
       </section>
 
-      {/* Technologies Section */}
-      <TechnologiesCarousel
-        technologies={automationTechnologies}
-        title="Tecnologías de Automatización"
-        subtitle="Utilizo las herramientas y tecnologías más avanzadas para crear sistemas de automatización inteligentes y eficientes."
-      />
+      {/* Technologies Carousel Section */}
+      <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+        <div className="container mx-auto">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+              Tecnologías de{' '}
+              <span className="gradient-text">Automatización</span>
+            </h2>
+            
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Utilizo las herramientas y tecnologías más avanzadas para crear sistemas de automatización inteligentes y eficientes.
+            </p>
+          </motion.div>
+
+          {/* Tech Carousel - Main Content */}
+          <motion.div
+            className="max-w-7xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            {/* Infinite Carousel */}
+            <div className="relative overflow-hidden">
+              <div className="flex animate-scroll-infinite space-x-8">
+                {/* First set of technologies */}
+                {automationTechnologies.map((tech, index) => (
+                  <div
+                    key={index}
+                    className="flex-shrink-0 flex flex-col items-center p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 min-w-[140px] group hover:-translate-y-3"
+                  >
+                    <div className="text-5xl mb-3 group-hover:scale-125 transition-transform duration-300">
+                      {tech.icon}
+                    </div>
+                    <span className="text-sm font-semibold text-gray-900 dark:text-white group-hover:scale-110 transition-transform duration-300">
+                      {tech.name}
+                    </span>
+                  </div>
+                ))}
+                
+                {/* Duplicate set for infinite effect */}
+                {automationTechnologies.map((tech, index) => (
+                  <div
+                    key={`duplicate-${index}`}
+                    className="flex-shrink-0 flex flex-col items-center p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 min-w-[140px] group hover:-translate-y-3"
+                  >
+                    <div className="text-5xl mb-3 group-hover:scale-125 transition-transform duration-300">
+                      {tech.icon}
+                    </div>
+                    <span className="text-sm font-semibold text-gray-900 dark:text-white group-hover:scale-110 transition-transform duration-300">
+                      {tech.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Process Section */}
       <ProcessFlow
@@ -456,121 +669,6 @@ const AutomatizacionesPage = () => {
         subtitle="Un enfoque sistemático y probado que garantiza la implementación exitosa de sistemas de automatización."
       />
 
-      {/* Projects Gallery Section */}
-      <section className="py-20 bg-white dark:bg-slate-900">
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Proyectos de{' '}
-              <span className="gradient-text">Automatización</span>
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Explora mi portafolio de sistemas de automatización implementados para diferentes industrias.
-            </p>
-          </motion.div>
-
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {/* Columna izquierda - Proyecto principal */}
-              <div className="lg:col-span-2">
-                <motion.div
-                  className="bg-gray-50 dark:bg-slate-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden h-full"
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="h-64 bg-gradient-to-br from-purple-500 to-pink-600 relative overflow-hidden group">
-                    <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-20" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Bot className="w-20 h-20 text-white opacity-80" />
-                    </div>
-                    
-                    {/* Overlay con botón "Ver Página" */}
-                    <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <motion.button
-                        className="bg-white text-purple-600 px-6 py-3 rounded-full font-semibold hover:bg-purple-50 transition-colors duration-200 flex items-center gap-2"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                      >
-                        <Globe className="w-4 h-4" />
-                        Ver Página
-                      </motion.button>
-                    </div>
-                  </div>
-                  <div className="p-8">
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                      {relatedProjects[selectedProject].title}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300 mb-6 text-lg leading-relaxed">
-                      {relatedProjects[selectedProject].description}
-                    </p>
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {relatedProjects[selectedProject].technologies.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className="px-4 py-2 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 text-sm rounded-full font-medium"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="space-y-3">
-                      {relatedProjects[selectedProject].results.map((result, resultIndex) => (
-                        <div key={resultIndex} className="flex items-center gap-3 text-gray-600 dark:text-gray-400">
-                          <CheckCircle className="w-5 h-5 text-purple-500 flex-shrink-0" />
-                          <span className="text-base">{result}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-
-              {/* Columna derecha - Miniaturas de proyectos */}
-              <div className="space-y-6">
-                {relatedProjects.map((project, index) => (
-                  <motion.div
-                    key={project.id}
-                    className={`cursor-pointer transition-all duration-300 rounded-xl overflow-hidden border-2 ${
-                      selectedProject === index
-                        ? 'border-purple-500 shadow-lg scale-105'
-                        : 'border-gray-200 dark:border-gray-700 hover:border-purple-300 hover:scale-102'
-                    }`}
-                    initial={{ opacity: 0, x: 30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    onClick={() => setSelectedProject(index)}
-                    whileHover={{ y: -2 }}
-                  >
-                    <div className="h-24 bg-gradient-to-br from-purple-500 to-pink-600 relative overflow-hidden">
-                      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-20" />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <Bot className="w-8 h-8 text-white opacity-80" />
-                      </div>
-                    </div>
-                    <div className="p-4 bg-white dark:bg-slate-800">
-                      <h4 className="font-semibold text-gray-900 dark:text-white text-sm mb-1 line-clamp-2">
-                        {project.title}
-                      </h4>
-                      <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2">
-                        {project.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Related Testimonials Section */}
       <section className="py-20 bg-gray-50 dark:bg-slate-800">
@@ -631,6 +729,13 @@ const AutomatizacionesPage = () => {
 
       {/* Contact Section */}
       <ContactSection />
+      
+      {/* Quote Modal */}
+      <QuoteModal
+        isOpen={isOpen}
+        onClose={closeModal}
+        serviceType={serviceType}
+      />
     </div>
   )
 }

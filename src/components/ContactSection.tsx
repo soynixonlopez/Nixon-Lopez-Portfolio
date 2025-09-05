@@ -10,12 +10,16 @@ import {
   Phone,
   CheckCircle,
   Calendar,
-  TrendingUp
+  TrendingUp,
+  Calculator
 } from 'lucide-react'
+import { useQuoteModal } from '@/hooks/useQuoteModal'
+import QuoteModal from './QuoteModal'
 
 const ContactSection = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const { isOpen, serviceType, openModal, closeModal } = useQuoteModal()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -242,32 +246,48 @@ const ContactSection = () => {
                 />
               </motion.div>
 
-              <motion.button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
-                whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ delay: 0.8 }}
-              >
-                {isSubmitting ? (
-                  <>
-                    <motion.div
-                      className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
-                      animate={{ rotate: 360 }}
-                      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                    />
-                    Enviando...
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5" />
-                    Enviar Mensaje
-                  </>
-                )}
-              </motion.button>
+              <div className="flex gap-4">
+                <motion.button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ delay: 0.8 }}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <motion.div
+                        className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
+                        animate={{ rotate: 360 }}
+                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                      />
+                      Enviando...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      Enviar Mensaje
+                    </>
+                  )}
+                </motion.button>
+                
+                <motion.button
+                  type="button"
+                  onClick={() => openModal('web')}
+                  className="flex-1 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center gap-3"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ delay: 0.9 }}
+                >
+                  <Calculator className="w-5 h-5" />
+                  Cotización
+                </motion.button>
+              </div>
             </form>
           </div>
         </motion.div>
@@ -335,6 +355,13 @@ const ContactSection = () => {
           </div>
         </motion.div>
       </div>
+      
+      {/* Quote Modal */}
+      <QuoteModal
+        isOpen={isOpen}
+        onClose={closeModal}
+        serviceType={serviceType}
+      />
     </section>
   )
 }

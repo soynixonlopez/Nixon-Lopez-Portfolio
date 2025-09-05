@@ -2,15 +2,18 @@
 
 import { motion, useInView } from 'framer-motion'
 import React, { useRef } from 'react'
-import { CheckCircle, Smartphone, Zap, Shield, Users, Star, ChevronRight, Smartphone as PhoneIcon, Bot, Code, Sparkles, Globe } from 'lucide-react'
+import { CheckCircle, Smartphone, Zap, Shield, Users, Star, ChevronRight, Smartphone as PhoneIcon, Bot, Code, Sparkles, Globe, Calculator, MessageSquare, Send } from 'lucide-react'
 import ContactSection from '@/components/ContactSection'
 import TechnologiesCarousel from '@/components/TechnologiesCarousel'
 import ProcessFlow from '@/components/ProcessFlow'
+import { useQuoteModal } from '@/hooks/useQuoteModal'
+import QuoteModal from '@/components/QuoteModal'
 
 const DesarrolloAppsPage = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
   const [selectedProject, setSelectedProject] = React.useState(0)
+  const { isOpen, serviceType, openModal, closeModal } = useQuoteModal()
 
   const features = [
     {
@@ -155,96 +158,131 @@ const DesarrolloAppsPage = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900">
       {/* Hero Section */}
-      <section className="relative pt-36 pb-20 overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-        {/* Animated background */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
-          
-          {/* Floating particles */}
-          {[...Array(20)].map((_, i) => {
-            // Posiciones fijas basadas en el índice para evitar hidration mismatch
-            const positions = [
-              { left: 15, top: 20 }, { left: 85, top: 35 }, { left: 45, top: 60 }, { left: 70, top: 15 },
-              { left: 25, top: 75 }, { left: 90, top: 80 }, { left: 10, top: 45 }, { left: 60, top: 90 },
-              { left: 35, top: 25 }, { left: 80, top: 55 }, { left: 20, top: 85 }, { left: 65, top: 10 },
-              { left: 40, top: 70 }, { left: 95, top: 40 }, { left: 5, top: 65 }, { left: 75, top: 30 },
-              { left: 30, top: 95 }, { left: 85, top: 20 }, { left: 50, top: 50 }, { left: 15, top: 80 }
-            ];
-            const position = positions[i] || { left: 50, top: 50 };
-            
-            return (
+      <section className="py-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Column - Title and Description */}
             <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-blue-400 rounded-full"
-              style={{
-                left: `${position.left}%`,
-                top: `${position.top}%`,
-              }}
-              animate={{
-                y: [0, -30, 0],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: 3 + (i % 3),
-                repeat: Infinity,
-                delay: i * 0.2,
-              }}
-            />
-          )})}
+              className="text-white"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                Desarrollo de{' '}
+                <span className="gradient-text">Apps Móviles</span>
+              </h1>
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+                Creo aplicaciones móviles nativas y multiplataforma que destacan en las tiendas de apps. 
+                Desde conceptos innovadores hasta apps empresariales, cada proyecto está optimizado para el éxito móvil.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <motion.button
+                  onClick={() => openModal('mobile')}
+                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-3"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Calculator className="w-5 h-5" />
+                  Solicitar Cotización
+                </motion.button>
+                <motion.button
+                  className="border-2 border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-3"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Smartphone className="w-5 h-5" />
+                  Ver Portafolio
+                </motion.button>
+              </div>
+            </motion.div>
+
+            {/* Right Column - Contact Form */}
+            <motion.div
+              className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20"
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <div className="flex items-center gap-3 mb-6">
+                <MessageSquare className="w-6 h-6 text-blue-400" />
+                <h2 className="text-2xl font-bold text-white">Cuéntame sobre tu Proyecto</h2>
+              </div>
+              
+              <form className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-white mb-2">
+                      Nombre *
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300"
+                      placeholder="Tu nombre completo"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-white mb-2">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300"
+                      placeholder="tu@email.com"
+                    />
+                  </div>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Servicio de Interés
+                  </label>
+                  <select className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300">
+                    <option value="" className="text-gray-900">Selecciona un servicio</option>
+                    <option value="ios" className="text-gray-900">App iOS</option>
+                    <option value="android" className="text-gray-900">App Android</option>
+                    <option value="cross-platform" className="text-gray-900">App Multiplataforma</option>
+                    <option value="custom" className="text-gray-900">Desarrollo Personalizado</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2">
+                    Mensaje *
+                  </label>
+                  <textarea
+                    rows={4}
+                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 resize-none"
+                    placeholder="Cuéntame sobre tu proyecto, objetivos y cómo puedo ayudarte..."
+                  />
+                </div>
+                
+                <div className="flex gap-4">
+                  <motion.button
+                    type="submit"
+                    className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-2"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Send className="w-5 h-5" />
+                    Enviar Mensaje
+                  </motion.button>
+                  
+                  <motion.button
+                    type="button"
+                    onClick={() => openModal('mobile')}
+                    className="flex-1 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center gap-3"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Calculator className="w-5 h-5" />
+                    Cotización
+                  </motion.button>
+                </div>
+              </form>
+            </motion.div>
+          </div>
         </div>
-
-        {/* Floating tech icons */}
-        {[
-          { Icon: Bot, delay: 0, position: { top: '20%', left: '10%' } },
-          { Icon: Code, delay: 2, position: { top: '30%', right: '15%' } },
-          { Icon: Zap, delay: 4, position: { bottom: '30%', left: '15%' } },
-          { Icon: Sparkles, delay: 1, position: { top: '60%', right: '10%' } },
-        ].map(({ Icon, delay, position }, index) => (
-          <motion.div
-            key={index}
-            className="absolute text-blue-400/30"
-            style={position}
-            animate={{
-              y: [0, -20, 0],
-              rotate: [0, 360],
-            }}
-            transition={{
-              duration: 4,
-              repeat: Infinity,
-              delay: delay,
-            }}
-          >
-            <Icon size={24} />
-          </motion.div>
-        ))}
-
-        <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            className="text-center max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-                         <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-               Desarrollo de{' '}
-               <span className="gradient-text">Apps Móviles</span>
-             </h1>
-             <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-               Creo aplicaciones móviles nativas y multiplataforma que destacan en las tiendas de apps. 
-               Desde conceptos innovadores hasta apps empresariales, cada proyecto está optimizado para el éxito móvil.
-             </p>
-             <motion.button
-               className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
-               whileHover={{ scale: 1.05, y: -2 }}
-               whileTap={{ scale: 0.95 }}
-             >
-               Solicitar Cotización
-             </motion.button>
-          </motion.div>
-        </div>
-
-        {/* Gradient overlay */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-900 to-transparent" />
       </section>
 
              {/* Features Section */}
@@ -311,72 +349,6 @@ const DesarrolloAppsPage = () => {
            </div>
          </div>
        </section>
-
-      {/* Platforms Section */}
-      <section className="py-20 bg-gray-50 dark:bg-slate-800">
-        <div className="container mx-auto px-4">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Plataformas{' '}
-              <span className="gradient-text">Soportadas</span>
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Desarrollo apps para todas las plataformas móviles principales, asegurando la máxima 
-              compatibilidad y experiencia del usuario.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {platforms.map((platform, index) => (
-              <motion.div
-                key={index}
-                className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700 text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5, scale: 1.02 }}
-              >
-                <div className="text-6xl mb-4">{platform.icon}</div>
-                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3">
-                  {platform.name}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
-                  {platform.description}
-                </p>
-                <div className="space-y-2">
-                  {platform.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      {feature}
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Technologies Section */}
-      <TechnologiesCarousel
-        technologies={mobileTechnologies}
-        title="Tecnologías de Desarrollo Móvil"
-        subtitle="Utilizo las tecnologías más avanzadas para crear apps móviles nativas y multiplataforma de alto rendimiento."
-      />
-
-      {/* Process Section */}
-      <ProcessFlow
-        steps={processSteps}
-        title="Mi Proceso de Desarrollo"
-        subtitle="Un enfoque sistemático y probado que garantiza apps de alta calidad y rendimiento excepcional."
-      />
 
       {/* Projects Gallery Section */}
       <section className="py-20 bg-gray-50 dark:bg-slate-800">
@@ -494,6 +466,131 @@ const DesarrolloAppsPage = () => {
         </div>
       </section>
 
+      {/* Platforms Section */}
+      <section className="py-20 bg-gray-50 dark:bg-slate-800">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Plataformas{' '}
+              <span className="gradient-text">Soportadas</span>
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              Desarrollo apps para todas las plataformas móviles principales, asegurando la máxima 
+              compatibilidad y experiencia del usuario.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {platforms.map((platform, index) => (
+              <motion.div
+                key={index}
+                className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700 text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5, scale: 1.02 }}
+              >
+                <div className="text-6xl mb-4">{platform.icon}</div>
+                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3">
+                  {platform.name}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-6">
+                  {platform.description}
+                </p>
+                <div className="space-y-2">
+                  {platform.features.map((feature, featureIndex) => (
+                    <div key={featureIndex} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      {feature}
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Technologies Carousel Section */}
+      <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
+        <div className="container mx-auto">
+          <motion.div
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+              Tecnologías de{' '}
+              <span className="gradient-text">Desarrollo Móvil</span>
+            </h2>
+            
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Utilizo las tecnologías más avanzadas para crear apps móviles nativas y multiplataforma de alto rendimiento.
+            </p>
+          </motion.div>
+
+          {/* Tech Carousel - Main Content */}
+          <motion.div
+            className="max-w-7xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            {/* Infinite Carousel */}
+            <div className="relative overflow-hidden">
+              <div className="flex animate-scroll-infinite space-x-8">
+                {/* First set of technologies */}
+                {mobileTechnologies.map((tech, index) => (
+                  <div
+                    key={index}
+                    className="flex-shrink-0 flex flex-col items-center p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 min-w-[140px] group hover:-translate-y-3"
+                  >
+                    <div className="text-5xl mb-3 group-hover:scale-125 transition-transform duration-300">
+                      {tech.icon}
+                    </div>
+                    <span className="text-sm font-semibold text-gray-900 dark:text-white group-hover:scale-110 transition-transform duration-300">
+                      {tech.name}
+                    </span>
+                  </div>
+                ))}
+                
+                {/* Duplicate set for infinite effect */}
+                {mobileTechnologies.map((tech, index) => (
+                  <div
+                    key={`duplicate-${index}`}
+                    className="flex-shrink-0 flex flex-col items-center p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 min-w-[140px] group hover:-translate-y-3"
+                  >
+                    <div className="text-5xl mb-3 group-hover:scale-125 transition-transform duration-300">
+                      {tech.icon}
+                    </div>
+                    <span className="text-sm font-semibold text-gray-900 dark:text-white group-hover:scale-110 transition-transform duration-300">
+                      {tech.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <ProcessFlow
+        steps={processSteps}
+        title="Mi Proceso de Desarrollo"
+        subtitle="Un enfoque sistemático y probado que garantiza apps de alta calidad y rendimiento excepcional."
+      />
+
       {/* Related Testimonials Section */}
       <section className="py-20 bg-white dark:bg-slate-900">
         <div className="container mx-auto px-4">
@@ -553,6 +650,13 @@ const DesarrolloAppsPage = () => {
 
       {/* Contact Section */}
       <ContactSection />
+      
+      {/* Quote Modal */}
+      <QuoteModal
+        isOpen={isOpen}
+        onClose={closeModal}
+        serviceType={serviceType}
+      />
     </div>
   )
 }
