@@ -159,7 +159,7 @@ const DesarrolloAppsPage = () => {
     <div className="min-h-screen bg-white dark:bg-slate-900">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-        <div className="container mx-auto px-4">
+        <div className="container-padding">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Column - Title and Description */}
             <motion.div
@@ -287,7 +287,7 @@ const DesarrolloAppsPage = () => {
 
              {/* Features Section */}
        <section className="py-16 bg-white dark:bg-slate-900">
-         <div className="container mx-auto px-4">
+         <div className="container-padding">
            <motion.div
              className="text-center mb-12"
              initial={{ opacity: 0, y: 30 }}
@@ -352,7 +352,7 @@ const DesarrolloAppsPage = () => {
 
       {/* Projects Gallery Section */}
       <section className="py-20 bg-gray-50 dark:bg-slate-800">
-        <div className="container mx-auto px-4">
+        <div className="container-padding">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -468,7 +468,7 @@ const DesarrolloAppsPage = () => {
 
       {/* Platforms Section */}
       <section className="py-20 bg-gray-50 dark:bg-slate-800">
-        <div className="container mx-auto px-4">
+        <div className="container-padding">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -520,7 +520,7 @@ const DesarrolloAppsPage = () => {
 
       {/* Technologies Carousel Section */}
       <section className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900">
-        <div className="container mx-auto">
+        <div className="container-padding">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -593,7 +593,7 @@ const DesarrolloAppsPage = () => {
 
       {/* Related Testimonials Section */}
       <section className="py-20 bg-white dark:bg-slate-900">
-        <div className="container mx-auto px-4">
+        <div className="container-padding">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}

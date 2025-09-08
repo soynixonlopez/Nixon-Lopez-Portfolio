@@ -12,7 +12,7 @@ const SkillsSection = () => {
 
   return (
     <section id="skills" className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900" ref={ref}>
-      <div className="container mx-auto">
+      <div className="container-padding">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}

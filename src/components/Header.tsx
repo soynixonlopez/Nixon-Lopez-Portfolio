@@ -48,7 +48,7 @@ const Header = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.8 }}
     >
-              <div className="container mx-auto">
+              <div className="container-padding">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <motion.div

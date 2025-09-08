@@ -69,7 +69,7 @@ const Footer = () => {
 
       <div className="relative z-10">
         {/* Main Footer Content */}
-        <div className="container mx-auto py-16">
+        <div className="container-padding py-16">
           <div className="grid md:grid-cols-4 gap-8">
             {/* Brand Section */}
             <div className="md:col-span-1">
@@ -214,7 +214,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800">
-          <div className="container mx-auto py-6">
+          <div className="container-padding py-6">
             <div className="flex flex-col md:flex-row justify-between items-center">
                           <motion.p
               className="text-gray-400 text-sm mb-4 md:mb-0"

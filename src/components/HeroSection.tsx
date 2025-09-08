@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { ChevronDown, Sparkles, Bot, Code, Zap } from 'lucide-react'
+import Image from 'next/image'
 
 const HeroSection = () => {
   const [currentText, setCurrentText] = useState('')
@@ -56,8 +57,7 @@ const HeroSection = () => {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.8,
-        ease: "easeOut"
+        duration: 0.8
       }
     }
   }
@@ -70,7 +70,7 @@ const HeroSection = () => {
   ]
 
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 px-4">
+    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 px-4">
       {/* Animated background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
@@ -130,79 +130,172 @@ const HeroSection = () => {
 
       {/* Main content */}
       <motion.div
-        className="relative z-10 text-center max-w-6xl mx-auto px-6 py-12"
+        className="relative z-10 container-padding h-full pt-20"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        {/* Greeting */}
-        <motion.div
-          variants={itemVariants}
-          className="mb-8 pt-8"
-        >
-          <span className="text-blue-400 font-mono text-2xl tracking-wider">
-            ¡Hola! Soy
-          </span>
-        </motion.div>
-
-        {/* Name */}
-        <motion.h1
-          variants={itemVariants}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
-        >
-          <span className="gradient-text">Nixon López</span>
-        </motion.h1>
-
-        {/* Animated subtitle */}
-        <motion.div
-          variants={itemVariants}
-          className="mb-8"
-        >
-          <h2 className="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-2">
-            Especialista en{' '}
-            <span className="text-blue-400 font-semibold">
-              {currentText}
-              <motion.span
-                animate={{ opacity: [1, 0] }}
-                transition={{ duration: 0.8, repeat: Infinity }}
-                className="ml-1"
-              >
-                |
-              </motion.span>
-            </span>
-          </h2>
-          <p className="pt-5 text-gray-400 max-w-2xl mx-auto text-lg"> 
-            Desarrollo web, ChatBots inteligentes y automatizaciones que impulsan tu negocio al futuro.
-          </p>
-        </motion.div>
-
-
-
-        {/* CTA Buttons */}
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
-        >
-          <motion.button
-            className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            Ver Mis Servicios
-          </motion.button>
+        {/* Two column layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch h-full">
           
-          <motion.button
-            className="border-2 border-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+          {/* Left column - Content */}
+          <motion.div
+            variants={itemVariants}
+            className="text-center lg:text-left flex flex-col justify-center h-full"
           >
-            Contactar Ahora
-          </motion.button>
-        </motion.div>
+            {/* Greeting */}
+            <motion.div
+              variants={itemVariants}
+              className="mb-6"
+            >
+              <span className="text-blue-400 font-mono text-2xl tracking-wider">
+                ¡Hola! Soy
+              </span>
+            </motion.div>
 
+            {/* Name */}
+            <motion.h1
+              variants={itemVariants}
+              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
+            >
+              <span className="gradient-text">Nixon López</span>
+            </motion.h1>
 
+            {/* Animated subtitle */}
+            <motion.div
+              variants={itemVariants}
+              className="mb-8"
+            >
+              <h2 className="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-2">
+                Especialista en{' '}
+                <span className="text-blue-400 font-semibold">
+                  {currentText}
+                  <motion.span
+                    animate={{ opacity: [1, 0] }}
+                    transition={{ duration: 0.8, repeat: Infinity }}
+                    className="ml-1"
+                  >
+                    |
+                  </motion.span>
+                </span>
+              </h2>
+              <p className="pt-5 text-gray-400 max-w-2xl mx-auto lg:mx-0 text-lg"> 
+                Desarrollo web, ChatBots inteligentes y automatizaciones que impulsan tu negocio al futuro.
+              </p>
+            </motion.div>
+
+            {/* CTA Buttons */}
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-8"
+            >
+              <motion.button
+                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Ver Mis Servicios
+              </motion.button>
+              
+              <motion.button
+                className="border-2 border-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Contactar Ahora
+              </motion.button>
+            </motion.div>
+          </motion.div>
+
+          {/* Right column - Profile Image */}
+          <motion.div
+            variants={itemVariants}
+            className="flex justify-center lg:justify-end h-full relative"
+          >
+            <motion.div
+              className="relative h-full w-full max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              {/* Profile image container - full height to bottom */}
+              <div className="absolute inset-0 w-full h-full">
+                <Image
+                  src="/images/nixonprofile.png"
+                  alt="Nixon López - Desarrollador Web y Especialista en IA"
+                  fill
+                  className="object-contain object-bottom"
+                  priority
+                />
+              </div>
+              
+              {/* Floating tech icons around the image - better distributed */}
+              <motion.div
+                className="absolute top-8 -right-4 sm:-right-6 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-blue-500 rounded-full flex items-center justify-center shadow-lg"
+                animate={{ 
+                  y: [0, -10, 0],
+                  rotate: [0, 360]
+                }}
+                transition={{ 
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <Bot className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
+              </motion.div>
+              
+              <motion.div
+                className="absolute bottom-8 -left-4 sm:-left-6 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-purple-500 rounded-full flex items-center justify-center shadow-lg"
+                animate={{ 
+                  y: [0, 10, 0],
+                  rotate: [0, -360]
+                }}
+                transition={{ 
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1
+                }}
+              >
+                <Code className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
+              </motion.div>
+              
+              <motion.div
+                className="absolute top-1/2 -left-6 sm:-left-8 w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 bg-green-500 rounded-full flex items-center justify-center shadow-lg"
+                animate={{ 
+                  x: [0, -8, 0],
+                  rotate: [0, 180, 360]
+                }}
+                transition={{ 
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 2
+                }}
+              >
+                <Zap className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-white" />
+              </motion.div>
+              
+              <motion.div
+                className="absolute top-3/4 -left-4 sm:-left-6 w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 bg-red-500 rounded-full flex items-center justify-center shadow-lg"
+                animate={{ 
+                  y: [0, -8, 0],
+                  rotate: [0, 90, 180, 270, 360]
+                }}
+                transition={{ 
+                  duration: 7,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1.5
+                }}
+              >
+                <Code className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-white" />
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </div>
       </motion.div>
 
       {/* Gradient overlay */}

@@ -113,7 +113,7 @@ const ContactSection = () => {
         )})}
       </div>
 
-      <div className="container mx-auto relative z-10">
+      <div className="container-padding relative z-10">
         {/* Header */}
         <motion.div
           className="text-center mb-16"

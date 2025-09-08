@@ -24,7 +24,7 @@ import {
 const ProjectsSection = () => {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
-  const [selectedProject, setSelectedProject] = useState(null)
+  const [selectedProject, setSelectedProject] = useState<any>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isDragging, setIsDragging] = useState(false)
   const [dragStart, setDragStart] = useState(0)
@@ -230,7 +230,7 @@ const ProjectsSection = () => {
     setCurrentIndex((prev) => (prev - 1 + totalSlides) % totalSlides)
   }
 
-  const openProjectDetails = (project) => {
+  const openProjectDetails = (project: any) => {
     setSelectedProject(project)
   }
 
@@ -239,13 +239,13 @@ const ProjectsSection = () => {
   }
 
   // Mouse drag handlers
-  const handleMouseDown = (e) => {
+  const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true)
     setDragStart(e.clientX)
     setDragOffset(0)
   }
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging) return
     const currentOffset = e.clientX - dragStart
     setDragOffset(currentOffset)
@@ -277,7 +277,7 @@ const ProjectsSection = () => {
 
   return (
     <section id="projects" className="py-20 bg-white dark:bg-slate-900" ref={ref}>
-      <div className="container mx-auto px-2 sm:px-4">
+      <div className="container-padding">
         {/* Header */}
         <motion.div
           className="text-center mb-16"
@@ -513,7 +513,7 @@ const ProjectsSection = () => {
               </button>
 
               {/* Modal Header */}
-              <div className={`relative h-64 bg-gradient-to-br ${selectedProject.gradient} flex items-center justify-center overflow-hidden`}>
+              <div className={`relative h-64 bg-gradient-to-br ${selectedProject ? selectedProject.gradient : 'from-blue-500 to-purple-600'} flex items-center justify-center overflow-hidden`}>
                 <div className="absolute inset-0 bg-black/20" />
                 <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10" />
                 
@@ -580,7 +580,7 @@ const ProjectsSection = () => {
                     Resultados Medibles
                   </h3>
                   <div className="grid grid-cols-3 gap-4">
-                    {Object.entries(selectedProject.metrics).map(([key, value], index) => (
+                    {Object.entries(selectedProject.metrics).map(([key, value]: [string, any], index) => (
                       <motion.div
                         key={key}
                         className="text-center p-4 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-slate-700 dark:to-slate-800 rounded-xl"
@@ -610,7 +610,7 @@ const ProjectsSection = () => {
                     Características Principales
                   </h3>
                   <div className="grid md:grid-cols-2 gap-3">
-                    {selectedProject.features.map((feature, index) => (
+                    {selectedProject.features.map((feature: any, index: number) => (
                       <motion.div
                         key={index}
                         className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-slate-700 rounded-lg"
@@ -636,7 +636,7 @@ const ProjectsSection = () => {
                     Stack Tecnológico Completo
                   </h3>
                   <div className="flex flex-wrap gap-3">
-                    {selectedProject.allTags.map((tag, index) => (
+                    {selectedProject.allTags.map((tag: any, index: number) => (
                       <motion.span
                         key={index}
                         className="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-lg font-medium"

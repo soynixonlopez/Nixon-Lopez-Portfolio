@@ -84,7 +84,7 @@ const TestimonialsSection = () => {
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5" />
       </div>
 
-      <div className="container mx-auto relative z-10">
+      <div className="container-padding relative z-10">
         {/* Header */}
         <motion.div
           className="text-center mb-12"

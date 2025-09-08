@@ -85,15 +85,14 @@ const ServicesSection = () => {
       opacity: 1,
       scale: 1,
       transition: {
-        duration: 0.8,
-        ease: "easeOut"
+        duration: 0.8
       }
     }
   }
 
   return (
     <section id="services" className="py-20 bg-slate-50 dark:bg-slate-900" ref={ref}>
-      <div className="container mx-auto">
+      <div className="container-padding">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
