@@ -11,7 +11,11 @@ import {
   CheckCircle,
   Calendar,
   TrendingUp,
-  Calculator
+  Calculator,
+  Instagram,
+  Facebook,
+  Youtube,
+  Music
 } from 'lucide-react'
 import { useQuoteModal } from '@/hooks/useQuoteModal'
 import QuoteModal from './QuoteModal'
@@ -149,7 +153,7 @@ const ContactSection = () => {
 
         {/* Centered Contact Form */}
         <motion.div
-          className="max-w-2xl mx-auto mb-16"
+          className="max-w-2xl mx-auto mb-24"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -246,114 +250,94 @@ const ContactSection = () => {
                 />
               </motion.div>
 
-              <div className="flex gap-4">
-                <motion.button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
-                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ delay: 0.8 }}
-                >
-                  {isSubmitting ? (
-                    <>
-                      <motion.div
-                        className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                      />
-                      Enviando...
-                    </>
-                  ) : (
-                    <>
-                      <Send className="w-5 h-5" />
-                      Enviar Mensaje
-                    </>
-                  )}
-                </motion.button>
-                
-                <motion.button
-                  type="button"
-                  onClick={() => openModal('web')}
-                  className="flex-1 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center gap-3"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ delay: 0.9 }}
-                >
-                  <Calculator className="w-5 h-5" />
-                  Cotización
-                </motion.button>
-              </div>
+              <motion.button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ delay: 0.8 }}
+              >
+                {isSubmitting ? (
+                  <>
+                    <motion.div
+                      className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    />
+                    Enviando...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    Enviar Mensaje
+                  </>
+                )}
+              </motion.button>
             </form>
           </div>
         </motion.div>
 
-        {/* Contact Information */}
+        {/* Social Media - Simple Structure */}
         <motion.div
-          className="grid md:grid-cols-3 gap-6 mb-16"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.4 }}
         >
-          {contactInfo.map((info, index) => (
-            <motion.div
-              key={index}
-              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 text-center hover:bg-white/10 transition-all duration-300"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ delay: 0.6 + index * 0.1 }}
-              whileHover={{ y: -5 }}
+          <h3 className="text-2xl font-bold text-white mb-6">
+            Síguenos en nuestras{' '}
+            <span className="gradient-text">Redes Sociales</span>
+          </h3>
+          
+          <div className="flex justify-center gap-6">
+            <motion.a
+              href="https://instagram.com/nixoncodes.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-pink-400 hover:text-pink-300 transition-colors p-3 rounded-full hover:bg-pink-500/10"
+              whileHover={{ scale: 1.2, y: -2 }}
+              whileTap={{ scale: 0.9 }}
             >
-              <motion.div
-                className={`bg-gradient-to-br ${info.color} w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4`}
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ duration: 0.3 }}
-              >
-                <info.icon className="w-8 h-8 text-white" />
-              </motion.div>
-              <h3 className="font-bold text-lg mb-2">{info.title}</h3>
-              <p className="text-blue-400 font-medium mb-1">{info.info}</p>
-              <p className="text-gray-400 text-sm">{info.description}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-
-
-
-                {/* Simple Consultation CTA */}
-        <motion.div
-          className="bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-indigo-600/20 border border-blue-500/30 rounded-3xl p-8 text-center relative overflow-hidden"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
-        >
-          {/* Background Pattern */}
-          <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-5" />
-
-          <div className="relative z-10">
-            <h3 className="text-3xl font-bold mb-4">
-              ¿Quieres Agendar una{' '}
-              <span className="gradient-text">Consulta Gratuita</span>?
-            </h3>
-            
-            <p className="text-lg text-gray-300 mb-6 max-w-2xl mx-auto">
-              Reserva una sesión de 30 minutos completamente gratuita para analizar tu proyecto.
-            </p>
-
-            <motion.button
-              className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center gap-2 mx-auto"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              <Instagram size={32} />
+            </motion.a>
+            <motion.a
+              href="https://tiktok.com/@nixoncodes.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-black hover:text-gray-800 transition-colors p-3 rounded-full hover:bg-gray-500/10"
+              whileHover={{ scale: 1.2, y: -2 }}
+              whileTap={{ scale: 0.9 }}
             >
-              <Calendar className="w-5 h-5" />
-              Agenda gratis tu consulta aquí
-            </motion.button>
+              <Music size={32} />
+            </motion.a>
+            <motion.a
+              href="https://facebook.com/nixoncodes.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:text-blue-300 transition-colors p-3 rounded-full hover:bg-blue-500/10"
+              whileHover={{ scale: 1.2, y: -2 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <Facebook size={32} />
+            </motion.a>
+            <motion.a
+              href="https://youtube.com/@nixoncodes.ai"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-red-400 hover:text-red-300 transition-colors p-3 rounded-full hover:bg-red-500/10"
+              whileHover={{ scale: 1.2, y: -2 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <Youtube size={32} />
+            </motion.a>
           </div>
         </motion.div>
+
+
+
       </div>
       
       {/* Quote Modal */}

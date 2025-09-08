@@ -163,11 +163,11 @@ const AboutSection = () => {
             {/* Simple image without borders or backgrounds */}
             <div className="relative w-full h-full flex items-center justify-center">
               <Image
-                src="/images/nixonlaptod.png"
+                src="/images/AboutMePicture.png"
                 alt="Nixon López - Desarrollador y IT Teacher"
                 width={800}
                 height={1000}
-                className="w-full h-full max-h-[800px] object-contain"
+                className="w-full h-full max-h-[900px] object-contain"
                 priority
               />
             </div>

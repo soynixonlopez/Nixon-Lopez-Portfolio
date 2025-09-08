@@ -2,13 +2,15 @@
 
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
-import { ChevronDown, Sparkles, Bot, Code, Zap } from 'lucide-react'
+import { ChevronDown, Sparkles, Bot, Code, Zap, Calculator } from 'lucide-react'
 import Image from 'next/image'
+import { useQuoteModal } from '@/hooks/useQuoteModal'
 
 const HeroSection = () => {
   const [currentText, setCurrentText] = useState('')
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
+  const { openModal } = useQuoteModal()
   
   const texts = [
     'Desarrollo Web con IA',
@@ -70,7 +72,7 @@ const HeroSection = () => {
   ]
 
   return (
-    <section id="hero" className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 px-4">
+    <section id="hero" className="relative min-h-screen h-auto md:h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 px-4 py-8 md:py-0 pb-0">
       {/* Animated background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
@@ -130,18 +132,18 @@ const HeroSection = () => {
 
       {/* Main content */}
       <motion.div
-        className="relative z-10 container-padding h-full pt-20"
+        className="relative z-10 container-padding h-full pt-20 pb-0"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         {/* Two column layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch h-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center md:items-stretch h-full">
           
           {/* Left column - Content */}
           <motion.div
             variants={itemVariants}
-            className="text-center lg:text-left flex flex-col justify-center h-full"
+            className="text-center md:text-left flex flex-col justify-center h-full"
           >
             {/* Greeting */}
             <motion.div
@@ -156,7 +158,7 @@ const HeroSection = () => {
             {/* Name */}
             <motion.h1
               variants={itemVariants}
-              className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
+              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
             >
               <span className="gradient-text">Nixon López</span>
             </motion.h1>
@@ -190,21 +192,13 @@ const HeroSection = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-8"
             >
               <motion.button
-                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
+                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => openModal('web')}
               >
-                Ver Mis Servicios
-              </motion.button>
-              
-              <motion.button
-                className="border-2 border-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/10 transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              >
-                Contactar Ahora
+                <Calculator className="w-5 h-5" />
+                Solicitar Cotización
               </motion.button>
             </motion.div>
           </motion.div>
@@ -212,14 +206,14 @@ const HeroSection = () => {
           {/* Right column - Profile Image */}
           <motion.div
             variants={itemVariants}
-            className="flex justify-center lg:justify-end h-full relative"
+            className="flex justify-center md:justify-end h-full relative"
           >
             <motion.div
-              className="relative h-full w-full max-w-sm sm:max-w-md lg:max-w-lg xl:max-w-xl"
+              className="relative w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl h-[500px] sm:h-[600px] md:h-full"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
-              {/* Profile image container - full height to bottom */}
+              {/* Profile image container */}
               <div className="absolute inset-0 w-full h-full">
                 <Image
                   src="/images/nixonprofile.png"
@@ -298,8 +292,8 @@ const HeroSection = () => {
         </div>
       </motion.div>
 
-      {/* Gradient overlay */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-900 to-transparent" />
+      {/* Gradient overlay - only on desktop */}
+      <div className="hidden md:block absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-900 to-transparent" />
     </section>
   )
 }

@@ -6,6 +6,7 @@ import { CheckCircle, Globe, Zap, Shield, Users, Star, ChevronRight, Globe as Gl
 import ContactSection from '@/components/ContactSection'
 import TechnologiesCarousel from '@/components/TechnologiesCarousel'
 import ProcessFlow from '@/components/ProcessFlow'
+import ServiceCTA from '@/components/ServiceCTA'
 import { useQuoteModal } from '@/hooks/useQuoteModal'
 import QuoteModal from '@/components/QuoteModal'
 
@@ -162,25 +163,15 @@ const DesarrolloWebPage = () => {
                 Creo sitios web modernos, responsivos y optimizados que convierten visitantes en clientes. 
                 Desde landing pages hasta e-commerce complejos, cada proyecto está diseñado para el éxito digital.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <motion.button
-                  onClick={() => openModal('web')}
-                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-3"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Calculator className="w-5 h-5" />
-                  Solicitar Cotización
-                </motion.button>
-                <motion.button
-                  className="border-2 border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-3"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Globe className="w-5 h-5" />
-                  Ver Portafolio
-                </motion.button>
-              </div>
+              <motion.button
+                onClick={() => openModal('web')}
+                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-3"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Calculator className="w-5 h-5" />
+                Solicitar Cotización
+              </motion.button>
             </motion.div>
 
             {/* Right Column - Contact Form */}
@@ -243,28 +234,15 @@ const DesarrolloWebPage = () => {
                   />
                 </div>
                 
-                <div className="flex gap-4">
-                  <motion.button
-                    type="submit"
-                    className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-2"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <Send className="w-5 h-5" />
-                    Enviar Mensaje
-                  </motion.button>
-                  
-                  <motion.button
-                    type="button"
-                    onClick={() => openModal('web')}
-                    className="flex-1 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center gap-3"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Calculator className="w-5 h-5" />
-                    Cotización
-                  </motion.button>
-                </div>
+                <motion.button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-2"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Send className="w-5 h-5" />
+                  Enviar Mensaje
+                </motion.button>
               </form>
             </motion.div>
           </div>
@@ -583,46 +561,12 @@ const DesarrolloWebPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20">
-        <div className="container-padding">
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              ¿Listo para crear tu{' '}
-              <span className="gradient-text">Sitio Web</span>?
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
-              Obtén una cotización personalizada y comienza tu proyecto hoy mismo
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button
-                onClick={() => openModal('web')}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center gap-3"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Calculator className="w-5 h-5" />
-                Obtener Cotización
-              </motion.button>
-              
-              <motion.button
-                className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 flex items-center justify-center gap-3"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Globe className="w-5 h-5" />
-                Ver Portafolio
-              </motion.button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <ServiceCTA
+        serviceType="web"
+        title="¿Listo para crear tu"
+        highlightedText="Sitio Web"
+        onQuoteClick={() => openModal('web')}
+      />
 
       {/* Contact Section */}
       <ContactSection />

@@ -16,7 +16,9 @@ interface QuoteData {
   phone: string
   company: string
   projectType: string
+  serviceSubtype: string
   features: string[]
+  specifications: string[]
   timeline: string
   budget: string
   description: string
@@ -30,7 +32,9 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, serviceType = 
     phone: '',
     company: '',
     projectType: '',
+    serviceSubtype: '',
     features: [],
+    specifications: [],
     timeline: '',
     budget: '',
     description: ''
@@ -43,39 +47,84 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, serviceType = 
       title: 'Desarrollo Web',
       icon: Globe,
       color: '#3B82F6',
+      subtypes: [
+        { value: 'landing', label: 'Landing Page', description: 'Página de aterrizaje simple' },
+        { value: 'corporate', label: 'Sitio Corporativo', description: 'Sitio web empresarial completo' },
+        { value: 'ecommerce', label: 'E-commerce', description: 'Tienda online con carrito de compras' },
+        { value: 'webapp', label: 'Aplicación Web', description: 'Aplicación web interactiva' },
+        { value: 'custom', label: 'Desarrollo Personalizado', description: 'Solución a medida' }
+      ],
       features: [
         { name: 'Diseño Responsivo', price: 500, description: 'Adaptable a todos los dispositivos' },
-        { name: 'E-commerce', price: 1200, description: 'Tienda online completa' },
+        { name: 'E-commerce Completo', price: 1200, description: 'Tienda online con carrito y pagos' },
         { name: 'CMS Personalizado', price: 800, description: 'Sistema de gestión de contenido' },
         { name: 'SEO Optimizado', price: 300, description: 'Optimización para motores de búsqueda' },
         { name: 'Integración de APIs', price: 400, description: 'Conexión con servicios externos' },
-        { name: 'Panel de Administración', price: 600, description: 'Dashboard para gestión' }
+        { name: 'Panel de Administración', price: 600, description: 'Dashboard para gestión' },
+        { name: 'Multiidioma', price: 350, description: 'Soporte para múltiples idiomas' },
+        { name: 'Blog Integrado', price: 250, description: 'Sistema de blog incorporado' }
+      ],
+      specifications: [
+        { name: 'Número de páginas', options: ['1-5 páginas', '6-15 páginas', '16-30 páginas', '30+ páginas'] },
+        { name: 'Diseño', options: ['Plantilla personalizada', 'Diseño desde cero', 'Basado en referencia'] },
+        { name: 'Integraciones', options: ['Google Analytics', 'Redes sociales', 'CRM', 'Sistema de pagos', 'Email marketing'] },
+        { name: 'Hosting', options: ['Incluido (1 año)', 'Solo desarrollo', 'Migración existente'] }
       ]
     },
     mobile: {
       title: 'Desarrollo Móvil',
       icon: Smartphone,
       color: '#10B981',
+      subtypes: [
+        { value: 'ios', label: 'App iOS', description: 'Aplicación solo para iPhone/iPad' },
+        { value: 'android', label: 'App Android', description: 'Aplicación solo para Android' },
+        { value: 'cross', label: 'App Multiplataforma', description: 'Una app para iOS y Android' },
+        { value: 'hybrid', label: 'App Híbrida', description: 'App web en contenedor nativo' },
+        { value: 'custom', label: 'Desarrollo Personalizado', description: 'Solución específica' }
+      ],
       features: [
         { name: 'App iOS Nativa', price: 2000, description: 'Aplicación para iPhone/iPad' },
         { name: 'App Android Nativa', price: 2000, description: 'Aplicación para Android' },
         { name: 'App Multiplataforma', price: 1500, description: 'Una app para iOS y Android' },
         { name: 'Integración de Notificaciones', price: 300, description: 'Push notifications' },
         { name: 'Integración de Pagos', price: 500, description: 'Sistema de pagos integrado' },
-        { name: 'Modo Offline', price: 400, description: 'Funcionalidad sin conexión' }
+        { name: 'Modo Offline', price: 400, description: 'Funcionalidad sin conexión' },
+        { name: 'Geolocalización', price: 350, description: 'Funciones basadas en ubicación' },
+        { name: 'Cámara y Galería', price: 250, description: 'Acceso a cámara y fotos' }
+      ],
+      specifications: [
+        { name: 'Plataforma', options: ['iOS', 'Android', 'Ambas'] },
+        { name: 'Tipo de app', options: ['Nativa', 'Híbrida', 'Progressive Web App'] },
+        { name: 'Funcionalidades', options: ['Cámara', 'GPS', 'Notificaciones', 'Pagos', 'Redes sociales'] },
+        { name: 'Backend', options: ['API existente', 'Desarrollo de API', 'Sin backend'] }
       ]
     },
     automation: {
       title: 'Automatización',
       icon: Bot,
       color: '#8B5CF6',
+      subtypes: [
+        { value: 'chatbot', label: 'Chatbot', description: 'Bot conversacional inteligente' },
+        { value: 'workflow', label: 'Automatización de Procesos', description: 'Workflows automatizados' },
+        { value: 'integration', label: 'Integración de Sistemas', description: 'Conectar múltiples plataformas' },
+        { value: 'analytics', label: 'Analytics y Reportes', description: 'Dashboard de métricas' },
+        { value: 'custom', label: 'Solución Personalizada', description: 'Automatización específica' }
+      ],
       features: [
         { name: 'Chatbot Inteligente', price: 800, description: 'Bot conversacional con IA' },
         { name: 'Automatización de Procesos', price: 1200, description: 'Workflows automatizados' },
         { name: 'Integración de Sistemas', price: 1000, description: 'Conectar múltiples plataformas' },
         { name: 'Dashboard de Analytics', price: 600, description: 'Panel de métricas y reportes' },
         { name: 'API Personalizada', price: 700, description: 'API para integraciones' },
-        { name: 'Sistema de Alertas', price: 300, description: 'Notificaciones automáticas' }
+        { name: 'Sistema de Alertas', price: 300, description: 'Notificaciones automáticas' },
+        { name: 'Machine Learning', price: 1500, description: 'IA para análisis predictivo' },
+        { name: 'Automatización de Email', price: 400, description: 'Campañas automáticas' }
+      ],
+      specifications: [
+        { name: 'Tipo de automatización', options: ['Chatbot', 'Workflows', 'Integraciones', 'Analytics'] },
+        { name: 'Plataformas a integrar', options: ['CRM', 'Email marketing', 'Redes sociales', 'E-commerce', 'ERP'] },
+        { name: 'Nivel de IA', options: ['Básico', 'Intermedio', 'Avanzado con ML'] },
+        { name: 'Volumen de datos', options: ['Bajo (<1K registros)', 'Medio (1K-10K)', 'Alto (10K+)'] }
       ]
     }
   }
@@ -88,6 +137,15 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, serviceType = 
       features: prev.features.includes(featureName)
         ? prev.features.filter(f => f !== featureName)
         : [...prev.features, featureName]
+    }))
+  }
+
+  const handleSpecificationToggle = (specName: string, option: string) => {
+    setQuoteData(prev => ({
+      ...prev,
+      specifications: prev.specifications.includes(`${specName}: ${option}`)
+        ? prev.specifications.filter(s => s !== `${specName}: ${option}`)
+        : [...prev.specifications.filter(s => !s.startsWith(`${specName}:`)), `${specName}: ${option}`]
     }))
   }
 
@@ -130,7 +188,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, serviceType = 
     const result = calculateQuote()
     setQuoteResult(result)
     setIsGenerating(false)
-    setCurrentStep(4)
+    setCurrentStep(6)
   }
 
   const handlePrintQuote = () => {
@@ -151,7 +209,9 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, serviceType = 
       phone: '',
       company: '',
       projectType: '',
+      serviceSubtype: '',
       features: [],
+      specifications: [],
       timeline: '',
       budget: '',
       description: ''
@@ -204,7 +264,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, serviceType = 
                     Cotización de {config.title}
                   </h2>
                   <p className="text-gray-600 dark:text-gray-400">
-                    Paso {currentStep} de 4
+                    Paso {currentStep} de 6
                   </p>
                 </div>
               </div>
@@ -222,7 +282,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, serviceType = 
                   className="h-2 rounded-full"
                   style={{ backgroundColor: config.color }}
                   initial={{ width: 0 }}
-                  animate={{ width: `${(currentStep / 4) * 100}%` }}
+                  animate={{ width: `${(currentStep / 6) * 100}%` }}
                   transition={{ duration: 0.3 }}
                 />
               </div>
@@ -303,6 +363,55 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, serviceType = 
                   className="space-y-6"
                 >
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                    Tipo de {config.title}
+                  </h3>
+                  
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {config.subtypes.map((subtype, index) => (
+                      <motion.div
+                        key={subtype.value}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className={`p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 ${
+                          quoteData.serviceSubtype === subtype.value
+                            ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
+                            : 'border-gray-200 dark:border-gray-600 hover:border-gray-300 dark:hover:border-gray-500'
+                        }`}
+                        onClick={() => setQuoteData(prev => ({ ...prev, serviceSubtype: subtype.value }))}
+                      >
+                        <div className="flex items-start justify-between">
+                          <div className="flex-1">
+                            <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
+                              {subtype.label}
+                            </h4>
+                            <p className="text-sm text-gray-600 dark:text-gray-400">
+                              {subtype.description}
+                            </p>
+                          </div>
+                          <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
+                            quoteData.serviceSubtype === subtype.value
+                              ? 'border-blue-500 bg-blue-500'
+                              : 'border-gray-300 dark:border-gray-600'
+                          }`}>
+                            {quoteData.serviceSubtype === subtype.value && (
+                              <CheckCircle className="w-4 h-4 text-white" />
+                            )}
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {currentStep === 3 && (
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="space-y-6"
+                >
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                     Características del Proyecto
                   </h3>
                   
@@ -325,15 +434,9 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, serviceType = 
                             <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
                               {feature.name}
                             </h4>
-                            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                            <p className="text-sm text-gray-600 dark:text-gray-400">
                               {feature.description}
                             </p>
-                            <div className="flex items-center gap-2">
-                              <DollarSign className="w-4 h-4 text-green-500" />
-                              <span className="text-lg font-bold text-green-600 dark:text-green-400">
-                                ${feature.price.toLocaleString()}
-                              </span>
-                            </div>
                           </div>
                           <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
                             quoteData.features.includes(feature.name)
@@ -351,7 +454,50 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, serviceType = 
                 </motion.div>
               )}
 
-              {currentStep === 3 && (
+              {currentStep === 4 && (
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="space-y-6"
+                >
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                    Especificaciones Técnicas
+                  </h3>
+                  
+                  <div className="space-y-6">
+                    {config.specifications.map((spec, index) => (
+                      <motion.div
+                        key={spec.name}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="p-4 rounded-xl border border-gray-200 dark:border-gray-600"
+                      >
+                        <h4 className="font-semibold text-gray-900 dark:text-white mb-3">
+                          {spec.name}
+                        </h4>
+                        <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                          {spec.options.map((option) => (
+                            <button
+                              key={option}
+                              onClick={() => handleSpecificationToggle(spec.name, option)}
+                              className={`p-2 rounded-lg text-sm transition-all duration-200 ${
+                                quoteData.specifications.includes(`${spec.name}: ${option}`)
+                                  ? 'bg-blue-500 text-white'
+                                  : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                              }`}
+                            >
+                              {option}
+                            </button>
+                          ))}
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+
+              {currentStep === 5 && (
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -427,7 +573,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, serviceType = 
                 </motion.div>
               )}
 
-              {currentStep === 4 && quoteResult && (
+              {currentStep === 6 && quoteResult && (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -456,6 +602,9 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, serviceType = 
                         <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">
                           ${quoteResult.finalPrice.toLocaleString()}
                         </p>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                          Precio base: ${quoteResult.basePrice.toLocaleString()}
+                        </p>
                       </div>
                       
                       <div className="text-center">
@@ -465,6 +614,9 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, serviceType = 
                         <h4 className="font-semibold text-gray-900 dark:text-white mb-1">Tiempo de Desarrollo</h4>
                         <p className="text-2xl font-bold text-green-600 dark:text-green-400">
                           {quoteResult.developmentTime} semanas
+                        </p>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                          Timeline: {quoteResult.timeline === 'urgent' ? 'Urgente' : quoteResult.timeline === 'normal' ? 'Normal' : 'Flexible'}
                         </p>
                       </div>
                       
@@ -476,16 +628,19 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, serviceType = 
                         <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">
                           {quoteResult.complexity}
                         </p>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                          {quoteResult.selectedFeatures.length} características
+                        </p>
                       </div>
                     </div>
                   </div>
 
-                  {/* Selected Features */}
-                  <div>
-                    <h4 className="font-semibold text-gray-900 dark:text-white mb-4">Características Incluidas</h4>
-                    <div className="space-y-2">
+                  {/* Detailed Breakdown */}
+                  <div className="bg-white dark:bg-slate-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
+                    <h4 className="font-semibold text-gray-900 dark:text-white mb-4">Desglose de Costos</h4>
+                    <div className="space-y-3">
                       {quoteResult.selectedFeatures.map((feature: any, index: number) => (
-                        <div key={index} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-xl">
+                        <div key={index} className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
                           <div className="flex items-center gap-3">
                             <CheckCircle className="w-5 h-5 text-green-500" />
                             <span className="text-gray-900 dark:text-white">{feature.name}</span>
@@ -495,8 +650,28 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, serviceType = 
                           </span>
                         </div>
                       ))}
+                      <div className="border-t border-gray-200 dark:border-gray-600 pt-3 mt-3">
+                        <div className="flex items-center justify-between">
+                          <span className="font-semibold text-gray-900 dark:text-white">Subtotal:</span>
+                          <span className="font-semibold text-gray-900 dark:text-white">
+                            ${quoteResult.basePrice.toLocaleString()}
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
+                          <span>Multiplicadores (timeline + complejidad):</span>
+                          <span>
+                            {quoteResult.timeline === 'urgent' ? '+50%' : quoteResult.timeline === 'flexible' ? '-10%' : '0%'}
+                            {quoteResult.complexity === 'Alta' ? ' +20%' : quoteResult.complexity === 'Media' ? ' +10%' : ''}
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between text-lg font-bold text-blue-600 dark:text-blue-400 border-t border-gray-200 dark:border-gray-600 pt-2 mt-2">
+                          <span>Total:</span>
+                          <span>${quoteResult.finalPrice.toLocaleString()}</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
+
                 </motion.div>
               )}
 
@@ -522,7 +697,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, serviceType = 
             {/* Footer */}
             <div className="p-6 border-t border-gray-200 dark:border-gray-700">
               <div className="flex justify-between">
-                {currentStep > 1 && currentStep < 4 && (
+                {currentStep > 1 && currentStep < 6 && (
                   <button
                     onClick={() => setCurrentStep(prev => prev - 1)}
                     className="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-xl text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
@@ -532,20 +707,25 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, serviceType = 
                 )}
                 
                 <div className="ml-auto flex gap-3">
-                  {currentStep < 3 && (
+                  {currentStep < 5 && (
                     <button
                       onClick={() => setCurrentStep(prev => prev + 1)}
-                      disabled={!quoteData.name || !quoteData.email}
+                      disabled={
+                        (currentStep === 1 && (!quoteData.name || !quoteData.email)) ||
+                        (currentStep === 2 && !quoteData.serviceSubtype) ||
+                        (currentStep === 3 && quoteData.features.length === 0) ||
+                        (currentStep === 4 && quoteData.specifications.length === 0)
+                      }
                       className="px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-xl transition-colors"
                     >
                       Siguiente
                     </button>
                   )}
                   
-                  {currentStep === 3 && (
+                  {currentStep === 5 && (
                     <button
                       onClick={handleGenerateQuote}
-                      disabled={quoteData.features.length === 0 || !quoteData.timeline}
+                      disabled={!quoteData.timeline}
                       className="px-6 py-3 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-xl transition-colors flex items-center gap-2"
                     >
                       <Calculator className="w-4 h-4" />
@@ -553,7 +733,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, serviceType = 
                     </button>
                   )}
                   
-                  {currentStep === 4 && quoteResult && (
+                  {currentStep === 6 && quoteResult && (
                     <>
                       <button
                         onClick={handlePrintQuote}

@@ -11,6 +11,10 @@ export const metadata: Metadata = {
   keywords: 'desarrollo web, inteligencia artificial, chatbots, automatización, Nixon López, nixoncodes.ai, IT Teacher',
   authors: [{ name: 'Nixon López' }],
   creator: 'Nixon López',
+  icons: {
+    icon: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
   openGraph: {
     title: 'Nixon López - Desarrollo Web con IA',
     description: 'Especialista en desarrollo web con IA, ChatBots y automatizaciones para negocios',

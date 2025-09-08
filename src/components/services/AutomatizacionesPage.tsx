@@ -6,6 +6,7 @@ import { CheckCircle, Zap, Bot, Database, Workflow, Shield, Star, Cog, TrendingU
 import ContactSection from '@/components/ContactSection'
 import TechnologiesCarousel from '@/components/TechnologiesCarousel'
 import ProcessFlow from '@/components/ProcessFlow'
+import ServiceCTA from '@/components/ServiceCTA'
 import { useQuoteModal } from '@/hooks/useQuoteModal'
 import QuoteModal from '@/components/QuoteModal'
 
@@ -206,25 +207,15 @@ const AutomatizacionesPage = () => {
                 Transformo tu negocio con sistemas inteligentes que automatizan procesos, conectan todas 
                 tus herramientas y te permiten enfocarte en lo que realmente importa: hacer crecer tu empresa.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <motion.button
-                  onClick={() => openModal('automation')}
-                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-3"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Calculator className="w-5 h-5" />
-                  Solicitar Cotización
-                </motion.button>
-                <motion.button
-                  className="border-2 border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-3"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Bot className="w-5 h-5" />
-                  Ver Portafolio
-                </motion.button>
-              </div>
+              <motion.button
+                onClick={() => openModal('automation')}
+                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-3"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Calculator className="w-5 h-5" />
+                Solicitar Cotización
+              </motion.button>
             </motion.div>
 
             {/* Right Column - Contact Form */}
@@ -287,28 +278,15 @@ const AutomatizacionesPage = () => {
                   />
                 </div>
                 
-                <div className="flex gap-4">
-                  <motion.button
-                    type="submit"
-                    className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-2"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <Send className="w-5 h-5" />
-                    Enviar Mensaje
-                  </motion.button>
-                  
-                  <motion.button
-                    type="button"
-                    onClick={() => openModal('automation')}
-                    className="flex-1 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center gap-3"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Calculator className="w-5 h-5" />
-                    Cotización
-                  </motion.button>
-                </div>
+                <motion.button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-2"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Send className="w-5 h-5" />
+                  Enviar Mensaje
+                </motion.button>
               </form>
             </motion.div>
           </div>
@@ -726,6 +704,14 @@ const AutomatizacionesPage = () => {
           </div>
         </div>
       </section>
+
+      {/* CTA Section */}
+      <ServiceCTA
+        serviceType="automation"
+        title="¿Listo para"
+        highlightedText="Automatizar tu Negocio"
+        onQuoteClick={() => openModal('automation')}
+      />
 
       {/* Contact Section */}
       <ContactSection />

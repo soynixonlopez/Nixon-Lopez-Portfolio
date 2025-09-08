@@ -3,9 +3,11 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { Instagram, Facebook, MessageSquare, Youtube, ArrowUp, X } from 'lucide-react'
+import Link from 'next/link'
 
 const Footer = () => {
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false)
+  const [isCookiesModalOpen, setIsCookiesModalOpen] = useState(false)
   
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -47,10 +49,10 @@ const Footer = () => {
   ]
 
   const services = [
-    'Desarrollo Web con IA',
-    'ChatBots Inteligentes',
-    'Automatizaciones',
-    'Consultoría Técnica'
+    { name: 'Desarrollo Web con IA', href: '/servicios/desarrollo-web' },
+    { name: 'Desarrollo de Apps', href: '/servicios/desarrollo-apps' },
+    { name: 'Automatizaciones', href: '/servicios/automatizaciones' },
+    { name: 'Consultoría Técnica', href: '#contact' }
   ]
 
   const scrollToSection = (href: string) => {
@@ -167,8 +169,22 @@ const Footer = () => {
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
                 {services.map((service, index) => (
-                  <li key={service} className="text-gray-400 text-sm">
-                    {service}
+                  <li key={service.name}>
+                    {service.href.startsWith('#') ? (
+                      <button
+                        onClick={() => scrollToSection(service.href)}
+                        className="text-gray-400 hover:text-white transition-colors text-sm hover:translate-x-1 transform transition-transform duration-200 block"
+                      >
+                        {service.name}
+                      </button>
+                    ) : (
+                      <Link
+                        href={service.href}
+                        className="text-gray-400 hover:text-white transition-colors text-sm hover:translate-x-1 transform transition-transform duration-200 block"
+                      >
+                        {service.name}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </motion.ul>
@@ -235,6 +251,14 @@ const Footer = () => {
                 </motion.button>
                 
                 <motion.button
+                  onClick={() => setIsCookiesModalOpen(true)}
+                  className="text-gray-400 hover:text-white transition-colors text-sm underline"
+                  whileHover={{ y: -1 }}
+                >
+                  Políticas de Cookies
+                </motion.button>
+                
+                <motion.button
                   onClick={scrollToTop}
                   className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors text-sm group"
                   whileHover={{ y: -2 }}
@@ -258,12 +282,14 @@ const Footer = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          onClick={() => setIsPrivacyModalOpen(false)}
         >
           <motion.div
             className="bg-slate-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
+            onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
             <div className="flex items-center justify-between p-6 border-b border-gray-700">
@@ -346,6 +372,133 @@ const Footer = () => {
             <div className="flex justify-end p-6 border-t border-gray-700">
               <motion.button
                 onClick={() => setIsPrivacyModalOpen(false)}
+                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Cerrar
+              </motion.button>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+
+      {/* Cookies Policy Modal */}
+      {isCookiesModalOpen && (
+        <motion.div
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setIsCookiesModalOpen(false)}
+        >
+          <motion.div
+            className="bg-slate-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-700">
+              <h2 className="text-2xl font-bold text-white">Políticas de Cookies</h2>
+              <button
+                onClick={() => setIsCookiesModalOpen(false)}
+                className="text-gray-400 hover:text-white transition-colors p-2"
+              >
+                <X size={24} />
+              </button>
+            </div>
+
+            {/* Modal Content */}
+            <div className="p-6 text-gray-300 space-y-4">
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-3">1. ¿Qué son las Cookies?</h3>
+                <p className="text-sm leading-relaxed">
+                  Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas nuestro sitio web. 
+                  Estas cookies nos ayudan a mejorar tu experiencia de navegación, recordar tus preferencias y analizar cómo 
+                  utilizas nuestro sitio.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-3">2. Tipos de Cookies que Utilizamos</h3>
+                <div className="space-y-3">
+                  <div>
+                    <h4 className="text-lg font-medium text-white mb-2">Cookies Esenciales</h4>
+                    <p className="text-sm leading-relaxed">
+                      Estas cookies son necesarias para el funcionamiento básico del sitio web y no se pueden desactivar. 
+                      Incluyen cookies de sesión, seguridad y funcionalidad básica.
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-medium text-white mb-2">Cookies de Rendimiento</h4>
+                    <p className="text-sm leading-relaxed">
+                      Nos ayudan a entender cómo los visitantes interactúan con nuestro sitio web, proporcionando información 
+                      sobre las páginas visitadas, tiempo de permanencia y posibles errores.
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-medium text-white mb-2">Cookies de Funcionalidad</h4>
+                    <p className="text-sm leading-relaxed">
+                      Permiten que el sitio web recuerde las elecciones que haces (como tu nombre de usuario, idioma o región) 
+                      y proporcionan características mejoradas y más personales.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-3">3. Cookies de Terceros</h3>
+                <p className="text-sm leading-relaxed">
+                  Nuestro sitio puede utilizar servicios de terceros como Google Analytics, redes sociales o herramientas 
+                  de marketing. Estas empresas pueden establecer sus propias cookies en tu dispositivo. Te recomendamos 
+                  revisar las políticas de privacidad de estos servicios.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-3">4. Gestión de Cookies</h3>
+                <p className="text-sm leading-relaxed">
+                  Puedes controlar y gestionar las cookies a través de la configuración de tu navegador. La mayoría de 
+                  los navegadores te permiten rechazar cookies o recibir una notificación antes de que se instale una cookie. 
+                  Sin embargo, ten en cuenta que deshabilitar ciertas cookies puede afectar la funcionalidad del sitio.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-3">5. Cookies en Dispositivos Móviles</h3>
+                <p className="text-sm leading-relaxed">
+                  Si accedes a nuestro sitio desde un dispositivo móvil, también utilizamos cookies para optimizar tu 
+                  experiencia. Puedes gestionar estas cookies a través de la configuración de tu navegador móvil.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-3">6. Actualizaciones de esta Política</h3>
+                <p className="text-sm leading-relaxed">
+                  Podemos actualizar esta política de cookies de vez en cuando para reflejar cambios en nuestras prácticas 
+                  o por otras razones operativas, legales o regulatorias. Te recomendamos revisar esta página periódicamente.
+                </p>
+              </div>
+
+              <div>
+                <h3 className="text-xl font-semibold text-white mb-3">7. Contacto</h3>
+                <p className="text-sm leading-relaxed">
+                  Si tienes preguntas sobre nuestra política de cookies o cómo utilizamos las cookies en nuestro sitio, 
+                  contáctanos en: infonixoncodes@gmail.com
+                </p>
+              </div>
+
+              <div className="text-xs text-gray-500 pt-4 border-t border-gray-700">
+                <p>Última actualización: {new Date().toLocaleDateString('es-ES')}</p>
+              </div>
+            </div>
+
+            {/* Modal Footer */}
+            <div className="flex justify-end p-6 border-t border-gray-700">
+              <motion.button
+                onClick={() => setIsCookiesModalOpen(false)}
                 className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-lg font-medium hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

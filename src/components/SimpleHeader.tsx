@@ -44,9 +44,9 @@ const SimpleHeader = () => {
           {/* CTA Button */}
           <motion.button
             onClick={() => {
-              const contactSection = document.getElementById('contact')
-              if (contactSection) {
-                contactSection.scrollIntoView({ behavior: 'smooth' })
+              const projectsSection = document.getElementById('projects')
+              if (projectsSection) {
+                projectsSection.scrollIntoView({ behavior: 'smooth' })
               }
             }}
             className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full font-medium hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
@@ -56,7 +56,7 @@ const SimpleHeader = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.5 }}
           >
-            Contáctame
+            Ver Portafolio
           </motion.button>
         </div>
       </div>

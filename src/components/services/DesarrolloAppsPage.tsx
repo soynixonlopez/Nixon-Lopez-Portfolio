@@ -6,6 +6,7 @@ import { CheckCircle, Smartphone, Zap, Shield, Users, Star, ChevronRight, Smartp
 import ContactSection from '@/components/ContactSection'
 import TechnologiesCarousel from '@/components/TechnologiesCarousel'
 import ProcessFlow from '@/components/ProcessFlow'
+import ServiceCTA from '@/components/ServiceCTA'
 import { useQuoteModal } from '@/hooks/useQuoteModal'
 import QuoteModal from '@/components/QuoteModal'
 
@@ -176,25 +177,15 @@ const DesarrolloAppsPage = () => {
                 Creo aplicaciones móviles nativas y multiplataforma que destacan en las tiendas de apps. 
                 Desde conceptos innovadores hasta apps empresariales, cada proyecto está optimizado para el éxito móvil.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <motion.button
-                  onClick={() => openModal('mobile')}
-                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-3"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Calculator className="w-5 h-5" />
-                  Solicitar Cotización
-                </motion.button>
-                <motion.button
-                  className="border-2 border-white text-white hover:bg-white hover:text-slate-900 px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-3"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Smartphone className="w-5 h-5" />
-                  Ver Portafolio
-                </motion.button>
-              </div>
+              <motion.button
+                onClick={() => openModal('mobile')}
+                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-3"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Calculator className="w-5 h-5" />
+                Solicitar Cotización
+              </motion.button>
             </motion.div>
 
             {/* Right Column - Contact Form */}
@@ -257,28 +248,15 @@ const DesarrolloAppsPage = () => {
                   />
                 </div>
                 
-                <div className="flex gap-4">
-                  <motion.button
-                    type="submit"
-                    className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-2"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <Send className="w-5 h-5" />
-                    Enviar Mensaje
-                  </motion.button>
-                  
-                  <motion.button
-                    type="button"
-                    onClick={() => openModal('mobile')}
-                    className="flex-1 bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center gap-3"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Calculator className="w-5 h-5" />
-                    Cotización
-                  </motion.button>
-                </div>
+                <motion.button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-2"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Send className="w-5 h-5" />
+                  Enviar Mensaje
+                </motion.button>
               </form>
             </motion.div>
           </div>
@@ -467,8 +445,11 @@ const DesarrolloAppsPage = () => {
       </section>
 
       {/* Platforms Section */}
-      <section className="py-20 bg-gray-50 dark:bg-slate-800">
-        <div className="container-padding">
+      <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))] opacity-5" />
+        
+        <div className="container-padding relative z-10">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -476,42 +457,101 @@ const DesarrolloAppsPage = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Plataformas{' '}
-              <span className="gradient-text">Soportadas</span>
+            <motion.div
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-full text-sm font-medium mb-6 shadow-lg"
+              animate={{ 
+                boxShadow: [
+                  '0 0 0 0 rgba(59, 130, 246, 0.4)',
+                  '0 0 0 10px rgba(59, 130, 246, 0)',
+                  '0 0 0 0 rgba(59, 130, 246, 0)'
+                ]
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <Smartphone size={18} />
+              Plataformas Soportadas
+            </motion.div>
+            
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+              Desarrollo para{' '}
+              <span className="gradient-text">Todas las Plataformas</span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Desarrollo apps para todas las plataformas móviles principales, asegurando la máxima 
-              compatibilidad y experiencia del usuario.
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Creo aplicaciones móviles nativas y multiplataforma que destacan en las tiendas de apps, 
+              asegurando la máxima compatibilidad y experiencia del usuario.
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {platforms.map((platform, index) => (
               <motion.div
                 key={index}
-                className="bg-white dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700 text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group relative bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-gray-100 dark:border-gray-700 text-center hover:shadow-2xl transition-all duration-500 overflow-hidden"
+                initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -5, scale: 1.02 }}
+                whileHover={{ y: -8, scale: 1.02 }}
               >
-                <div className="text-6xl mb-4">{platform.icon}</div>
-                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3">
-                  {platform.name}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
-                  {platform.description}
-                </p>
-                <div className="space-y-2">
-                  {platform.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      {feature}
-                    </div>
-                  ))}
+                {/* Gradient Border Effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-600/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl" />
+                <div className="absolute inset-[1px] bg-white dark:bg-slate-800 rounded-3xl" />
+                
+                {/* Content Container */}
+                <div className="relative z-10">
+                  {/* Icon with enhanced styling */}
+                  <motion.div 
+                    className="text-7xl mb-6 relative"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {platform.icon}
+                    {/* Glow effect */}
+                    <div className="absolute inset-0 blur-xl opacity-0 group-hover:opacity-30 transition-opacity duration-300" />
+                  </motion.div>
+                  
+                  {/* Title */}
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-purple-600 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-500">
+                    {platform.name}
+                  </h3>
+                  
+                  {/* Description */}
+                  <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-base">
+                    {platform.description}
+                  </p>
+                  
+                  {/* Features List */}
+                  <div className="space-y-3">
+                    {platform.features.map((feature, featureIndex) => (
+                      <motion.div 
+                        key={featureIndex} 
+                        className="flex items-center gap-3 text-sm text-gray-700 dark:text-gray-300 group/feature"
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.3 + featureIndex * 0.1 }}
+                        viewport={{ once: true }}
+                      >
+                        <motion.div
+                          className="flex-shrink-0 w-5 h-5 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center shadow-sm"
+                          whileHover={{ scale: 1.2, rotate: 360 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <CheckCircle className="w-3 h-3 text-white" />
+                        </motion.div>
+                        <span className="group-hover/feature:text-gray-900 dark:group-hover/feature:text-white transition-colors duration-300">
+                          {feature}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
+
+                {/* Decorative Elements */}
+                <div className="absolute top-4 right-4 w-16 h-16 bg-gradient-to-br from-blue-500/5 to-purple-600/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700" />
+                <div className="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-tr from-purple-500/5 to-blue-600/5 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100" />
+                
+                {/* Hover Glow Effect */}
+                <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-r from-blue-500/5 via-transparent to-purple-600/5" />
               </motion.div>
             ))}
           </div>
@@ -647,6 +687,14 @@ const DesarrolloAppsPage = () => {
           </div>
         </div>
       </section>
+
+      {/* CTA Section */}
+      <ServiceCTA
+        serviceType="mobile"
+        title="¿Listo para crear tu"
+        highlightedText="App Móvil"
+        onQuoteClick={() => openModal('mobile')}
+      />
 
       {/* Contact Section */}
       <ContactSection />
