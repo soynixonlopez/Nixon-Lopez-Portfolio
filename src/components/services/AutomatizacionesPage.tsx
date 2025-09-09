@@ -2,53 +2,14 @@
 
 import { motion, useInView } from 'framer-motion'
 import React, { useRef } from 'react'
-import { CheckCircle, Zap, Bot, Database, Workflow, Shield, Star, Cog, TrendingUp, Code, Sparkles, Globe, Calculator, MessageSquare, Send } from 'lucide-react'
-import { 
-  FaReact, 
-  FaNodeJs, 
-  FaJs, 
-  FaPython, 
-  FaGitAlt, 
-  FaDocker, 
-  FaAws,
-  FaFigma,
-  FaHtml5,
-  FaCss3Alt,
-  FaBootstrap,
-  FaDatabase,
-  FaCloud,
-  FaCode,
-  FaMobile,
-  FaRobot,
-  FaGlobe
-} from 'react-icons/fa'
-import { 
-  SiNextdotjs, 
-  SiTypescript, 
-  SiOpenai, 
-  SiPostgresql, 
-  SiMongodb, 
-  SiTailwindcss, 
-  SiFramer, 
-  SiVercel, 
-  SiLangchain, 
-  SiSupabase, 
-  SiPrisma, 
-  SiGraphql, 
-  SiStripe,
-  SiN8n,
-  SiZapier,
-  SiMicrosoft,
-  SiHuggingface,
-  SiTensorflow,
-  SiRedis
-} from 'react-icons/si'
+import { CheckCircle, Zap, Bot, Database, Workflow, Shield, Star, Cog, TrendingUp, Code, Sparkles, Globe, Calculator, ChevronRight } from 'lucide-react'
 import ContactSection from '@/components/ContactSection'
 import TechnologiesCarousel from '@/components/TechnologiesCarousel'
 import ProcessFlow from '@/components/ProcessFlow'
 import ServiceCTA from '@/components/ServiceCTA'
 import { useQuoteModal } from '@/hooks/useQuoteModal'
 import QuoteModal from '@/components/QuoteModal'
+import TechLogo from '../TechLogo'
 
 const AutomatizacionesPage = () => {
   const ref = useRef(null)
@@ -181,73 +142,111 @@ const AutomatizacionesPage = () => {
     }
   ]
 
-  const benefits = [
-    {
-      icon: TrendingUp,
-      title: "Aumento de Productividad",
-      description: "Reduce el tiempo en tareas manuales en hasta un 80%"
-    },
-    {
-      icon: Cog,
-      title: "Eficiencia Operativa",
-      description: "Optimiza flujos de trabajo y elimina cuellos de botella"
-    },
-    {
-      icon: Shield,
-      title: "Reducción de Errores",
-      description: "Minimiza errores humanos con procesos automatizados"
-    },
-    {
-      icon: Zap,
-      title: "Escalabilidad",
-      description: "Sistemas que crecen con tu negocio sin incrementar costos"
-    }
-  ]
 
   const automationTechnologies = [
-    { name: "n8n", icon: SiN8n, color: "#FF6B6B" },
-    { name: "Zapier", icon: SiZapier, color: "#FF4A00" },
-    { name: "Power Automate", icon: SiMicrosoft, color: "#0078D4" },
-    { name: "APIs", icon: FaCode, color: "#FF6B6B" },
-    { name: "Hugging Face", icon: SiHuggingface, color: "#FF6B6B" },
-    { name: "AI/ML", icon: FaRobot, color: "#FF6B6B" },
-    { name: "Python", icon: FaPython, color: "#3776AB" },
-    { name: "Node.js", icon: FaNodeJs, color: "#339933" },
-    { name: "PostgreSQL", icon: SiPostgresql, color: "#336791" },
-    { name: "Redis", icon: SiRedis, color: "#DC382D" },
-    { name: "Docker", icon: FaDocker, color: "#2496ED" },
-    { name: "TensorFlow", icon: SiTensorflow, color: "#FF6F00" }
+    { name: "n8n" },
+    { name: "Zapier" },
+    { name: "Hugging Face" },
+    { name: "Python" },
+    { name: "Node.js" },
+    { name: "PostgreSQL" },
+    { name: "Docker" },
+    { name: "OpenAI" }
   ]
 
-  // Debug: verificar que los iconos estén definidos
-  console.log('Benefits array:', benefits)
-  console.log('TrendingUp icon:', TrendingUp)
-  console.log('Cog icon:', Cog)
-  console.log('Shield icon:', Shield)
-  console.log('Zap icon:', Zap)
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-        <div className="container-padding">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Column - Title and Description */}
+      <section className="pt-32 pb-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
+        {/* Animated background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+          
+          {/* Floating particles */}
+          {[...Array(20)].map((_, i) => {
+            // Posiciones fijas basadas en el índice para evitar hidration mismatch
+            const positions = [
+              { left: 15, top: 20 }, { left: 85, top: 35 }, { left: 45, top: 60 }, { left: 70, top: 15 },
+              { left: 25, top: 75 }, { left: 90, top: 80 }, { left: 10, top: 45 }, { left: 60, top: 90 },
+              { left: 35, top: 25 }, { left: 80, top: 55 }, { left: 20, top: 85 }, { left: 65, top: 10 },
+              { left: 40, top: 70 }, { left: 95, top: 40 }, { left: 5, top: 65 }, { left: 75, top: 30 },
+              { left: 30, top: 95 }, { left: 85, top: 20 }, { left: 50, top: 50 }, { left: 15, top: 80 }
+            ];
+            const position = positions[i] || { left: 50, top: 50 };
+            
+            return (
             <motion.div
-              className="text-white"
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
+              key={i}
+              className="absolute w-1 h-1 bg-blue-400 rounded-full"
+              style={{
+                left: `${position.left}%`,
+                top: `${position.top}%`,
+              }}
+              animate={{
+                y: [0, -30, 0],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 3 + (i % 3),
+                repeat: Infinity,
+                delay: i * 0.2,
+              }}
+            />
+          )})}
+        </div>
+
+        {/* Floating tech icons */}
+        {[
+          { Icon: Bot, delay: 0, position: { top: '20%', left: '10%' } },
+          { Icon: Code, delay: 2, position: { top: '30%', right: '15%' } },
+          { Icon: Zap, delay: 4, position: { bottom: '30%', left: '15%' } },
+          { Icon: Sparkles, delay: 1, position: { top: '60%', right: '10%' } },
+        ].map(({ Icon, delay, position }, index) => (
+          <motion.div
+            key={index}
+            className="absolute text-blue-400/30"
+            style={position}
+            animate={{
+              y: [0, -20, 0],
+              rotate: [0, 360],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              delay: delay,
+            }}
+          >
+            <Icon size={24} />
+          </motion.div>
+        ))}
+
+        <div className="container-padding relative z-10">
+          <div className="max-w-4xl mx-auto text-center relative">
+            {/* Main Content */}
+            <motion.div
+              className="text-white mb-12"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
                 Integración de{' '}
                 <span className="gradient-text">Sistemas y Automatizaciones</span>
               </h1>
-              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
                 Transformo tu negocio con sistemas inteligentes que automatizan procesos, conectan todas 
                 tus herramientas y te permiten enfocarte en lo que realmente importa: hacer crecer tu empresa.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+            </motion.div>
+
+            {/* Action Buttons */}
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
                 <motion.button
                   onClick={() => openModal('automation')}
                   className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-3"
@@ -272,80 +271,31 @@ const AutomatizacionesPage = () => {
                   <Star className="w-5 h-5" />
                   Ver Portafolio
                 </motion.button>
-              </div>
             </motion.div>
 
-            {/* Right Column - Contact Form */}
+            {/* Key Features Grid */}
             <motion.div
-              className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20"
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              className="grid md:grid-cols-3 gap-6"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <div className="flex items-center gap-3 mb-6">
-                <MessageSquare className="w-6 h-6 text-blue-400" />
-                <h2 className="text-2xl font-bold text-white">Cuéntame sobre tu Proyecto</h2>
-              </div>
-              
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-white mb-2">
-                      Nombre *
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300"
-                      placeholder="Tu nombre completo"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-white mb-2">
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300"
-                      placeholder="tu@email.com"
-                    />
-                  </div>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-white mb-2">
-                    Servicio de Interés
-                  </label>
-                  <select className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300">
-                    <option value="" className="text-gray-900">Selecciona un servicio</option>
-                    <option value="chatbot" className="text-gray-900">Chatbot Inteligente</option>
-                    <option value="workflow" className="text-gray-900">Automatización de Procesos</option>
-                    <option value="integration" className="text-gray-900">Integración de Sistemas</option>
-                    <option value="custom" className="text-gray-900">Solución Personalizada</option>
-                  </select>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-white mb-2">
-                    Mensaje *
-                  </label>
-                  <textarea
-                    rows={4}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 resize-none"
-                    placeholder="Cuéntame sobre tu proyecto, objetivos y cómo puedo ayudarte..."
-                  />
-                </div>
-                
-                <motion.button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-2"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+              {features.slice(0, 3).map((feature, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center"
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <Send className="w-5 h-5" />
-                  Enviar Mensaje
-                </motion.button>
-              </form>
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <feature.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
+                  <p className="text-gray-300 text-sm">{feature.description}</p>
+                </motion.div>
+              ))}
             </motion.div>
+
           </div>
         </div>
       </section>
@@ -370,45 +320,111 @@ const AutomatizacionesPage = () => {
              </p>
            </motion.div>
 
-           <div className="max-w-7xl mx-auto">
-             <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-               <div className="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-gray-200 dark:divide-gray-700">
+           <div className="max-w-6xl mx-auto">
+             {/* Main Container */}
+             <div className="relative">
+               {/* Left Side - Features List */}
+               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                 {/* Features */}
+                 <div className="space-y-8">
                  {features.map((feature, index) => (
                    <motion.div
                      key={index}
-                     className="group relative p-6 cursor-pointer hover:bg-gradient-to-br hover:from-purple-50 hover:to-pink-50 dark:hover:from-purple-900/20 dark:hover:to-pink-900/20 transition-all duration-300"
-                     initial={{ opacity: 0, y: 20 }}
-                     whileInView={{ opacity: 1, y: 0 }}
-                     transition={{ duration: 0.5, delay: index * 0.1 }}
+                       className="group relative"
+                       initial={{ opacity: 0, x: -30 }}
+                       whileInView={{ opacity: 1, x: 0 }}
+                       transition={{ duration: 0.6, delay: index * 0.1 }}
+                       viewport={{ once: true }}
+                     >
+                       <div className="flex items-start space-x-4">
+                         {/* Number */}
+                         <div className="flex-shrink-0">
+                           <div className="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-sm group-hover:bg-purple-700 transition-colors duration-300">
+                             {index + 1}
+                           </div>
+                         </div>
+                         
+                         {/* Content */}
+                         <div className="flex-1">
+                           <div className="flex items-center space-x-3 mb-2">
+                             <feature.icon className="w-5 h-5 text-purple-600 group-hover:text-purple-700 transition-colors duration-300" />
+                             <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
+                               {feature.title}
+                             </h3>
+                           </div>
+                           <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                             {feature.description}
+                           </p>
+                         </div>
+                       </div>
+                       
+                       {/* Connecting Line */}
+                       {index < features.length - 1 && (
+                         <div className="absolute left-5 top-12 w-0.5 h-8 bg-gray-200 dark:bg-gray-700" />
+                       )}
+                     </motion.div>
+                   ))}
+                 </div>
+
+                 {/* Right Side - Visual Element */}
+                 <div className="relative">
+                   <motion.div
+                     className="relative"
+                     initial={{ opacity: 0, x: 30 }}
+                     whileInView={{ opacity: 1, x: 0 }}
+                     transition={{ duration: 0.8 }}
                      viewport={{ once: true }}
-                     whileHover={{ y: -4, scale: 1.02 }}
                    >
-                     {/* Icon container */}
-                     <div className="text-center mb-4">
-                       <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                         <motion.div
-                           animate={{ rotate: [0, 3, -3, 0] }}
-                           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                     {/* Main Card */}
+                     <div className="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl border border-gray-100 dark:border-gray-700">
+                       {/* Header */}
+                       <div className="text-center mb-8">
+                         <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                           <Zap className="w-8 h-8 text-white" />
+                         </div>
+                         <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                           Automatizaciones Premium
+                         </h3>
+                         <p className="text-gray-600 dark:text-gray-300">
+                           Sistemas que optimizan tu productividad
+                         </p>
+                       </div>
+
+                       {/* Stats */}
+                       <div className="grid grid-cols-2 gap-4 mb-8">
+                         <div className="text-center p-4 bg-purple-50 dark:bg-purple-900/20 rounded-xl">
+                           <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">24/7</div>
+                           <div className="text-sm text-gray-600 dark:text-gray-300">Funcionamiento</div>
+                         </div>
+                         <div className="text-center p-4 bg-pink-50 dark:bg-pink-900/20 rounded-xl">
+                           <div className="text-2xl font-bold text-pink-600 dark:text-pink-400">100%</div>
+                           <div className="text-sm text-gray-600 dark:text-gray-300">Eficiencia</div>
+                         </div>
+                       </div>
+
+                       {/* CTA */}
+                       <div className="text-center">
+                         <motion.button
+                           className="bg-gradient-to-r from-purple-500 to-pink-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-purple-600 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+                           whileHover={{ scale: 1.05 }}
+                           whileTap={{ scale: 0.95 }}
+                           onClick={() => {
+                             const contactSection = document.getElementById('contact')
+                             if (contactSection) {
+                               contactSection.scrollIntoView({ behavior: 'smooth' })
+                             }
+                           }}
                          >
-                           <feature.icon className="w-8 h-8 text-white" />
-                         </motion.div>
+                           Comenzar Proyecto
+                         </motion.button>
                        </div>
                      </div>
 
-                     {/* Content */}
-                     <div className="text-center">
-                       <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
-                         {feature.title}
-                       </h3>
-                       <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                         {feature.description}
-                       </p>
-                     </div>
-
-                     {/* Hover indicator */}
-                     <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-purple-500 to-pink-600 group-hover:w-1/2 transition-all duration-300 rounded-t-full" />
+                     {/* Floating Elements */}
+                     <div className="absolute -top-4 -right-4 w-8 h-8 bg-purple-500 rounded-full opacity-20 animate-pulse" />
+                     <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-pink-500 rounded-full opacity-20 animate-pulse" style={{ animationDelay: '1s' }} />
                    </motion.div>
-                 ))}
+                 </div>
                </div>
              </div>
            </div>
@@ -531,58 +547,16 @@ const AutomatizacionesPage = () => {
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-20 bg-white dark:bg-slate-900">
-        <div className="container-padding">
-          <motion.div
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Beneficios{' '}
-              <span className="gradient-text">Clave</span>
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Descubre cómo la automatización puede transformar tu negocio y llevarlo al siguiente nivel.
-            </p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {benefits.map((benefit, index) => (
-              <motion.div
-                key={index}
-                className="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-lg border border-gray-200 dark:border-gray-700 text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5, scale: 1.02 }}
-              >
-                <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  {benefit.icon ? (
-                    <benefit.icon className="w-8 h-8 text-white" />
-                  ) : (
-                    <div className="w-8 h-8 bg-white rounded-full" />
-                  )}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  {benefit.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Automation Types Section */}
-      <section className="py-20 bg-white dark:bg-slate-900">
-        <div className="container-padding">
+      <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-purple-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-100/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-pink-100/20 to-transparent" />
+        </div>
+        
+        <div className="container-padding relative">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 30 }}
@@ -590,12 +564,20 @@ const AutomatizacionesPage = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl mb-6 shadow-lg">
+              <motion.div
+                animate={{ rotate: [0, 360] }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              >
+                <Zap className="w-10 h-10 text-white" />
+              </motion.div>
+        </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               Tipos de{' '}
-              <span className="gradient-text">Automatización</span>
+              <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Automatización</span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Ofrezco diferentes tipos de automatización para adaptarme a las necesidades específicas de tu negocio.
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Ofrezco diferentes tipos de automatización para adaptarme a las necesidades específicas de tu negocio y maximizar tu eficiencia operativa.
             </p>
           </motion.div>
 
@@ -603,31 +585,93 @@ const AutomatizacionesPage = () => {
             {automationTypes.map((type, index) => (
               <motion.div
                 key={index}
-                className="bg-gray-50 dark:bg-slate-800 rounded-2xl p-8 shadow-lg border border-gray-200 dark:border-gray-700 text-center"
-                initial={{ opacity: 0, y: 20 }}
+                className="group relative"
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                whileHover={{ y: -5, scale: 1.02 }}
               >
-                <div className="text-6xl mb-4">{type.icon}</div>
-                <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-3">
-                  {type.name}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
-                  {type.description}
-                </p>
-                <div className="space-y-2">
-                  {type.examples.map((example, exampleIndex) => (
-                    <div key={exampleIndex} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                      <CheckCircle className="w-4 h-4 text-purple-500" />
-                      {example}
+                {/* Main Card */}
+                <div className="relative bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/20 dark:border-slate-700/50 overflow-hidden group-hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
+                  {/* Gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-pink-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  
+                  {/* Floating background elements */}
+                  <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-purple-500/10 to-pink-600/10 rounded-full blur-xl group-hover:scale-150 transition-transform duration-700" />
+                  <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-blue-500/10 to-cyan-600/10 rounded-full blur-xl group-hover:scale-150 transition-transform duration-700" />
+                  
+                  {/* Icon */}
+                  <div className="relative z-10 text-center mb-6">
+                    <div className="relative inline-block">
+                      <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
+                        <motion.div
+                          animate={{ rotate: [0, 5, -5, 0] }}
+                          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                          className="text-3xl"
+                        >
+                          {type.icon}
+                        </motion.div>
+                      </div>
+                      {/* Glow effect */}
+                      <div className="absolute inset-0 w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl blur-lg opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
                     </div>
-                  ))}
+                  </div>
+
+                  {/* Content */}
+                  <div className="relative z-10 text-center flex-1 flex flex-col">
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
+                      {type.name}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed flex-1">
+                      {type.description}
+                    </p>
+                    
+                    {/* Examples */}
+                    <div className="space-y-3">
+                      {type.examples.map((example, exampleIndex) => (
+                        <motion.div 
+                          key={exampleIndex} 
+                          className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300"
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.4, delay: exampleIndex * 0.1 }}
+                          viewport={{ once: true }}
+                        >
+                          <div className="w-5 h-5 bg-gradient-to-r from-purple-500 to-pink-600 rounded-full flex items-center justify-center flex-shrink-0">
+                            <CheckCircle className="w-3 h-3 text-white" />
+                          </div>
+                          <span className="font-medium">{example}</span>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Decorative elements */}
+                  <div className="absolute top-4 right-4 w-2 h-2 bg-purple-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute bottom-4 left-4 w-1 h-1 bg-pink-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
               </motion.div>
             ))}
           </div>
+
+          {/* Bottom CTA */}
+          <motion.div
+            className="mt-16 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-purple-500 to-pink-600 text-white px-8 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
+              <span className="font-semibold">¿Listo para automatizar tu negocio?</span>
+              <motion.div
+                animate={{ x: [0, 5, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                <ChevronRight className="w-5 h-5" />
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -669,7 +713,11 @@ const AutomatizacionesPage = () => {
                     className="flex-shrink-0 flex flex-col items-center p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 min-w-[140px] group hover:-translate-y-3"
                   >
                     <div className="text-5xl mb-3 group-hover:scale-125 transition-transform duration-300">
-                      {tech.icon}
+                      <TechLogo 
+                        name={tech.name} 
+                        size={48} 
+                        className="text-black"
+                      />
                     </div>
                     <span className="text-sm font-semibold text-gray-900 dark:text-white group-hover:scale-110 transition-transform duration-300">
                       {tech.name}
@@ -684,7 +732,11 @@ const AutomatizacionesPage = () => {
                     className="flex-shrink-0 flex flex-col items-center p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 min-w-[140px] group hover:-translate-y-3"
                   >
                     <div className="text-5xl mb-3 group-hover:scale-125 transition-transform duration-300">
-                      {tech.icon}
+                      <TechLogo 
+                        name={tech.name} 
+                        size={48} 
+                        className="text-black"
+                      />
                     </div>
                     <span className="text-sm font-semibold text-gray-900 dark:text-white group-hover:scale-110 transition-transform duration-300">
                       {tech.name}
@@ -770,7 +822,6 @@ const AutomatizacionesPage = () => {
         onQuoteClick={() => openModal('automation')}
       />
 
-      {/* Contact Section */}
       <ContactSection />
       
       {/* Quote Modal */}

@@ -2,47 +2,14 @@
 
 import { motion, useInView } from 'framer-motion'
 import React, { useRef } from 'react'
-import { CheckCircle, Globe, Zap, Shield, Users, Star, ChevronRight, Globe as GlobeIcon, Bot, Code, Sparkles, Calculator, MessageSquare, Send } from 'lucide-react'
-import { 
-  FaReact, 
-  FaNodeJs, 
-  FaJs, 
-  FaPython, 
-  FaGitAlt, 
-  FaDocker, 
-  FaAws,
-  FaFigma,
-  FaHtml5,
-  FaCss3Alt,
-  FaBootstrap,
-  FaDatabase,
-  FaCloud,
-  FaCode,
-  FaMobile,
-  FaRobot,
-  FaGlobe
-} from 'react-icons/fa'
-import { 
-  SiNextdotjs, 
-  SiTypescript, 
-  SiOpenai, 
-  SiPostgresql, 
-  SiMongodb, 
-  SiTailwindcss, 
-  SiFramer, 
-  SiVercel, 
-  SiLangchain, 
-  SiSupabase, 
-  SiPrisma, 
-  SiGraphql, 
-  SiStripe
-} from 'react-icons/si'
+import { CheckCircle, Globe, Zap, Shield, Users, Star, ChevronRight, Globe as GlobeIcon, Bot, Code, Sparkles, Calculator } from 'lucide-react'
 import ContactSection from '@/components/ContactSection'
 import TechnologiesCarousel from '@/components/TechnologiesCarousel'
 import ProcessFlow from '@/components/ProcessFlow'
 import ServiceCTA from '@/components/ServiceCTA'
 import { useQuoteModal } from '@/hooks/useQuoteModal'
 import QuoteModal from '@/components/QuoteModal'
+import TechLogo from '../TechLogo'
 
 const DesarrolloWebPage = () => {
   const ref = useRef(null)
@@ -161,141 +128,162 @@ const DesarrolloWebPage = () => {
   ]
 
   const webTechnologies = [
-    { name: "JavaScript", icon: FaJs, color: "#F7DF1E" },
-    { name: "HTML5", icon: FaHtml5, color: "#E34F26" },
-    { name: "CSS3", icon: FaCss3Alt, color: "#1572B6" },
-    { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
-    { name: "Bootstrap", icon: FaBootstrap, color: "#7952B3" },
-    { name: "Node.js", icon: FaNodeJs, color: "#339933" },
-    { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
-    { name: "Docker", icon: FaDocker, color: "#2496ED" },
-    { name: "Firebase", icon: FaCloud, color: "#FFCA28" },
-    { name: "SQL", icon: FaDatabase, color: "#336791" },
-    { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
-    { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
-    { name: "React", icon: FaReact, color: "#61DAFB" }
+    { name: "JavaScript" },
+    { name: "HTML5" },
+    { name: "CSS3" },
+    { name: "Tailwind CSS" },
+    { name: "Bootstrap" },
+    { name: "Node.js" },
+    { name: "Supabase" },
+    { name: "Docker" },
+    { name: "Firebase" },
+    { name: "SQL" },
+    { name: "TypeScript" },
+    { name: "Next.js" },
+    { name: "React" }
   ]
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
-        <div className="container-padding">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Column - Title and Description */}
+      <section className="pt-32 pb-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
+        {/* Animated background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+          
+          {/* Floating particles */}
+          {[...Array(20)].map((_, i) => {
+            // Posiciones fijas basadas en el índice para evitar hidration mismatch
+            const positions = [
+              { left: 15, top: 20 }, { left: 85, top: 35 }, { left: 45, top: 60 }, { left: 70, top: 15 },
+              { left: 25, top: 75 }, { left: 90, top: 80 }, { left: 10, top: 45 }, { left: 60, top: 90 },
+              { left: 35, top: 25 }, { left: 80, top: 55 }, { left: 20, top: 85 }, { left: 65, top: 10 },
+              { left: 40, top: 70 }, { left: 95, top: 40 }, { left: 5, top: 65 }, { left: 75, top: 30 },
+              { left: 30, top: 95 }, { left: 85, top: 20 }, { left: 50, top: 50 }, { left: 15, top: 80 }
+            ];
+            const position = positions[i] || { left: 50, top: 50 };
+            
+            return (
             <motion.div
-              className="text-white"
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
+              key={i}
+              className="absolute w-1 h-1 bg-blue-400 rounded-full"
+              style={{
+                left: `${position.left}%`,
+                top: `${position.top}%`,
+              }}
+              animate={{
+                y: [0, -30, 0],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: 3 + (i % 3),
+                repeat: Infinity,
+                delay: i * 0.2,
+              }}
+            />
+          )})}
+        </div>
+
+        {/* Floating tech icons */}
+        {[
+          { Icon: Bot, delay: 0, position: { top: '20%', left: '10%' } },
+          { Icon: Code, delay: 2, position: { top: '30%', right: '15%' } },
+          { Icon: Zap, delay: 4, position: { bottom: '30%', left: '15%' } },
+          { Icon: Sparkles, delay: 1, position: { top: '60%', right: '10%' } },
+        ].map(({ Icon, delay, position }, index) => (
+          <motion.div
+            key={index}
+            className="absolute text-blue-400/30"
+            style={position}
+            animate={{
+              y: [0, -20, 0],
+              rotate: [0, 360],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              delay: delay,
+            }}
+          >
+            <Icon size={24} />
+          </motion.div>
+        ))}
+
+        <div className="container-padding relative z-10">
+          <div className="max-w-4xl mx-auto text-center relative">
+            {/* Main Content */}
+            <motion.div
+              className="text-white mb-12"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
                 Desarrollo de{' '}
                 <span className="gradient-text">Sitios Web</span>
               </h1>
-              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed max-w-3xl mx-auto">
                 Creo sitios web modernos, responsivos y optimizados que convierten visitantes en clientes. 
                 Desde landing pages hasta e-commerce complejos, cada proyecto está diseñado para el éxito digital.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <motion.button
-                  onClick={() => openModal('web')}
-                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-3"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Calculator className="w-5 h-5" />
-                  Solicitar Cotización
-                </motion.button>
-                
-                <motion.button
-                  onClick={() => {
-                    const projectsSection = document.getElementById('projects')
-                    if (projectsSection) {
-                      projectsSection.scrollIntoView({ behavior: 'smooth' })
-                    }
-                  }}
-                  className="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-3 border border-white/20"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Star className="w-5 h-5" />
-                  Ver Portafolio
-                </motion.button>
-              </div>
             </motion.div>
 
-            {/* Right Column - Contact Form */}
+            {/* Action Buttons */}
             <motion.div
-              className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20"
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="flex items-center gap-3 mb-6">
-                <MessageSquare className="w-6 h-6 text-blue-400" />
-                <h2 className="text-2xl font-bold text-white">Cuéntame sobre tu Proyecto</h2>
-              </div>
+              <motion.button
+                onClick={() => openModal('web')}
+                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-3"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Calculator className="w-5 h-5" />
+                Solicitar Cotización
+              </motion.button>
               
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-white mb-2">
-                      Nombre *
-                    </label>
-                    <input
-                      type="text"
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300"
-                      placeholder="Tu nombre completo"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-white mb-2">
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300"
-                      placeholder="tu@email.com"
-                    />
-                  </div>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-white mb-2">
-                    Servicio de Interés
-                  </label>
-                  <select className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300">
-                    <option value="" className="text-gray-900">Selecciona un servicio</option>
-                    <option value="landing" className="text-gray-900">Landing Page</option>
-                    <option value="ecommerce" className="text-gray-900">E-commerce</option>
-                    <option value="corporate" className="text-gray-900">Sitio Corporativo</option>
-                    <option value="custom" className="text-gray-900">Desarrollo Personalizado</option>
-                  </select>
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-white mb-2">
-                    Mensaje *
-                  </label>
-                  <textarea
-                    rows={4}
-                    className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 resize-none"
-                    placeholder="Cuéntame sobre tu proyecto, objetivos y cómo puedo ayudarte..."
-                  />
-                </div>
-                
-                <motion.button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-2"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <Send className="w-5 h-5" />
-                  Enviar Mensaje
-                </motion.button>
-              </form>
+              <motion.button
+                onClick={() => {
+                  const projectsSection = document.getElementById('projects')
+                  if (projectsSection) {
+                    projectsSection.scrollIntoView({ behavior: 'smooth' })
+                  }
+                }}
+                className="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-3 border border-white/20"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Star className="w-5 h-5" />
+                Ver Portafolio
+              </motion.button>
             </motion.div>
+
+            {/* Key Features Grid */}
+            <motion.div
+              className="grid md:grid-cols-3 gap-6"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              {features.slice(0, 3).map((feature, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 text-center"
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <feature.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-lg font-semibold text-white mb-2">{feature.title}</h3>
+                  <p className="text-gray-300 text-sm">{feature.description}</p>
+                </motion.div>
+              ))}
+            </motion.div>
+
           </div>
         </div>
       </section>
@@ -320,45 +308,111 @@ const DesarrolloWebPage = () => {
              </p>
            </motion.div>
 
-           <div className="max-w-7xl mx-auto">
-             <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-               <div className="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-gray-200 dark:divide-gray-700">
-                 {features.map((feature, index) => (
+           <div className="max-w-6xl mx-auto">
+             {/* Main Container */}
+             <div className="relative">
+               {/* Left Side - Features List */}
+               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                 {/* Features */}
+                 <div className="space-y-8">
+                   {features.map((feature, index) => (
+                     <motion.div
+                       key={index}
+                       className="group relative"
+                       initial={{ opacity: 0, x: -30 }}
+                       whileInView={{ opacity: 1, x: 0 }}
+                       transition={{ duration: 0.6, delay: index * 0.1 }}
+                       viewport={{ once: true }}
+                     >
+                       <div className="flex items-start space-x-4">
+                         {/* Number */}
+                         <div className="flex-shrink-0">
+                           <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm group-hover:bg-blue-700 transition-colors duration-300">
+                             {index + 1}
+                           </div>
+                         </div>
+                         
+                         {/* Content */}
+                         <div className="flex-1">
+                           <div className="flex items-center space-x-3 mb-2">
+                             <feature.icon className="w-5 h-5 text-blue-600 group-hover:text-blue-700 transition-colors duration-300" />
+                             <h3 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                               {feature.title}
+                             </h3>
+                           </div>
+                           <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                             {feature.description}
+                           </p>
+                         </div>
+                       </div>
+                       
+                       {/* Connecting Line */}
+                       {index < features.length - 1 && (
+                         <div className="absolute left-5 top-12 w-0.5 h-8 bg-gray-200 dark:bg-gray-700" />
+                       )}
+                     </motion.div>
+                   ))}
+                 </div>
+
+                 {/* Right Side - Visual Element */}
+                 <div className="relative">
                    <motion.div
-                     key={index}
-                     className="group relative p-6 cursor-pointer hover:bg-gradient-to-br hover:from-blue-50 hover:to-cyan-50 dark:hover:from-blue-900/20 dark:hover:to-cyan-900/20 transition-all duration-300"
-                     initial={{ opacity: 0, y: 20 }}
-                     whileInView={{ opacity: 1, y: 0 }}
-                     transition={{ duration: 0.5, delay: index * 0.1 }}
+                     className="relative"
+                     initial={{ opacity: 0, x: 30 }}
+                     whileInView={{ opacity: 1, x: 0 }}
+                     transition={{ duration: 0.8 }}
                      viewport={{ once: true }}
-                     whileHover={{ y: -4, scale: 1.02 }}
                    >
-                     {/* Icon container */}
-                     <div className="text-center mb-4">
-                       <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                         <motion.div
-                           animate={{ rotate: [0, 3, -3, 0] }}
-                           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                     {/* Main Card */}
+                     <div className="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl border border-gray-100 dark:border-gray-700">
+                       {/* Header */}
+                       <div className="text-center mb-8">
+                         <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                           <Code className="w-8 h-8 text-white" />
+                         </div>
+                         <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                           Desarrollo Web Premium
+                         </h3>
+                         <p className="text-gray-600 dark:text-gray-300">
+                           Soluciones web que impulsan tu negocio
+                         </p>
+                       </div>
+
+                       {/* Stats */}
+                       <div className="grid grid-cols-2 gap-4 mb-8">
+                         <div className="text-center p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl">
+                           <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">100%</div>
+                           <div className="text-sm text-gray-600 dark:text-gray-300">Responsive</div>
+                         </div>
+                         <div className="text-center p-4 bg-cyan-50 dark:bg-cyan-900/20 rounded-xl">
+                           <div className="text-2xl font-bold text-cyan-600 dark:text-cyan-400">SEO</div>
+                           <div className="text-sm text-gray-600 dark:text-gray-300">Optimizado</div>
+                         </div>
+                       </div>
+
+                       {/* CTA */}
+                       <div className="text-center">
+                         <motion.button
+                           className="bg-gradient-to-r from-blue-500 to-cyan-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-blue-600 hover:to-cyan-700 transition-all duration-300 shadow-lg hover:shadow-xl"
+                           whileHover={{ scale: 1.05 }}
+                           whileTap={{ scale: 0.95 }}
+                           onClick={() => {
+                             const contactSection = document.getElementById('contact')
+                             if (contactSection) {
+                               contactSection.scrollIntoView({ behavior: 'smooth' })
+                             }
+                           }}
                          >
-                           <feature.icon className="w-8 h-8 text-white" />
-                         </motion.div>
+                           Comenzar Proyecto
+                         </motion.button>
                        </div>
                      </div>
 
-                     {/* Content */}
-                     <div className="text-center">
-                       <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
-                         {feature.title}
-                       </h3>
-                       <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed">
-                         {feature.description}
-                       </p>
-                     </div>
-
-                     {/* Hover indicator */}
-                     <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-gradient-to-r from-blue-500 to-cyan-600 group-hover:w-1/2 transition-all duration-300 rounded-t-full" />
+                     {/* Floating Elements */}
+                     <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-500 rounded-full opacity-20 animate-pulse" />
+                     <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-cyan-500 rounded-full opacity-20 animate-pulse" style={{ animationDelay: '1s' }} />
                    </motion.div>
-                 ))}
+                 </div>
                </div>
              </div>
            </div>
@@ -516,12 +570,17 @@ const DesarrolloWebPage = () => {
                 {webTechnologies.map((tech, index) => (
                   <div
                     key={index}
-                    className="flex-shrink-0 flex flex-col items-center p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 min-w-[140px] group hover:-translate-y-3"
+                    className="flex-shrink-0 flex flex-col items-center p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300 min-w-[140px] group hover:-translate-y-3 hover:border-blue-200 dark:hover:border-blue-700"
                   >
-                    <div className="text-5xl mb-3 group-hover:scale-125 transition-transform duration-300">
-                      {tech.icon}
+                    <div className="text-5xl mb-3 group-hover:scale-125 group-hover:drop-shadow-lg transition-all duration-300 relative">
+                      <TechLogo 
+                        name={tech.name} 
+                        size={48} 
+                        className="text-black"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
-                    <span className="text-sm font-semibold text-gray-900 dark:text-white group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-sm font-semibold text-black group-hover:scale-110 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-all duration-300">
                       {tech.name}
                     </span>
                   </div>
@@ -531,12 +590,17 @@ const DesarrolloWebPage = () => {
                 {webTechnologies.map((tech, index) => (
                   <div
                     key={`duplicate-${index}`}
-                    className="flex-shrink-0 flex flex-col items-center p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 min-w-[140px] group hover:-translate-y-3"
+                    className="flex-shrink-0 flex flex-col items-center p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300 min-w-[140px] group hover:-translate-y-3 hover:border-blue-200 dark:hover:border-blue-700"
                   >
-                    <div className="text-5xl mb-3 group-hover:scale-125 transition-transform duration-300">
-                      {tech.icon}
+                    <div className="text-5xl mb-3 group-hover:scale-125 group-hover:drop-shadow-lg transition-all duration-300 relative">
+                      <TechLogo 
+                        name={tech.name} 
+                        size={48} 
+                        className="text-black"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
-                    <span className="text-sm font-semibold text-gray-900 dark:text-white group-hover:scale-110 transition-transform duration-300">
+                    <span className="text-sm font-semibold text-black group-hover:scale-110 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-all duration-300">
                       {tech.name}
                     </span>
                   </div>
@@ -619,9 +683,8 @@ const DesarrolloWebPage = () => {
         onQuoteClick={() => openModal('web')}
       />
 
-      {/* Contact Section */}
       <ContactSection />
-      
+
       {/* Quote Modal */}
       <QuoteModal
         isOpen={isOpen}

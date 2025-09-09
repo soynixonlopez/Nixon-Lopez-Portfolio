@@ -159,7 +159,7 @@ const HeroSection = () => {
             {/* Name */}
             <motion.h1
               variants={itemVariants}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
+              className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-bold mb-6"
             >
               <span className="gradient-text">Nixon López</span>
             </motion.h1>
@@ -240,11 +240,11 @@ const HeroSection = () => {
                 />
               </div>
               
-              {/* Floating tech icons around the image - better distributed */}
+              {/* Floating tech icons around the image - closer and better distributed */}
               <motion.div
-                className="absolute top-8 -right-4 sm:-right-6 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-blue-500 rounded-full flex items-center justify-center shadow-lg"
+                className="absolute top-8 right-2 sm:right-4 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-blue-500 rounded-full flex items-center justify-center shadow-lg"
                 animate={{ 
-                  y: [0, -10, 0],
+                  y: [0, -8, 0],
                   rotate: [0, 360]
                 }}
                 transition={{ 
@@ -253,13 +253,13 @@ const HeroSection = () => {
                   ease: "easeInOut"
                 }}
               >
-                <Bot className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
+                <Bot className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-white" />
               </motion.div>
               
               <motion.div
-                className="absolute bottom-8 -left-4 sm:-left-6 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-purple-500 rounded-full flex items-center justify-center shadow-lg"
+                className="absolute bottom-8 left-2 sm:left-4 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-purple-500 rounded-full flex items-center justify-center shadow-lg"
                 animate={{ 
-                  y: [0, 10, 0],
+                  y: [0, 8, 0],
                   rotate: [0, -360]
                 }}
                 transition={{ 
@@ -269,13 +269,13 @@ const HeroSection = () => {
                   delay: 1
                 }}
               >
-                <Code className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
+                <Code className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-white" />
               </motion.div>
               
               <motion.div
-                className="absolute top-1/2 -left-6 sm:-left-8 w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 bg-green-500 rounded-full flex items-center justify-center shadow-lg"
+                className="absolute top-1/4 left-1 sm:left-2 w-9 h-9 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-green-500 rounded-full flex items-center justify-center shadow-lg"
                 animate={{ 
-                  x: [0, -8, 0],
+                  x: [0, -5, 0],
                   rotate: [0, 180, 360]
                 }}
                 transition={{ 
@@ -285,13 +285,13 @@ const HeroSection = () => {
                   delay: 2
                 }}
               >
-                <Zap className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-white" />
+                <Zap className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
               </motion.div>
               
               <motion.div
-                className="absolute top-3/4 -left-4 sm:-left-6 w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 bg-red-500 rounded-full flex items-center justify-center shadow-lg"
+                className="absolute top-3/4 right-1 sm:right-2 w-9 h-9 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-red-500 rounded-full flex items-center justify-center shadow-lg"
                 animate={{ 
-                  y: [0, -8, 0],
+                  y: [0, -6, 0],
                   rotate: [0, 90, 180, 270, 360]
                 }}
                 transition={{ 
@@ -301,7 +301,39 @@ const HeroSection = () => {
                   delay: 1.5
                 }}
               >
-                <Code className="w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-white" />
+                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-white" />
+              </motion.div>
+              
+              <motion.div
+                className="absolute top-1/2 left-0 sm:left-1 w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 bg-yellow-500 rounded-full flex items-center justify-center shadow-lg"
+                animate={{ 
+                  x: [0, -3, 0],
+                  rotate: [0, -180, -360]
+                }}
+                transition={{ 
+                  duration: 6,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5
+                }}
+              >
+                <Star className="w-4 h-4 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-white" />
+              </motion.div>
+              
+              <motion.div
+                className="absolute top-1/2 right-0 sm:right-1 w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 bg-indigo-500 rounded-full flex items-center justify-center shadow-lg"
+                animate={{ 
+                  x: [0, 3, 0],
+                  rotate: [0, 180, 360]
+                }}
+                transition={{ 
+                  duration: 4.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 2.5
+                }}
+              >
+                <Calculator className="w-4 h-4 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-white" />
               </motion.div>
             </motion.div>
           </motion.div>

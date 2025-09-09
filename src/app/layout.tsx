@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     siteName: 'Nixon López Portfolio',
     images: [
       {
-        url: '/og-image.jpg',
+        url: '/images/nixonprofile.png',
         width: 1200,
         height: 630,
         alt: 'Nixon López - Desarrollo Web con IA',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: 'Nixon López - Desarrollo Web con IA',
     description: 'Especialista en desarrollo web con IA, ChatBots y automatizaciones',
     creator: '@nixoncodes.ai',
-    images: ['/og-image.jpg'],
+    images: ['/images/nixonprofile.png'],
   },
   robots: {
     index: true,
@@ -60,7 +60,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning data-scroll-behavior="smooth">
       <body className={inter.className}>
         <div className="min-h-screen bg-background text-foreground">
           {children}

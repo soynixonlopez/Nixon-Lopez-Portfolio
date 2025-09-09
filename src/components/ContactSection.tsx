@@ -11,14 +11,11 @@ import {
   CheckCircle,
   Calendar,
   TrendingUp,
-  Calculator,
-  Instagram,
-  Facebook,
-  Youtube,
-  Music
+  Calculator
 } from 'lucide-react'
 import { useQuoteModal } from '@/hooks/useQuoteModal'
 import QuoteModal from './QuoteModal'
+import TechLogo from './TechLogo'
 
 const ContactSection = () => {
   const ref = useRef(null)
@@ -301,17 +298,17 @@ const ContactSection = () => {
               whileHover={{ scale: 1.2, y: -2 }}
               whileTap={{ scale: 0.9 }}
             >
-              <Instagram size={32} />
+              <TechLogo name="Instagram" size={32} />
             </motion.a>
             <motion.a
               href="https://tiktok.com/@nixoncodes.ai"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-black hover:text-gray-800 transition-colors p-3 rounded-full hover:bg-gray-500/10"
+              className="text-gray-400 hover:text-white transition-colors p-3 rounded-full hover:bg-gray-500/10"
               whileHover={{ scale: 1.2, y: -2 }}
               whileTap={{ scale: 0.9 }}
             >
-              <Music size={32} />
+              <TechLogo name="TikTok" size={32} />
             </motion.a>
             <motion.a
               href="https://facebook.com/nixoncodes.ai"
@@ -321,7 +318,7 @@ const ContactSection = () => {
               whileHover={{ scale: 1.2, y: -2 }}
               whileTap={{ scale: 0.9 }}
             >
-              <Facebook size={32} />
+              <TechLogo name="Facebook" size={32} />
             </motion.a>
             <motion.a
               href="https://youtube.com/@nixoncodes.ai"
@@ -331,7 +328,7 @@ const ContactSection = () => {
               whileHover={{ scale: 1.2, y: -2 }}
               whileTap={{ scale: 0.9 }}
             >
-              <Youtube size={32} />
+              <TechLogo name="YouTube" size={32} />
             </motion.a>
           </div>
         </motion.div>

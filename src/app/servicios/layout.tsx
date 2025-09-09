@@ -1,5 +1,6 @@
-import SimpleHeader from '@/components/SimpleHeader'
+import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import ScrollToTop from '@/components/ScrollToTop'
 
 export default function ServiciosLayout({
   children,
@@ -8,9 +9,10 @@ export default function ServiciosLayout({
 }) {
   return (
     <>
-      <SimpleHeader />
+      <Header />
       {children}
       <Footer />
+      <ScrollToTop />
     </>
   )
 }

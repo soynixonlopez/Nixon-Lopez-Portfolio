@@ -57,7 +57,7 @@ const TechnologiesCarousel: React.FC<TechnologiesCarouselProps> = ({
               >
                 <div className="bg-white dark:bg-slate-700 rounded-xl p-4 shadow-md border border-gray-200 dark:border-gray-600 text-center min-w-[140px] group-hover:shadow-lg transition-all duration-300">
                   <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-300">
-                    {tech.icon}
+                      <tech.icon />
                   </div>
                   <h3 className="text-sm font-medium text-gray-900 dark:text-white mb-2">
                     {tech.name}

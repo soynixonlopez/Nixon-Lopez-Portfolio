@@ -10,40 +10,7 @@ import {
   CheckCircle
 } from 'lucide-react'
 import Link from 'next/link'
-import { 
-  FaReact, 
-  FaNodeJs, 
-  FaJs, 
-  FaPython, 
-  FaGitAlt, 
-  FaDocker, 
-  FaAws,
-  FaFigma,
-  FaHtml5,
-  FaCss3Alt,
-  FaBootstrap,
-  FaDatabase,
-  FaCloud,
-  FaCode,
-  FaMobile,
-  FaRobot,
-  FaGlobe
-} from 'react-icons/fa'
-import { 
-  SiNextdotjs, 
-  SiTypescript, 
-  SiOpenai, 
-  SiPostgresql, 
-  SiMongodb, 
-  SiTailwindcss, 
-  SiFramer, 
-  SiVercel, 
-  SiLangchain, 
-  SiSupabase, 
-  SiPrisma, 
-  SiGraphql, 
-  SiStripe
-} from 'react-icons/si'
+import TechLogo from '@/components/TechLogo'
 
 const ServiciosPage = () => {
   const ref = useRef(null)
@@ -303,35 +270,39 @@ const ServiciosPage = () => {
               <div className="flex animate-scroll-infinite space-x-8">
                 {/* First set of technologies */}
                 {[
-                  { name: 'React', icon: FaReact, color: 'text-blue-500' },
-                  { name: 'Next.js', icon: SiNextdotjs, color: 'text-black dark:text-white' },
-                  { name: 'TypeScript', icon: SiTypescript, color: 'text-blue-600' },
-                  { name: 'Node.js', icon: FaNodeJs, color: 'text-green-600' },
-                  { name: 'Python', icon: FaPython, color: 'text-yellow-500' },
-                  { name: 'OpenAI', icon: SiOpenai, color: 'text-green-500' },
-                  { name: 'PostgreSQL', icon: SiPostgresql, color: 'text-blue-700' },
-                  { name: 'MongoDB', icon: SiMongodb, color: 'text-green-700' },
-                  { name: 'Tailwind', icon: SiTailwindcss, color: 'text-cyan-500' },
-                  { name: 'Framer Motion', icon: SiFramer, color: 'text-pink-500' },
-                  { name: 'Docker', icon: FaDocker, color: 'text-blue-400' },
-                  { name: 'AWS', icon: FaAws, color: 'text-orange-500' },
-                  { name: 'Git', icon: FaGitAlt, color: 'text-red-500' },
-                  { name: 'Figma', icon: FaFigma, color: 'text-purple-500' },
-                  { name: 'Vercel', icon: SiVercel, color: 'text-black dark:text-white' },
-                  { name: 'LangChain', icon: SiLangchain, color: 'text-indigo-500' },
-                  { name: 'Supabase', icon: SiSupabase, color: 'text-emerald-500' },
-                  { name: 'Prisma', icon: SiPrisma, color: 'text-slate-600' },
-                  { name: 'GraphQL', icon: SiGraphql, color: 'text-pink-600' },
-                  { name: 'Stripe', icon: SiStripe, color: 'text-blue-600' },
+                  { name: 'React' },
+                  { name: 'Next.js' },
+                  { name: 'TypeScript' },
+                  { name: 'Node.js' },
+                  { name: 'Python' },
+                  { name: 'OpenAI' },
+                  { name: 'PostgreSQL' },
+                  { name: 'MongoDB' },
+                  { name: 'Tailwind' },
+                  { name: 'Framer Motion' },
+                  { name: 'Docker' },
+                  { name: 'AWS' },
+                  { name: 'Git' },
+                  { name: 'Figma' },
+                  { name: 'Vercel' },
+                  { name: 'LangChain' },
+                  { name: 'Supabase' },
+                  { name: 'Prisma' },
+                  { name: 'GraphQL' },
+                  { name: 'Stripe' },
                 ].map((tech, index) => (
                   <div
                     key={index}
                     className="flex-shrink-0 flex flex-col items-center p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 min-w-[140px] group hover:-translate-y-3"
                   >
                     <div className="text-5xl mb-3 group-hover:scale-125 transition-transform duration-300">
-                      <tech.icon />
+                      <TechLogo 
+                        name={tech.name} 
+                        size={48} 
+                        className="text-black"
+                      />
                     </div>
-                    <span className={`text-sm font-semibold ${tech.color} group-hover:scale-110 transition-transform duration-300`}>
+                    <span className="text-sm font-semibold text-gray-900 dark:text-white group-hover:scale-110 transition-transform duration-300">
                       {tech.name}
                     </span>
                   </div>
@@ -339,35 +310,39 @@ const ServiciosPage = () => {
                 
                 {/* Duplicate set for infinite effect */}
                 {[
-                  { name: 'React', icon: FaReact, color: 'text-blue-500' },
-                  { name: 'Next.js', icon: SiNextdotjs, color: 'text-black dark:text-white' },
-                  { name: 'TypeScript', icon: SiTypescript, color: 'text-blue-600' },
-                  { name: 'Node.js', icon: FaNodeJs, color: 'text-green-600' },
-                  { name: 'Python', icon: FaPython, color: 'text-yellow-500' },
-                  { name: 'OpenAI', icon: SiOpenai, color: 'text-green-500' },
-                  { name: 'PostgreSQL', icon: SiPostgresql, color: 'text-blue-700' },
-                  { name: 'MongoDB', icon: SiMongodb, color: 'text-green-700' },
-                  { name: 'Tailwind', icon: SiTailwindcss, color: 'text-cyan-500' },
-                  { name: 'Framer Motion', icon: SiFramer, color: 'text-pink-500' },
-                  { name: 'Docker', icon: FaDocker, color: 'text-blue-400' },
-                  { name: 'AWS', icon: FaAws, color: 'text-orange-500' },
-                  { name: 'Git', icon: FaGitAlt, color: 'text-red-500' },
-                  { name: 'Figma', icon: FaFigma, color: 'text-purple-500' },
-                  { name: 'Vercel', icon: SiVercel, color: 'text-black dark:text-white' },
-                  { name: 'LangChain', icon: SiLangchain, color: 'text-indigo-500' },
-                  { name: 'Supabase', icon: SiSupabase, color: 'text-emerald-500' },
-                  { name: 'Prisma', icon: SiPrisma, color: 'text-slate-600' },
-                  { name: 'GraphQL', icon: SiGraphql, color: 'text-pink-600' },
-                  { name: 'Stripe', icon: SiStripe, color: 'text-blue-600' },
+                  { name: 'React' },
+                  { name: 'Next.js' },
+                  { name: 'TypeScript' },
+                  { name: 'Node.js' },
+                  { name: 'Python' },
+                  { name: 'OpenAI' },
+                  { name: 'PostgreSQL' },
+                  { name: 'MongoDB' },
+                  { name: 'Tailwind' },
+                  { name: 'Framer Motion' },
+                  { name: 'Docker' },
+                  { name: 'AWS' },
+                  { name: 'Git' },
+                  { name: 'Figma' },
+                  { name: 'Vercel' },
+                  { name: 'LangChain' },
+                  { name: 'Supabase' },
+                  { name: 'Prisma' },
+                  { name: 'GraphQL' },
+                  { name: 'Stripe' },
                 ].map((tech, index) => (
                   <div
                     key={`duplicate-${index}`}
                     className="flex-shrink-0 flex flex-col items-center p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 min-w-[140px] group hover:-translate-y-3"
                   >
                     <div className="text-5xl mb-3 group-hover:scale-125 transition-transform duration-300">
-                      <tech.icon />
+                      <TechLogo 
+                        name={tech.name} 
+                        size={48} 
+                        className="text-black"
+                      />
                     </div>
-                    <span className={`text-sm font-semibold ${tech.color} group-hover:scale-110 transition-transform duration-300`}>
+                    <span className="text-sm font-semibold text-gray-900 dark:text-white group-hover:scale-110 transition-transform duration-300">
                       {tech.name}
                     </span>
                   </div>

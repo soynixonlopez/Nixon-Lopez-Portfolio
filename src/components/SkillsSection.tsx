@@ -2,47 +2,8 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { 
-  FaReact, 
-  FaNodeJs, 
-  FaJs, 
-  FaPython, 
-  FaGitAlt, 
-  FaDocker, 
-  FaAws,
-  FaFigma,
-  FaHtml5,
-  FaCss3Alt,
-  FaBootstrap,
-  FaDatabase,
-  FaCloud,
-  FaCode,
-  FaMobile,
-  FaRobot,
-  FaGlobe
-} from 'react-icons/fa'
-import { 
-  SiNextdotjs, 
-  SiTypescript, 
-  SiOpenai, 
-  SiPostgresql, 
-  SiMongodb, 
-  SiTailwindcss, 
-  SiFramer, 
-  SiVercel, 
-  SiLangchain, 
-  SiSupabase, 
-  SiPrisma, 
-  SiGraphql, 
-  SiStripe,
-  SiN8n,
-  SiZapier,
-  SiMicrosoft,
-  SiHuggingface,
-  SiTensorflow,
-  SiRedis
-} from 'react-icons/si'
 import { Award } from 'lucide-react'
+import TechLogo from './TechLogo'
 
 const SkillsSection = () => {
   const ref = useRef(null)
@@ -97,35 +58,40 @@ const SkillsSection = () => {
             <div className="flex animate-scroll-infinite space-x-8">
               {/* First set of technologies */}
               {[
-                { name: 'React', icon: FaReact, color: 'text-blue-500' },
-                { name: 'Next.js', icon: SiNextdotjs, color: 'text-black dark:text-white' },
-                { name: 'TypeScript', icon: SiTypescript, color: 'text-blue-600' },
-                { name: 'Node.js', icon: FaNodeJs, color: 'text-green-600' },
-                { name: 'Python', icon: FaPython, color: 'text-yellow-500' },
-                { name: 'OpenAI', icon: SiOpenai, color: 'text-green-500' },
-                { name: 'PostgreSQL', icon: SiPostgresql, color: 'text-blue-700' },
-                { name: 'MongoDB', icon: SiMongodb, color: 'text-green-700' },
-                { name: 'Tailwind', icon: SiTailwindcss, color: 'text-cyan-500' },
-                { name: 'Framer Motion', icon: SiFramer, color: 'text-pink-500' },
-                { name: 'Docker', icon: FaDocker, color: 'text-blue-400' },
-                { name: 'AWS', icon: FaAws, color: 'text-orange-500' },
-                { name: 'Git', icon: FaGitAlt, color: 'text-red-500' },
-                { name: 'Figma', icon: FaFigma, color: 'text-purple-500' },
-                { name: 'Vercel', icon: SiVercel, color: 'text-black dark:text-white' },
-                { name: 'LangChain', icon: SiLangchain, color: 'text-indigo-500' },
-                { name: 'Supabase', icon: SiSupabase, color: 'text-emerald-500' },
-                { name: 'Prisma', icon: SiPrisma, color: 'text-slate-600' },
-                { name: 'GraphQL', icon: SiGraphql, color: 'text-pink-600' },
-                { name: 'Stripe', icon: SiStripe, color: 'text-blue-600' },
+                { name: 'React' },
+                { name: 'Next.js' },
+                { name: 'TypeScript' },
+                { name: 'Node.js' },
+                { name: 'Python' },
+                { name: 'OpenAI' },
+                { name: 'PostgreSQL' },
+                { name: 'MongoDB' },
+                { name: 'Tailwind' },
+                { name: 'Framer Motion' },
+                { name: 'Docker' },
+                { name: 'AWS' },
+                { name: 'Git' },
+                { name: 'Figma' },
+                { name: 'Vercel' },
+                { name: 'LangChain' },
+                { name: 'Supabase' },
+                { name: 'Prisma' },
+                { name: 'GraphQL' },
+                { name: 'Stripe' },
               ].map((tech, index) => (
                 <div
                   key={index}
-                  className="flex-shrink-0 flex flex-col items-center p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 min-w-[140px] group hover:-translate-y-3"
+                  className="flex-shrink-0 flex flex-col items-center p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300 min-w-[140px] group hover:-translate-y-3 hover:border-blue-200 dark:hover:border-blue-700"
                 >
-                  <div className="text-5xl mb-3 group-hover:scale-125 transition-transform duration-300">
-                    <tech.icon />
+                  <div className="text-5xl mb-3 group-hover:scale-125 group-hover:drop-shadow-lg transition-all duration-300 relative">
+                    <TechLogo 
+                      name={tech.name} 
+                      size={48} 
+                      className="text-black"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
-                  <span className={`text-sm font-semibold ${tech.color} group-hover:scale-110 transition-transform duration-300`}>
+                  <span className="text-sm font-semibold text-black group-hover:scale-110 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-all duration-300">
                     {tech.name}
                   </span>
                 </div>
@@ -133,35 +99,40 @@ const SkillsSection = () => {
               
               {/* Duplicate set for infinite effect */}
               {[
-                { name: 'React', icon: FaReact, color: 'text-blue-500' },
-                { name: 'Next.js', icon: SiNextdotjs, color: 'text-black dark:text-white' },
-                { name: 'TypeScript', icon: SiTypescript, color: 'text-blue-600' },
-                { name: 'Node.js', icon: FaNodeJs, color: 'text-green-600' },
-                { name: 'Python', icon: FaPython, color: 'text-yellow-500' },
-                { name: 'OpenAI', icon: SiOpenai, color: 'text-green-500' },
-                { name: 'PostgreSQL', icon: SiPostgresql, color: 'text-blue-700' },
-                { name: 'MongoDB', icon: SiMongodb, color: 'text-green-700' },
-                { name: 'Tailwind', icon: SiTailwindcss, color: 'text-cyan-500' },
-                { name: 'Framer Motion', icon: SiFramer, color: 'text-pink-500' },
-                { name: 'Docker', icon: FaDocker, color: 'text-blue-400' },
-                { name: 'AWS', icon: FaAws, color: 'text-orange-500' },
-                { name: 'Git', icon: FaGitAlt, color: 'text-red-500' },
-                { name: 'Figma', icon: FaFigma, color: 'text-purple-500' },
-                { name: 'Vercel', icon: SiVercel, color: 'text-black dark:text-white' },
-                { name: 'LangChain', icon: SiLangchain, color: 'text-indigo-500' },
-                { name: 'Supabase', icon: SiSupabase, color: 'text-emerald-500' },
-                { name: 'Prisma', icon: SiPrisma, color: 'text-slate-600' },
-                { name: 'GraphQL', icon: SiGraphql, color: 'text-pink-600' },
-                { name: 'Stripe', icon: SiStripe, color: 'text-blue-600' },
+                { name: 'React' },
+                { name: 'Next.js' },
+                { name: 'TypeScript' },
+                { name: 'Node.js' },
+                { name: 'Python' },
+                { name: 'OpenAI' },
+                { name: 'PostgreSQL' },
+                { name: 'MongoDB' },
+                { name: 'Tailwind' },
+                { name: 'Framer Motion' },
+                { name: 'Docker' },
+                { name: 'AWS' },
+                { name: 'Git' },
+                { name: 'Figma' },
+                { name: 'Vercel' },
+                { name: 'LangChain' },
+                { name: 'Supabase' },
+                { name: 'Prisma' },
+                { name: 'GraphQL' },
+                { name: 'Stripe' },
               ].map((tech, index) => (
                 <div
                   key={`duplicate-${index}`}
-                  className="flex-shrink-0 flex flex-col items-center p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 min-w-[140px] group hover:-translate-y-3"
+                  className="flex-shrink-0 flex flex-col items-center p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl hover:shadow-blue-500/20 transition-all duration-300 min-w-[140px] group hover:-translate-y-3 hover:border-blue-200 dark:hover:border-blue-700"
                 >
-                  <div className="text-5xl mb-3 group-hover:scale-125 transition-transform duration-300">
-                    <tech.icon />
+                  <div className="text-5xl mb-3 group-hover:scale-125 group-hover:drop-shadow-lg transition-all duration-300 relative">
+                    <TechLogo 
+                      name={tech.name} 
+                      size={48} 
+                      className="text-black"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
-                  <span className={`text-sm font-semibold ${tech.color} group-hover:scale-110 transition-transform duration-300`}>
+                  <span className="text-sm font-semibold text-black group-hover:scale-110 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-all duration-300">
                     {tech.name}
                   </span>
                 </div>

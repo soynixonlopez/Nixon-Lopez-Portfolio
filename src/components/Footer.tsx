@@ -2,39 +2,51 @@
 
 import { motion } from 'framer-motion'
 import { useState } from 'react'
-import { Instagram, Facebook, MessageSquare, Youtube, ArrowUp, X } from 'lucide-react'
+import { X, Mail, Send } from 'lucide-react'
 import Link from 'next/link'
+import TechLogo from './TechLogo'
 
 const Footer = () => {
   const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(false)
   const [isCookiesModalOpen, setIsCookiesModalOpen] = useState(false)
+  const [newsletterEmail, setNewsletterEmail] = useState('')
+  const [isNewsletterSubmitting, setIsNewsletterSubmitting] = useState(false)
+  const [isNewsletterSubmitted, setIsNewsletterSubmitted] = useState(false)
   
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsNewsletterSubmitting(true)
+    
+    // Simular envío del newsletter
+    setTimeout(() => {
+      setIsNewsletterSubmitting(false)
+      setIsNewsletterSubmitted(true)
+      setNewsletterEmail('')
+      
+      // Reset success message after 3 seconds
+      setTimeout(() => setIsNewsletterSubmitted(false), 3000)
+    }, 2000)
   }
 
   const socialLinks = [
     {
       name: 'Instagram',
-      icon: Instagram,
       href: 'https://instagram.com/nixoncodes.ai',
       color: 'hover:text-pink-400'
     },
     {
       name: 'Facebook',
-      icon: Facebook,
       href: 'https://facebook.com/nixoncodes.ai',
       color: 'hover:text-blue-400'
     },
     {
       name: 'TikTok',
-      icon: MessageSquare,
       href: 'https://tiktok.com/@nixoncodes.ai',
       color: 'hover:text-gray-400'
     },
     {
       name: 'YouTube',
-      icon: Youtube,
       href: 'https://youtube.com/@nixoncodes.ai',
       color: 'hover:text-red-400'
     }
@@ -117,7 +129,7 @@ const Footer = () => {
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <social.icon size={20} />
+                    <TechLogo name={social.name} size={20} />
                   </motion.a>
                 ))}
               </motion.div>
@@ -190,7 +202,7 @@ const Footer = () => {
               </motion.ul>
             </div>
 
-            {/* Contact Info */}
+            {/* Newsletter */}
             <div>
               <motion.h3
                 className="font-semibold text-lg mb-6"
@@ -198,31 +210,69 @@ const Footer = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
               >
-                Contacto
+                Newsletter
               </motion.h3>
               <motion.div
-                className="space-y-3"
+                className="space-y-4"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
                 <p className="text-gray-400 text-sm">
-                  Email: infonixoncodes@gmail.com
+                  Mantente al día con las últimas tendencias en IA y desarrollo web.
                 </p>
-                <p className="text-gray-400 text-sm">
-                  Instagram: @nixoncodes.ai
+                
+                {isNewsletterSubmitted && (
+                  <motion.div
+                    className="bg-green-500/20 border border-green-500/30 rounded-lg p-3 flex items-center gap-2"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                  >
+                    <Mail className="w-4 h-4 text-green-400" />
+                    <span className="text-green-400 text-sm">¡Suscrito exitosamente!</span>
+                  </motion.div>
+                )}
+
+                <form onSubmit={handleNewsletterSubmit} className="space-y-3">
+                  <div>
+                    <input
+                      type="email"
+                      value={newsletterEmail}
+                      onChange={(e) => setNewsletterEmail(e.target.value)}
+                      placeholder="tu@email.com"
+                      required
+                      className="w-full bg-white/5 border border-white/20 rounded-lg px-3 py-2 text-white placeholder-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all duration-300 text-sm"
+                    />
+                  </div>
+                  <motion.button
+                    type="submit"
+                    disabled={isNewsletterSubmitting}
+                    className="w-full bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    whileHover={{ scale: isNewsletterSubmitting ? 1 : 1.02 }}
+                    whileTap={{ scale: isNewsletterSubmitting ? 1 : 0.98 }}
+                  >
+                    {isNewsletterSubmitting ? (
+                      <>
+                        <motion.div
+                          className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                        />
+                        Suscribiendo...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        Suscribirse
+                      </>
+                    )}
+                  </motion.button>
+                </form>
+                
+                <p className="text-gray-500 text-xs">
+                  Sin spam. Cancela cuando quieras.
                 </p>
-                <p className="text-gray-400 text-sm">
-                  LinkedIn: nixonlopez
-                </p>
-                <motion.button
-                  onClick={() => scrollToSection('#contact')}
-                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 mt-4"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Iniciar Proyecto
-                </motion.button>
               </motion.div>
             </div>
           </div>
@@ -258,17 +308,6 @@ const Footer = () => {
                   Políticas de Cookies
                 </motion.button>
                 
-                <motion.button
-                  onClick={scrollToTop}
-                  className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors text-sm group"
-                  whileHover={{ y: -2 }}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                >
-                  <span>Volver arriba</span>
-                  <ArrowUp size={16} className="group-hover:-translate-y-1 transition-transform" />
-                </motion.button>
               </div>
             </div>
           </div>
