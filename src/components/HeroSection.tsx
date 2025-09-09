@@ -2,15 +2,16 @@
 
 import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
-import { ChevronDown, Sparkles, Bot, Code, Zap, Calculator } from 'lucide-react'
+import { ChevronDown, Sparkles, Bot, Code, Zap, Calculator, Star } from 'lucide-react'
 import Image from 'next/image'
 import { useQuoteModal } from '@/hooks/useQuoteModal'
+import QuoteModal from './QuoteModal'
 
 const HeroSection = () => {
   const [currentText, setCurrentText] = useState('')
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
-  const { openModal } = useQuoteModal()
+  const { isOpen, serviceType, openModal, closeModal } = useQuoteModal()
   
   const texts = [
     'Desarrollo Web con IA',
@@ -200,6 +201,21 @@ const HeroSection = () => {
                 <Calculator className="w-5 h-5" />
                 Solicitar Cotización
               </motion.button>
+              
+              <motion.button
+                className="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-2 border border-white/20"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  const projectsSection = document.getElementById('projects')
+                  if (projectsSection) {
+                    projectsSection.scrollIntoView({ behavior: 'smooth' })
+                  }
+                }}
+              >
+                <Star className="w-5 h-5" />
+                Ver Portafolio
+              </motion.button>
             </motion.div>
           </motion.div>
 
@@ -294,6 +310,13 @@ const HeroSection = () => {
 
       {/* Gradient overlay - only on desktop */}
       <div className="hidden md:block absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-slate-900 to-transparent" />
+      
+      {/* Quote Modal */}
+      <QuoteModal
+        isOpen={isOpen}
+        onClose={closeModal}
+        serviceType={serviceType}
+      />
     </section>
   )
 }

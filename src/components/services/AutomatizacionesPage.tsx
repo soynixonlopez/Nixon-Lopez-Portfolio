@@ -3,6 +3,46 @@
 import { motion, useInView } from 'framer-motion'
 import React, { useRef } from 'react'
 import { CheckCircle, Zap, Bot, Database, Workflow, Shield, Star, Cog, TrendingUp, Code, Sparkles, Globe, Calculator, MessageSquare, Send } from 'lucide-react'
+import { 
+  FaReact, 
+  FaNodeJs, 
+  FaJs, 
+  FaPython, 
+  FaGitAlt, 
+  FaDocker, 
+  FaAws,
+  FaFigma,
+  FaHtml5,
+  FaCss3Alt,
+  FaBootstrap,
+  FaDatabase,
+  FaCloud,
+  FaCode,
+  FaMobile,
+  FaRobot,
+  FaGlobe
+} from 'react-icons/fa'
+import { 
+  SiNextdotjs, 
+  SiTypescript, 
+  SiOpenai, 
+  SiPostgresql, 
+  SiMongodb, 
+  SiTailwindcss, 
+  SiFramer, 
+  SiVercel, 
+  SiLangchain, 
+  SiSupabase, 
+  SiPrisma, 
+  SiGraphql, 
+  SiStripe,
+  SiN8n,
+  SiZapier,
+  SiMicrosoft,
+  SiHuggingface,
+  SiTensorflow,
+  SiRedis
+} from 'react-icons/si'
 import ContactSection from '@/components/ContactSection'
 import TechnologiesCarousel from '@/components/TechnologiesCarousel'
 import ProcessFlow from '@/components/ProcessFlow'
@@ -165,18 +205,18 @@ const AutomatizacionesPage = () => {
   ]
 
   const automationTechnologies = [
-    { name: "n8n", icon: "🔄", color: "#FF6B6B" },
-    { name: "Zapier", icon: "⚡", color: "#FF4A00" },
-    { name: "Power Automate", icon: "🔵", color: "#0078D4" },
-    { name: "APIs", icon: "🔌", color: "#FF6B6B" },
-    { name: "Hugging Face", icon: "🤗", color: "#FF6B6B" },
-    { name: "AI/ML", icon: "🧠", color: "#FF6B6B" },
-    { name: "Python", icon: "🐍", color: "#3776AB" },
-    { name: "Node.js", icon: "🟢", color: "#339933" },
-    { name: "PostgreSQL", icon: "🐘", color: "#336791" },
-    { name: "Redis", icon: "🔴", color: "#DC382D" },
-    { name: "Docker", icon: "🐳", color: "#2496ED" },
-    { name: "TensorFlow", icon: "🔥", color: "#FF6F00" }
+    { name: "n8n", icon: SiN8n, color: "#FF6B6B" },
+    { name: "Zapier", icon: SiZapier, color: "#FF4A00" },
+    { name: "Power Automate", icon: SiMicrosoft, color: "#0078D4" },
+    { name: "APIs", icon: FaCode, color: "#FF6B6B" },
+    { name: "Hugging Face", icon: SiHuggingface, color: "#FF6B6B" },
+    { name: "AI/ML", icon: FaRobot, color: "#FF6B6B" },
+    { name: "Python", icon: FaPython, color: "#3776AB" },
+    { name: "Node.js", icon: FaNodeJs, color: "#339933" },
+    { name: "PostgreSQL", icon: SiPostgresql, color: "#336791" },
+    { name: "Redis", icon: SiRedis, color: "#DC382D" },
+    { name: "Docker", icon: FaDocker, color: "#2496ED" },
+    { name: "TensorFlow", icon: SiTensorflow, color: "#FF6F00" }
   ]
 
   // Debug: verificar que los iconos estén definidos
@@ -189,7 +229,7 @@ const AutomatizacionesPage = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      <section className="pt-32 pb-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
         <div className="container-padding">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Column - Title and Description */}
@@ -207,15 +247,32 @@ const AutomatizacionesPage = () => {
                 Transformo tu negocio con sistemas inteligentes que automatizan procesos, conectan todas 
                 tus herramientas y te permiten enfocarte en lo que realmente importa: hacer crecer tu empresa.
               </p>
-              <motion.button
-                onClick={() => openModal('automation')}
-                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-3"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Calculator className="w-5 h-5" />
-                Solicitar Cotización
-              </motion.button>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <motion.button
+                  onClick={() => openModal('automation')}
+                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-3"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Calculator className="w-5 h-5" />
+                  Solicitar Cotización
+                </motion.button>
+                
+                <motion.button
+                  onClick={() => {
+                    const projectsSection = document.getElementById('projects')
+                    if (projectsSection) {
+                      projectsSection.scrollIntoView({ behavior: 'smooth' })
+                    }
+                  }}
+                  className="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-3 border border-white/20"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Star className="w-5 h-5" />
+                  Ver Portafolio
+                </motion.button>
+              </div>
             </motion.div>
 
             {/* Right Column - Contact Form */}
@@ -359,7 +416,7 @@ const AutomatizacionesPage = () => {
        </section>
 
       {/* Projects Gallery Section */}
-      <section className="py-20 bg-gray-50 dark:bg-slate-800">
+      <section id="projects" className="py-20 bg-gray-50 dark:bg-slate-800">
         <div className="container-padding">
           <motion.div
             className="text-center mb-16"

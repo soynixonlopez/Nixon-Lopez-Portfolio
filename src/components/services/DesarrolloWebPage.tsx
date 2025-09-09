@@ -3,6 +3,40 @@
 import { motion, useInView } from 'framer-motion'
 import React, { useRef } from 'react'
 import { CheckCircle, Globe, Zap, Shield, Users, Star, ChevronRight, Globe as GlobeIcon, Bot, Code, Sparkles, Calculator, MessageSquare, Send } from 'lucide-react'
+import { 
+  FaReact, 
+  FaNodeJs, 
+  FaJs, 
+  FaPython, 
+  FaGitAlt, 
+  FaDocker, 
+  FaAws,
+  FaFigma,
+  FaHtml5,
+  FaCss3Alt,
+  FaBootstrap,
+  FaDatabase,
+  FaCloud,
+  FaCode,
+  FaMobile,
+  FaRobot,
+  FaGlobe
+} from 'react-icons/fa'
+import { 
+  SiNextdotjs, 
+  SiTypescript, 
+  SiOpenai, 
+  SiPostgresql, 
+  SiMongodb, 
+  SiTailwindcss, 
+  SiFramer, 
+  SiVercel, 
+  SiLangchain, 
+  SiSupabase, 
+  SiPrisma, 
+  SiGraphql, 
+  SiStripe
+} from 'react-icons/si'
 import ContactSection from '@/components/ContactSection'
 import TechnologiesCarousel from '@/components/TechnologiesCarousel'
 import ProcessFlow from '@/components/ProcessFlow'
@@ -127,25 +161,25 @@ const DesarrolloWebPage = () => {
   ]
 
   const webTechnologies = [
-    { name: "JavaScript", icon: "⚡", color: "#F7DF1E" },
-    { name: "HTML5", icon: "🌐", color: "#E34F26" },
-    { name: "CSS3", icon: "🎨", color: "#1572B6" },
-    { name: "Tailwind CSS", icon: "🎯", color: "#06B6D4" },
-    { name: "Bootstrap", icon: "🎪", color: "#7952B3" },
-    { name: "Node.js", icon: "🟢", color: "#339933" },
-    { name: "Supabase", icon: "💚", color: "#3ECF8E" },
-    { name: "Docker", icon: "🐳", color: "#2496ED" },
-    { name: "Firebase", icon: "🔥", color: "#FFCA28" },
-    { name: "SQL", icon: "🗄️", color: "#336791" },
-    { name: "TypeScript", icon: "🔷", color: "#3178C6" },
-    { name: "Next.js", icon: "⚛️", color: "#000000" },
-    { name: "React", icon: "⚛️", color: "#61DAFB" }
+    { name: "JavaScript", icon: FaJs, color: "#F7DF1E" },
+    { name: "HTML5", icon: FaHtml5, color: "#E34F26" },
+    { name: "CSS3", icon: FaCss3Alt, color: "#1572B6" },
+    { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
+    { name: "Bootstrap", icon: FaBootstrap, color: "#7952B3" },
+    { name: "Node.js", icon: FaNodeJs, color: "#339933" },
+    { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
+    { name: "Docker", icon: FaDocker, color: "#2496ED" },
+    { name: "Firebase", icon: FaCloud, color: "#FFCA28" },
+    { name: "SQL", icon: FaDatabase, color: "#336791" },
+    { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+    { name: "Next.js", icon: SiNextdotjs, color: "#000000" },
+    { name: "React", icon: FaReact, color: "#61DAFB" }
   ]
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      <section className="pt-32 pb-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
         <div className="container-padding">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Column - Title and Description */}
@@ -163,15 +197,32 @@ const DesarrolloWebPage = () => {
                 Creo sitios web modernos, responsivos y optimizados que convierten visitantes en clientes. 
                 Desde landing pages hasta e-commerce complejos, cada proyecto está diseñado para el éxito digital.
               </p>
-              <motion.button
-                onClick={() => openModal('web')}
-                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-3"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Calculator className="w-5 h-5" />
-                Solicitar Cotización
-              </motion.button>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <motion.button
+                  onClick={() => openModal('web')}
+                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-3"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Calculator className="w-5 h-5" />
+                  Solicitar Cotización
+                </motion.button>
+                
+                <motion.button
+                  onClick={() => {
+                    const projectsSection = document.getElementById('projects')
+                    if (projectsSection) {
+                      projectsSection.scrollIntoView({ behavior: 'smooth' })
+                    }
+                  }}
+                  className="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-3 border border-white/20"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Star className="w-5 h-5" />
+                  Ver Portafolio
+                </motion.button>
+              </div>
             </motion.div>
 
             {/* Right Column - Contact Form */}
@@ -315,7 +366,7 @@ const DesarrolloWebPage = () => {
        </section>
 
       {/* Projects Gallery Section */}
-      <section className="py-20 bg-gray-50 dark:bg-slate-800">
+      <section id="projects" className="py-20 bg-gray-50 dark:bg-slate-800">
         <div className="container-padding">
           <motion.div
             className="text-center mb-16"

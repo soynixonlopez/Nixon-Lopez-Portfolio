@@ -43,20 +43,15 @@ const SimpleHeader = () => {
 
           {/* CTA Button */}
           <motion.button
-            onClick={() => {
-              const projectsSection = document.getElementById('projects')
-              if (projectsSection) {
-                projectsSection.scrollIntoView({ behavior: 'smooth' })
-              }
-            }}
-            className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-full font-medium hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
+            onClick={() => window.location.href = '/'}
+            className="bg-white/10 backdrop-blur-sm text-white px-6 py-2 rounded-full font-medium hover:bg-white/20 transition-all duration-300 border border-white/20"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: 0.4 }}
           >
-            Ver Portafolio
+            Regresar a Mis Servicios
           </motion.button>
         </div>
       </div>

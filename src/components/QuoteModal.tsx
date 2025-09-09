@@ -198,6 +198,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, serviceType = 
   const handleSendQuote = () => {
     // Aquí se implementaría el envío por email
     alert('Cotización enviada exitosamente. Te contactaremos pronto.')
+    resetModal()
     onClose()
   }
 
@@ -289,7 +290,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, serviceType = 
             </div>
 
             {/* Content */}
-            <div className="p-6 overflow-y-auto max-h-[calc(90vh-200px)]">
+            <div className="p-6 overflow-y-auto max-h-[calc(90vh-250px)]">
               {currentStep === 1 && (
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
@@ -695,7 +696,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose, serviceType = 
             </div>
 
             {/* Footer */}
-            <div className="p-6 border-t border-gray-200 dark:border-gray-700">
+            <div className="p-6 pb-8 border-t border-gray-200 dark:border-gray-700">
               <div className="flex justify-between">
                 {currentStep > 1 && currentStep < 6 && (
                   <button

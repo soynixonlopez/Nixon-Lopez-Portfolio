@@ -3,6 +3,45 @@
 import { motion, useInView } from 'framer-motion'
 import React, { useRef } from 'react'
 import { CheckCircle, Smartphone, Zap, Shield, Users, Star, ChevronRight, Smartphone as PhoneIcon, Bot, Code, Sparkles, Globe, Calculator, MessageSquare, Send } from 'lucide-react'
+import { 
+  FaReact, 
+  FaNodeJs, 
+  FaJs, 
+  FaPython, 
+  FaGitAlt, 
+  FaDocker, 
+  FaAws,
+  FaFigma,
+  FaHtml5,
+  FaCss3Alt,
+  FaBootstrap,
+  FaDatabase,
+  FaCloud,
+  FaCode,
+  FaMobile,
+  FaRobot,
+  FaGlobe
+} from 'react-icons/fa'
+import { 
+  SiNextdotjs, 
+  SiTypescript, 
+  SiOpenai, 
+  SiPostgresql, 
+  SiMongodb, 
+  SiTailwindcss, 
+  SiFramer, 
+  SiVercel, 
+  SiLangchain, 
+  SiSupabase, 
+  SiPrisma, 
+  SiGraphql, 
+  SiStripe,
+  SiReact,
+  SiFlutter,
+  SiIonic,
+  SiExpo,
+  SiFirebase
+} from 'react-icons/si'
 import ContactSection from '@/components/ContactSection'
 import TechnologiesCarousel from '@/components/TechnologiesCarousel'
 import ProcessFlow from '@/components/ProcessFlow'
@@ -121,18 +160,18 @@ const DesarrolloAppsPage = () => {
   ]
 
   const mobileTechnologies = [
-    { name: "Flutter", icon: "🦋", color: "#02569B" },
-    { name: "React Native", icon: "⚛️", color: "#61DAFB" },
-    { name: "Android Studio", icon: "🤖", color: "#3DDC84" },
-    { name: "Firebase", icon: "🔥", color: "#FFCA28" },
-    { name: "React", icon: "⚛️", color: "#61DAFB" },
-    { name: "JavaScript", icon: "⚡", color: "#F7DF1E" },
-    { name: "Dart", icon: "🎯", color: "#00B4AB" },
-    { name: "Kotlin", icon: "🟠", color: "#7F52FF" },
-    { name: "Swift", icon: "🍎", color: "#FF6B6B" },
-    { name: "Xcode", icon: "💻", color: "#007ACC" },
-    { name: "Git", icon: "📚", color: "#F05032" },
-    { name: "REST APIs", icon: "🔌", color: "#FF6B6B" }
+    { name: "Flutter", icon: SiFlutter, color: "#02569B" },
+    { name: "React Native", icon: SiReact, color: "#61DAFB" },
+    { name: "Android Studio", icon: FaMobile, color: "#3DDC84" },
+    { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
+    { name: "React", icon: FaReact, color: "#61DAFB" },
+    { name: "JavaScript", icon: FaJs, color: "#F7DF1E" },
+    { name: "Dart", icon: FaCode, color: "#00B4AB" },
+    { name: "Kotlin", icon: FaCode, color: "#7F52FF" },
+    { name: "Swift", icon: FaCode, color: "#FF6B6B" },
+    { name: "Xcode", icon: FaCode, color: "#007ACC" },
+    { name: "Git", icon: FaGitAlt, color: "#F05032" },
+    { name: "REST APIs", icon: FaCode, color: "#FF6B6B" }
   ]
 
   const platforms = [
@@ -159,7 +198,7 @@ const DesarrolloAppsPage = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+      <section className="pt-32 pb-20 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
         <div className="container-padding">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Column - Title and Description */}
@@ -177,15 +216,32 @@ const DesarrolloAppsPage = () => {
                 Creo aplicaciones móviles nativas y multiplataforma que destacan en las tiendas de apps. 
                 Desde conceptos innovadores hasta apps empresariales, cada proyecto está optimizado para el éxito móvil.
               </p>
-              <motion.button
-                onClick={() => openModal('mobile')}
-                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-3"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Calculator className="w-5 h-5" />
-                Solicitar Cotización
-              </motion.button>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <motion.button
+                  onClick={() => openModal('mobile')}
+                  className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-3"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Calculator className="w-5 h-5" />
+                  Solicitar Cotización
+                </motion.button>
+                
+                <motion.button
+                  onClick={() => {
+                    const projectsSection = document.getElementById('projects')
+                    if (projectsSection) {
+                      projectsSection.scrollIntoView({ behavior: 'smooth' })
+                    }
+                  }}
+                  className="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-3 border border-white/20"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Star className="w-5 h-5" />
+                  Ver Portafolio
+                </motion.button>
+              </div>
             </motion.div>
 
             {/* Right Column - Contact Form */}
@@ -329,7 +385,7 @@ const DesarrolloAppsPage = () => {
        </section>
 
       {/* Projects Gallery Section */}
-      <section className="py-20 bg-gray-50 dark:bg-slate-800">
+      <section id="projects" className="py-20 bg-gray-50 dark:bg-slate-800">
         <div className="container-padding">
           <motion.div
             className="text-center mb-16"
@@ -596,7 +652,7 @@ const DesarrolloAppsPage = () => {
                     className="flex-shrink-0 flex flex-col items-center p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 min-w-[140px] group hover:-translate-y-3"
                   >
                     <div className="text-5xl mb-3 group-hover:scale-125 transition-transform duration-300">
-                      {tech.icon}
+                      <tech.icon />
                     </div>
                     <span className="text-sm font-semibold text-gray-900 dark:text-white group-hover:scale-110 transition-transform duration-300">
                       {tech.name}
@@ -611,7 +667,7 @@ const DesarrolloAppsPage = () => {
                     className="flex-shrink-0 flex flex-col items-center p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700 hover:shadow-xl transition-all duration-300 min-w-[140px] group hover:-translate-y-3"
                   >
                     <div className="text-5xl mb-3 group-hover:scale-125 transition-transform duration-300">
-                      {tech.icon}
+                      <tech.icon />
                     </div>
                     <span className="text-sm font-semibold text-gray-900 dark:text-white group-hover:scale-110 transition-transform duration-300">
                       {tech.name}
