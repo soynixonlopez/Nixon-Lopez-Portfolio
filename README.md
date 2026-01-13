@@ -59,12 +59,29 @@ El ChatBot demo se encuentra en `src/components/ChatBotDemo.tsx`. Puedes:
 - Integrar con APIs reales de IA
 - Personalizar la apariencia y comportamiento
 
+## 🔧 Configuración de Variables de Entorno
+
+### Newsletter con Resend
+Para que el formulario de newsletter funcione y recibas los correos de suscripción:
+
+1. Crea una cuenta en [Resend](https://resend.com) (gratis hasta 3,000 emails/mes)
+2. Obtén tu API Key en [Resend API Keys](https://resend.com/api-keys)
+3. Crea un archivo `.env.local` en la raíz del proyecto:
+```bash
+RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxx
+```
+4. Reemplaza `re_xxxxxxxxxxxxxxxxxxxxx` con tu API key real
+
+Cuando alguien se suscriba al newsletter, recibirás un email en `soynixonlopez@gmail.com` con el correo del suscriptor.
+
 ## 🌐 Deployment
 
 ### Vercel (Recomendado)
 1. Conecta tu repositorio a Vercel
 2. Las configuraciones están listas para deployment automático
-3. Configura las variables de entorno si es necesario
+3. Configura las variables de entorno:
+   - Ve a Settings > Environment Variables
+   - Agrega `RESEND_API_KEY` con tu API key de Resend
 
 ### Otros Proveedores
 - Netlify: Compatible con build commands estándar

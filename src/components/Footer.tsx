@@ -18,15 +18,34 @@ const Footer = () => {
     e.preventDefault()
     setIsNewsletterSubmitting(true)
     
-    // Simular envío del newsletter
-    setTimeout(() => {
+    try {
+      // Enviar correo a la API
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: newsletterEmail }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setIsNewsletterSubmitting(false)
+        setIsNewsletterSubmitted(true)
+        setNewsletterEmail('')
+        
+        // Reset success message after 3 seconds
+        setTimeout(() => setIsNewsletterSubmitted(false), 3000)
+      } else {
+        throw new Error(data.error || 'Error al suscribirse')
+      }
+    } catch (error) {
+      console.error('Error:', error)
       setIsNewsletterSubmitting(false)
-      setIsNewsletterSubmitted(true)
-      setNewsletterEmail('')
-      
-      // Reset success message after 3 seconds
-      setTimeout(() => setIsNewsletterSubmitted(false), 3000)
-    }, 2000)
+      // Mostrar mensaje de error si es necesario
+      alert('Hubo un error al suscribirse. Por favor, intenta de nuevo.')
+    }
   }
 
   const socialLinks = [

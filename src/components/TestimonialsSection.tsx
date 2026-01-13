@@ -12,58 +12,39 @@ const TestimonialsSection = () => {
   const testimonials = [
     {
       id: 1,
-      name: "María González",
-      position: "CEO & Fundadora",
-      company: "TechStart Solutions",
-      avatar: "/api/placeholder/80/80",
+      name: "Sara Carryhau",
       rating: 5,
-      content: "Nixon transformó completamente nuestra presencia digital. Su chatbot inteligente incrementó nuestras conversiones en un 45% y la automatización de procesos nos ahorra 20 horas semanales. Un verdadero profesional que entiende las necesidades del negocio.",
-      project: "ChatBot E-commerce + Automatizaciones",
-      results: ["+45% conversiones", "20h/semana ahorradas", "ROI 300% en 6 meses"]
+      content: "Nixon creó mi página web para mi centro de estética y ha sido increíble. Desde que tengo la página, he recibido muchas más consultas y reservas. La integración con WhatsApp funciona perfecto y mis clientes pueden contactarme fácilmente. Muy profesional y siempre disponible para ayudarme.",
     },
     {
       id: 2,
-      name: "Carlos Rodríguez",
-      position: "Director de Tecnología",
-      company: "Global Enterprises",
-      avatar: "/api/placeholder/80/80",
+      name: "Carmen González",
       rating: 5,
-      content: "La plataforma web que Nixon desarrolló para nosotros superó todas las expectativas. Performance perfecta, SEO optimizado y un CMS intuitivo que nuestro equipo puede manejar sin problemas. Ha sido un placer trabajar con él.",
-      project: "Plataforma Web Corporativa",
-      results: ["98/100 PageSpeed", "100/100 SEO", "50k+ usuarios/mes"]
+      content: "Trabajé con Nixon para crear mi landing page y superó todas mis expectativas. El diseño es hermoso, se ve profesional y ha aumentado mis ventas del ebook significativamente. Además, la página carga súper rápido en todos los dispositivos. Lo recomiendo totalmente.",
     },
     {
       id: 3,
-      name: "Ana Martínez",
-      position: "Fundadora",
-      company: "EduTech Academy",
-      avatar: "/api/placeholder/80/80",
+      name: "Jill Martínez",
       rating: 5,
-      content: "Nixon creó una plataforma educativa que revolucionó nuestra forma de enseñar. La gamificación y el sistema de seguimiento han aumentado la retención de estudiantes en un 78%. Su atención al detalle es excepcional.",
-      project: "Plataforma Educativa Gamificada",
-      results: ["78% retención", "2k+ estudiantes", "4.8/5 rating"]
+      content: "Como fotógrafa, necesitaba un portafolio web que realmente mostrara mi trabajo. Nixon creó una página increíble donde puedo mostrar todas mis fotografías de forma elegante. Mis clientes quedan impresionados y ahora recibo más solicitudes de trabajo. Excelente servicio.",
     },
     {
       id: 4,
-      name: "Roberto Silva",
-      position: "Gerente General",
-      company: "Business Solutions",
-      avatar: "/api/placeholder/80/80",
+      name: "Roberto Vargas",
       rating: 5,
-      content: "El sistema ERP que Nixon implementó ha transformado nuestras operaciones. 8 módulos perfectamente integrados que han incrementado nuestra eficiencia en un 60%. Su conocimiento técnico y capacidad de comunicación son sobresalientes.",
-      project: "Sistema ERP Empresarial",
-      results: ["8 módulos integrados", "+60% eficiencia", "200+ usuarios"]
+      content: "Necesitaba un sitio web para mi agencia de viajes con sistema de reservas. Nixon desarrolló todo perfectamente, el formulario de reservas funciona muy bien y genera las cotizaciones automáticamente. Ha simplificado mucho mi trabajo y mis clientes están muy contentos con la facilidad para reservar.",
     },
     {
       id: 5,
-      name: "Laura Fernández",
-      position: "Marketing Manager",
-      company: "ShopSmart",
-      avatar: "/api/placeholder/80/80",
+      name: "Ana Rodríguez",
       rating: 5,
-      content: "El chatbot de Nixon para nuestro e-commerce ha sido un game-changer. Maneja consultas 24/7, recomienda productos personalizados y ha incrementado nuestras ventas en un 40%. Los clientes están encantados con la experiencia.",
-      project: "ChatBot E-commerce Inteligente",
-      results: ["+40% ventas", "95% satisfacción", "10k+ consultas/mes"]
+      content: "Nixon me ayudó a crear una aplicación web para mi negocio y ha sido un cambio total. La automatización con IA que implementó me ahorra muchísimo tiempo. Ahora puedo atender más clientes sin contratar más personal. Es un profesional de verdad, muy recomendado.",
+    },
+    {
+      id: 6,
+      name: "Carlos Herrera",
+      rating: 5,
+      content: "Mi página web para aprender programación que Nixon desarrolló es excelente. Los estudiantes pueden acceder fácilmente, el diseño es moderno y la experiencia de usuario es perfecta. Ha aumentado significativamente el número de personas que se inscriben a mis cursos. Muy satisfecho con el trabajo.",
     }
   ]
 
@@ -155,15 +136,9 @@ const TestimonialsSection = () => {
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-xl mb-4">
                     {currentTestimonial.name.charAt(0)}
                   </div>
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
                     {currentTestimonial.name}
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-400 mb-1">
-                    {currentTestimonial.position}
-                  </p>
-                  <p className="text-gray-500 dark:text-gray-500 text-sm">
-                    {currentTestimonial.company}
-                  </p>
                 </div>
               </motion.div>
             </AnimatePresence>

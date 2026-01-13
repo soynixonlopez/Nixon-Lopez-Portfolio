@@ -16,9 +16,10 @@ const AboutSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   const achievements = [
-    { text: 'Especialistas en crear páginas web para negocios de servicios', icon: Code },
-    { text: 'Más de 50 negocios han conseguido más clientes con nuestras páginas web', icon: GraduationCap },
-    { text: 'Integración de WhatsApp en todas las páginas para contacto inmediato', icon: Rocket },
+    { text: 'Atraer más clientes con diseño profesional y estrategias de conversión', icon: Rocket },
+    { text: 'Integración de WhatsApp para contacto inmediato y mejor comunicación', icon: Users },
+    { text: 'Optimización para Google (SEO) y performance para máxima visibilidad', icon: Code },
+    { text: 'Más de 50 negocios ya están consiguiendo más clientes con mis servicios', icon: GraduationCap },
   ]
 
   return (
@@ -46,15 +47,17 @@ const AboutSection = () => {
             transition={{ duration: 2, repeat: Infinity }}
           >
             <Users size={18} />
-            ¿Por Qué Elegirnos?
+            Sobre Mí
           </motion.div>
           
           <h2 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-            Páginas Web que{' '}
-            <span className="gradient-text">Convierten Visitantes</span>
-            <br />
-            en Clientes
+            Hola, Soy{' '}
+            <span className="gradient-text">Nixon López</span>
           </h2>
+          
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            Desarrollador Web Profesional especializado en crear soluciones digitales que impulsan negocios
+          </p>
         </motion.div>
 
         {/* Two Column Layout */}
@@ -66,17 +69,16 @@ const AboutSection = () => {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {/* Main Description */}
+            {/* Main Description - Quién Soy */}
             <div className="space-y-6">
               <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-                Especialistas en{' '}
-                <span className="gradient-text">Páginas Web para Negocios</span>
+                ¿Quién Soy?
               </h3>
               
               <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
-                Creamos páginas web profesionales diseñadas específicamente para <strong className="text-orange-500">negocios de servicios</strong>. 
-                Nuestras páginas web están optimizadas para atraer más clientes, integran WhatsApp para contacto 
-                inmediato y convierten visitantes en ventas. Más de 50 negocios ya están consiguiendo más clientes con nosotros.
+                Soy <strong className="text-orange-500">Nixon López</strong>, desarrollador web profesional con pasión por crear 
+                soluciones digitales que realmente funcionan. Me especializo en desarrollo de páginas web y aplicaciones web 
+                modernas, optimizadas para convertir visitantes en clientes.
               </p>
             </div>
 
@@ -166,7 +168,7 @@ const AboutSection = () => {
             <div className="relative w-full h-full flex items-center justify-center">
               <Image
                 src="/images/AboutMePicture.png"
-                alt="Páginas Web Profesionales para Negocios de Servicios"
+                alt="Nixon López - Desarrollador Web Profesional"
                 width={800}
                 height={1000}
                 className="w-full h-full max-h-[900px] object-contain"
