@@ -16,9 +16,9 @@ const AboutSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   const achievements = [
-    { text: 'Desarrollador web con 5+ años de experiencia', icon: Code },
-    { text: 'IT Teacher formando la próxima generación de desarrolladores', icon: GraduationCap },
-    { text: 'Creador de soluciones web innovadoras y escalables', icon: Rocket },
+    { text: 'Especialistas en crear páginas web para negocios de servicios', icon: Code },
+    { text: 'Más de 50 negocios han conseguido más clientes con nuestras páginas web', icon: GraduationCap },
+    { text: 'Integración de WhatsApp en todas las páginas para contacto inmediato', icon: Rocket },
   ]
 
   return (
@@ -46,12 +46,14 @@ const AboutSection = () => {
             transition={{ duration: 2, repeat: Infinity }}
           >
             <Users size={18} />
-            Sobre Mí
+            ¿Por Qué Elegirnos?
           </motion.div>
           
           <h2 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-            Desarrollador, Teacher{' '}
-            <span className="gradient-text">& Innovador</span>
+            Páginas Web que{' '}
+            <span className="gradient-text">Convierten Visitantes</span>
+            <br />
+            en Clientes
           </h2>
         </motion.div>
 
@@ -67,14 +69,14 @@ const AboutSection = () => {
             {/* Main Description */}
             <div className="space-y-6">
               <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-                Transformando Ideas en{' '}
-                <span className="gradient-text">Realidad Digital</span>
+                Especialistas en{' '}
+                <span className="gradient-text">Páginas Web para Negocios</span>
               </h3>
               
               <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
-                Soy <strong className="text-orange-500">Nixon López</strong>, desarrollador web especializado en IA con 5+ años 
-                de experiencia. Como IT Teacher, combino desarrollo de soluciones innovadoras con 
-                la formación de nuevos talentos tecnológicos.
+                Creamos páginas web profesionales diseñadas específicamente para <strong className="text-orange-500">negocios de servicios</strong>. 
+                Nuestras páginas web están optimizadas para atraer más clientes, integran WhatsApp para contacto 
+                inmediato y convierten visitantes en ventas. Más de 50 negocios ya están consiguiendo más clientes con nosotros.
               </p>
             </div>
 
@@ -164,7 +166,7 @@ const AboutSection = () => {
             <div className="relative w-full h-full flex items-center justify-center">
               <Image
                 src="/images/AboutMePicture.png"
-                alt="Nixon López - Desarrollador y IT Teacher"
+                alt="Páginas Web Profesionales para Negocios de Servicios"
                 width={800}
                 height={1000}
                 className="w-full h-full max-h-[900px] object-contain"

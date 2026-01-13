@@ -81,9 +81,9 @@ El ChatBot demo se encuentra en `src/components/ChatBotDemo.tsx`. Puedes:
 
 ## 📱 Redes Sociales
 
-- **Email**: infonixoncodes@gmail.com
-- **Instagram**: @nixoncodes.ai
-- **TikTok**: @nixoncodes.ai
+- **Email**: soynixonlopez@gmail.com
+- **Instagram**: @soynixonlopez
+- **TikTok**: @soynixonlopez
 - **LinkedIn**: in/nixonlopez
 
 ## 📄 Licencia
@@ -101,7 +101,7 @@ Las contribuciones son bienvenidas. Por favor:
 
 ## 📞 Contacto
 
-Nixon López - [@nixoncodes.ai](https://instagram.com/nixoncodes.ai) - infonixoncodes@gmail.com
+Nixon López - [@soynixonlopez](https://instagram.com/soynixonlopez) - soynixonlopez@gmail.com
 
 Link del Proyecto: [https://github.com/nixonlopez/portfolio](https://github.com/nixonlopez/portfolio)
 

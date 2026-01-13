@@ -33,194 +33,194 @@ const ProjectsSection = () => {
   const projects = [
     {
       id: 1,
-      title: "Sistema de Automatización AI",
-      description: "Plataforma completa que automatiza procesos empresariales utilizando inteligencia artificial avanzada con análisis predictivo.",
-      longDescription: "Sistema integral que automatiza procesos empresariales utilizando inteligencia artificial avanzada. Incluye análisis predictivo, automatización de workflows y integración con múltiples APIs. Procesa más de 10,000 transacciones diarias y ha mejorado la eficiencia operacional en un 85%.",
-      image: "/api/placeholder/400/240",
-      icon: Bot,
-      gradient: "from-blue-500 to-purple-600",
-      tags: ["Next.js", "OpenAI", "Python"],
-      allTags: ["Next.js", "OpenAI", "Python", "PostgreSQL", "Docker", "AWS"],
+      title: "Sitio Web para Estética",
+      description: "Sitio web profesional para centro de estética con diseño moderno y elegante que muestra servicios, galería y contacto.",
+      longDescription: "Sitio web profesional desarrollado para centro de estética con diseño moderno y elegante. Incluye sección de servicios, galería de trabajos, información de contacto y formularios de reserva. Optimizado para móviles y con excelente rendimiento.",
+      image: "/images/website-Sara.png",
+      icon: Globe,
+      gradient: "from-pink-500 to-rose-600",
+      tags: ["Next.js", "Tailwind", "TypeScript"],
+      allTags: ["Next.js", "Tailwind", "TypeScript", "Vercel"],
       metrics: {
-        efficiency: "+85%",
-        timeReduction: "12h/día",
-        clients: "15+"
+        performance: "95/100",
+        responsive: "100%",
+        seo: "Optimizado"
       },
       features: [
-        "Procesamiento de lenguaje natural avanzado",
-        "Automatización completa de workflows",
-        "Dashboard en tiempo real con métricas",
-        "Integración con APIs externas",
-        "Análisis predictivo y machine learning"
+        "Diseño moderno y elegante",
+        "Galería de trabajos",
+        "Formularios de contacto",
+        "Optimizado para móviles",
+        "Performance optimizada"
       ],
       links: {
-        demo: "https://demo.nixoncodes.ai/automation",
-        github: "https://github.com/nixonlopez/ai-automation",
-        case: "https://case-study.nixoncodes.ai/automation"
+        demo: "https://sara-carryhau-project.vercel.app/",
+        github: "",
+        case: ""
       },
-      client: "TechCorp Solutions",
-      duration: "3 meses",
+      client: "Centro de Estética",
+      duration: "1 mes",
       year: "2024"
     },
     {
       id: 2,
-      title: "ChatBot E-commerce Inteligente",
-      description: "Asistente virtual para ventas que maneja consultas, recomienda productos y procesa órdenes automáticamente.",
-      longDescription: "ChatBot avanzado con IA conversacional que maneja consultas de clientes, recomienda productos personalizados y procesa órdenes automáticamente. Integrado con sistemas de inventario y CRM, ha incrementado las conversiones en un 40% y mantiene 95% de satisfacción del cliente.",
-      image: "/api/placeholder/400/240",
-      icon: Zap,
-      gradient: "from-green-500 to-teal-600",
-      tags: ["React", "Node.js", "OpenAI"],
-      allTags: ["React", "Node.js", "OpenAI", "Stripe", "MongoDB", "Socket.io"],
+      title: "Sitio Web para Aprender a Programar",
+      description: "Plataforma educativa interactiva para aprender Python desde cero con lecciones, ejercicios y código interactivo.",
+      longDescription: "Plataforma educativa interactiva diseñada para enseñar Python desde cero. Incluye lecciones paso a paso, ejercicios prácticos, editor de código integrado y sistema de seguimiento de progreso. Perfecta para principiantes que quieren aprender programación de forma interactiva.",
+      image: "/images/website-python.png",
+      icon: GraduationCap,
+      gradient: "from-blue-500 to-cyan-600",
+      tags: ["Next.js", "React", "TypeScript"],
+      allTags: ["Next.js", "React", "TypeScript", "Tailwind"],
       metrics: {
-        conversion: "+40%",
-        satisfaction: "95%",
-        queries: "10k+/mes"
+        lessons: "20+",
+        students: "Activos",
+        interactivity: "100%"
       },
       features: [
-        "Procesamiento NLP avanzado",
-        "Recomendaciones personalizadas con IA",
-        "Integración completa con pagos",
-        "Análisis de sentimientos en tiempo real",
-        "Soporte multiidioma automático"
+        "Lecciones interactivas",
+        "Editor de código integrado",
+        "Ejercicios prácticos",
+        "Seguimiento de progreso",
+        "Diseño intuitivo y moderno"
       ],
       links: {
-        demo: "https://demo.nixoncodes.ai/chatbot",
-        github: "https://github.com/nixonlopez/ecommerce-bot",
-        case: "https://case-study.nixoncodes.ai/chatbot"
+        demo: "https://pythonlearn.vercel.app/",
+        github: "",
+        case: ""
       },
-      client: "ShopSmart",
+      client: "Python Junior Course",
       duration: "2 meses",
       year: "2024"
     },
     {
       id: 3,
-      title: "Plataforma Web Corporativa",
-      description: "Sitio web corporativo con CMS personalizado, optimizado para SEO y con analytics avanzados integrados.",
-      longDescription: "Plataforma web completa con sistema de gestión de contenido personalizado, optimizada para SEO con puntuación perfecta y analytics avanzados. Maneja más de 50,000 usuarios mensuales con performance de 98/100 en PageSpeed Insights.",
-      image: "/api/placeholder/400/240",
-      icon: Globe,
-      gradient: "from-purple-500 to-pink-600",
-      tags: ["Next.js", "Tailwind", "Supabase"],
-      allTags: ["Next.js", "Tailwind", "Supabase", "Vercel", "TypeScript", "Prisma"],
+      title: "Formulario de Reservas",
+      description: "Sistema completo de reservas para agencia de viajes con formulario dinámico, cálculo de cotizaciones y generación de PDF.",
+      longDescription: "Sistema completo de reservas desarrollado para agencia de viajes. Incluye formulario dinámico con múltiples opciones, cálculo automático de cotizaciones según destino, hospedaje y servicios adicionales. Genera cotizaciones en PDF y permite gestionar reservas de forma eficiente.",
+      image: "/images/reservas-tropical.png",
+      icon: Calendar,
+      gradient: "from-emerald-500 to-teal-600",
+      tags: ["Next.js", "React", "Tailwind"],
+      allTags: ["Next.js", "React", "Tailwind", "JavaScript"],
       metrics: {
-        performance: "98/100",
-        seo: "100/100",
-        users: "50k+/mes"
+        destinations: "8+",
+        bookings: "Múltiples",
+        efficiency: "Alta"
       },
       features: [
-        "CMS personalizado y intuitivo",
-        "SEO optimizado con puntuación perfecta",
-        "Analytics integrados y dashboards",
-        "Diseño responsive y accesible",
-        "Performance optimizada y escalable"
+        "Formulario de reservas completo",
+        "Cálculo automático de cotizaciones",
+        "Múltiples destinos y opciones",
+        "Generación de PDF",
+        "Diseño intuitivo y responsive"
       ],
       links: {
-        demo: "https://demo.nixoncodes.ai/corporate",
-        github: "https://github.com/nixonlopez/corporate-web",
-        case: "https://case-study.nixoncodes.ai/corporate"
+        demo: "https://tropicaldreams.vercel.app/",
+        github: "",
+        case: ""
       },
-      client: "Global Enterprises",
-      duration: "4 meses",
-      year: "2023"
+      client: "Tropical Dreams Tours",
+      duration: "1 mes",
+      year: "2024"
     },
     {
       id: 4,
-      title: "Dashboard Analytics Predictivo",
-      description: "Dashboard inteligente con machine learning que procesa grandes volúmenes de datos y genera insights automáticos.",
-      longDescription: "Dashboard inteligente que procesa grandes volúmenes de datos utilizando machine learning para generar insights automáticos y predicciones de negocio. Maneja más de 1 millón de data points con 94% de precisión en predicciones.",
-      image: "/api/placeholder/400/240",
-      icon: TrendingUp,
-      gradient: "from-orange-500 to-red-600",
-      tags: ["React", "Python", "TensorFlow"],
-      allTags: ["React", "Python", "TensorFlow", "FastAPI", "PostgreSQL", "Redis"],
+      title: "Sitio Web para Fotografía",
+      description: "Sitio web profesional para fotógrafa con portafolio, galería de trabajos y sistema de contacto.",
+      longDescription: "Sitio web profesional desarrollado para fotógrafa. Incluye portafolio visual, galería de trabajos organizada por categorías, información sobre servicios y sistema de contacto. Diseño elegante que destaca la calidad visual de las fotografías.",
+      image: "/images/website-jill.png",
+      icon: Globe,
+      gradient: "from-sky-500 to-blue-600",
+      tags: ["Next.js", "React", "Tailwind"],
+      allTags: ["Next.js", "React", "Tailwind", "TypeScript"],
       metrics: {
-        accuracy: "94%",
-        insights: "500+",
-        dataPoints: "1M+"
+        portfolio: "Completo",
+        gallery: "Organizada",
+        design: "Elegante"
       },
       features: [
-        "Machine Learning integrado",
-        "Visualizaciones interactivas avanzadas",
-        "Predicciones en tiempo real",
-        "Exportación automática de reportes",
-        "API REST completa y documentada"
+        "Portafolio visual",
+        "Galería de trabajos",
+        "Categorías organizadas",
+        "Sistema de contacto",
+        "Diseño elegante y profesional"
       ],
       links: {
-        demo: "https://demo.nixoncodes.ai/analytics",
-        github: "https://github.com/nixonlopez/ai-analytics",
-        case: "https://case-study.nixoncodes.ai/analytics"
+        demo: "",
+        github: "",
+        case: ""
       },
-      client: "DataVision Inc",
-      duration: "5 meses",
-      year: "2023"
+      client: "Fotografía Profesional",
+      duration: "1 mes",
+      year: "2024"
     },
     {
       id: 5,
-      title: "Plataforma Educativa Gamificada",
-      description: "Aplicación educativa completa con sistema de gamificación, videoconferencias y seguimiento de progreso avanzado.",
-      longDescription: "Aplicación educativa completa con sistema de gamificación avanzado, videoconferencias integradas y seguimiento detallado de progreso. Cuenta con más de 2,000 estudiantes activos y 78% de tasa de finalización de cursos.",
-      image: "/api/placeholder/400/240",
-      icon: GraduationCap,
-      gradient: "from-indigo-500 to-blue-600",
-      tags: ["Vue.js", "Firebase", "WebRTC"],
-      allTags: ["Vue.js", "Firebase", "WebRTC", "PWA", "Nuxt.js", "Stripe"],
+      title: "Sitio Web para Agencia de Modelaje",
+      description: "Plataforma web profesional para academia de modelaje indígena con información de estudiantes, competencias y eventos.",
+      longDescription: "Plataforma web profesional desarrollada para academia de modelaje indígena. Incluye información sobre la academia, equipo, estudiantes destacados, competencias y eventos. Celebra la belleza ancestral y promueve la cultura indígena panameña a través del modelaje profesional.",
+      image: "/images/website-obit.png",
+      icon: Users,
+      gradient: "from-purple-500 to-pink-600",
+      tags: ["Next.js", "React", "Tailwind"],
+      allTags: ["Next.js", "React", "Tailwind", "TypeScript"],
       metrics: {
-        students: "2k+",
-        completion: "78%",
-        rating: "4.8/5"
+        students: "14+",
+        competitions: "Múltiples",
+        impact: "Cultural"
       },
       features: [
-        "Sistema de gamificación avanzado",
-        "Videoconferencias HD integradas",
-        "Seguimiento de progreso en tiempo real",
-        "Contenido interactivo y multimedia",
-        "Certificaciones automáticas verificables"
+        "Información de la academia",
+        "Galería de estudiantes",
+        "Calendario de eventos",
+        "Sistema de inscripciones",
+        "Diseño elegante y cultural"
       ],
       links: {
-        demo: "https://demo.nixoncodes.ai/education",
-        github: "https://github.com/nixonlopez/edu-platform",
-        case: "https://case-study.nixoncodes.ai/education"
+        demo: "https://obip.vercel.app/",
+        github: "",
+        case: ""
       },
-      client: "EduTech Academy",
-      duration: "6 meses",
-      year: "2023"
+      client: "OBIP - Bellezas Indígenas",
+      duration: "2 meses",
+      year: "2024"
     },
     {
       id: 6,
-      title: "Sistema ERP Empresarial",
-      description: "ERP completo con 8 módulos integrados que gestiona inventario, ventas, RRHH y contabilidad en una plataforma unificada.",
-      longDescription: "Sistema completo de gestión empresarial con 8 módulos totalmente integrados: inventario, ventas, recursos humanos y contabilidad. Utilizado por más de 200 usuarios activos y ha incrementado la eficiencia operacional en un 60%.",
-      image: "/api/placeholder/400/240",
-      icon: Building,
-      gradient: "from-teal-500 to-green-600",
-      tags: ["Angular", "Node.js", "MySQL"],
-      allTags: ["Angular", "Node.js", "MySQL", "Docker", "Redis", "JWT"],
+      title: "Landing Page para Estilista",
+      description: "Landing page profesional para estilista y colorista con presentación de ebook, beneficios y sistema de compra.",
+      longDescription: "Landing page profesional desarrollada para estilista y colorista profesional. Presenta un ebook sobre colorimetría capilar con diseño atractivo, beneficios claros, testimonios y sistema de compra. Optimizada para conversión y diseño moderno que refleja la profesionalidad del servicio.",
+      image: "/images/landingpage-carmen.png",
+      icon: Zap,
+      gradient: "from-orange-500 to-red-600",
+      tags: ["Next.js", "React", "Tailwind"],
+      allTags: ["Next.js", "React", "Tailwind", "JavaScript"],
       metrics: {
-        modules: "8",
-        efficiency: "+60%",
-        users: "200+"
+        sales: "42+",
+        conversion: "Optimizada",
+        design: "Profesional"
       },
       features: [
-        "8 módulos completamente integrados",
-        "Reportes automáticos y personalizables",
-        "Sistema de control de accesos robusto",
-        "API REST completa y escalable",
-        "Sistema de backup automático diario"
+        "Presentación del producto",
+        "Sección de beneficios",
+        "Testimonios",
+        "Sistema de compra",
+        "Diseño profesional y atractivo"
       ],
       links: {
-        demo: "https://demo.nixoncodes.ai/erp",
-        github: "https://github.com/nixonlopez/erp-system",
-        case: "https://case-study.nixoncodes.ai/erp"
+        demo: "https://carmengonzalezestilista.vercel.app/",
+        github: "",
+        case: ""
       },
-      client: "Business Solutions",
-      duration: "8 meses",
-      year: "2022"
+      client: "Carmen González Estilista",
+      duration: "1 mes",
+      year: "2024"
     }
   ]
 
-  // Calculate total slides (groups of 3)
-  const totalSlides = Math.ceil(projects.length / 3)
+  // Calculate total slides (groups of 2)
+  const totalSlides = Math.ceil(projects.length / 2)
   
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % totalSlides)
@@ -269,10 +269,10 @@ const ProjectsSection = () => {
 
   // Removed auto-scroll - only manual navigation
 
-  // Get current projects to display (3 per slide)
+  // Get current projects to display (2 per slide)
   const getCurrentProjects = () => {
-    const startIndex = currentIndex * 3
-    return projects.slice(startIndex, startIndex + 3)
+    const startIndex = currentIndex * 2
+    return projects.slice(startIndex, startIndex + 2)
   }
 
   return (
@@ -349,7 +349,7 @@ const ProjectsSection = () => {
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                className="grid grid-cols-1 md:grid-cols-2 gap-8"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ 
                   opacity: 1, 
@@ -364,76 +364,82 @@ const ProjectsSection = () => {
                   return (
                     <motion.div
                       key={project.id}
-                      className="group relative bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100 dark:border-gray-700"
+                      className="group relative bg-white dark:bg-slate-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-200 dark:border-gray-700 h-full flex flex-col"
                       initial={{ opacity: 0, y: 30 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
                       whileHover={{ y: -8 }}
                     >
-                      {/* Image Area */}
-                      <div className={`relative h-48 bg-gradient-to-br ${project.gradient} overflow-hidden`}>
-                        {/* Pattern Overlay */}
-                        <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10" />
-                        <div className="absolute inset-0 bg-black/20" />
+                      {/* Image Area - Imagen desde los bordes redondeados superiores */}
+                      <div className="relative w-full h-80 overflow-hidden rounded-t-2xl">
+                        {/* Imagen del proyecto - cubre todo el espacio desde arriba sin espacios */}
+                        <img 
+                          src={project.image} 
+                          alt={project.title}
+                          className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                        />
                         
-                        {/* Icon */}
-                        <div className="absolute top-4 left-4">
-                          <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/30">
-                            <IconComponent className="w-6 h-6 text-white" />
+                        {/* Gradient Overlay superior sutil para mejor legibilidad */}
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-transparent rounded-t-2xl" />
+                        
+                        {/* Gradient Overlay inferior para el título */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent rounded-t-2xl" />
+
+                        {/* Title - Posicionado en la parte inferior */}
+                        <div className="absolute bottom-0 left-0 right-0 z-10 p-6">
+                          <h3 className="text-2xl font-bold text-white drop-shadow-2xl">
+                            {project.title}
+                          </h3>
+                        </div>
+
+                        {/* Hover Overlay - Elegante y profesional */}
+                        <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center p-8 z-20">
+                          <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="text-center mb-6 max-w-md"
+                          >
+                            <p className="text-white text-base leading-relaxed">
+                              {project.description}
+                            </p>
+                          </motion.div>
+                          {project.links.demo && (
+                            <motion.button
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                if (!isDragging && Math.abs(dragOffset) < 10) {
+                                  window.open(project.links.demo, '_blank')
+                                }
+                              }}
+                              className="bg-white text-gray-900 px-8 py-3 rounded-full font-semibold flex items-center gap-2 transform scale-0 group-hover:scale-100 transition-transform duration-300 shadow-xl hover:shadow-2xl hover:bg-gray-50"
+                              whileHover={{ scale: 1.05 }}
+                              whileTap={{ scale: 0.95 }}
+                            >
+                              <Eye className="w-5 h-5" />
+                              Ver Proyecto
+                            </motion.button>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Content Area - Información adicional debajo de la imagen */}
+                      <div className="p-6 flex-1 flex flex-col">
+                        <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400 mt-auto">
+                          <div className="flex items-center gap-1">
+                            <Users className="w-4 h-4" />
+                            <span>{project.client}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Calendar className="w-4 h-4" />
+                            <span>{project.year}</span>
                           </div>
                         </div>
-
-                        {/* Hover Overlay */}
-                        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                          <motion.button
-                            onClick={(e) => {
-                              e.stopPropagation()
-                              if (!isDragging && Math.abs(dragOffset) < 10) {
-                                openProjectDetails(project)
-                              }
-                            }}
-                            className="bg-white text-gray-900 px-6 py-3 rounded-xl font-semibold flex items-center gap-2 transform scale-0 group-hover:scale-100 transition-transform duration-300"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                          >
-                            <Eye className="w-4 h-4" />
-                            Ver Proyecto
-                          </motion.button>
-                        </div>
-
-                        {/* Floating Elements */}
-                        <div className="absolute top-6 right-6 w-2 h-2 bg-white/40 rounded-full animate-pulse" />
-                        <div className="absolute bottom-6 right-8 w-1 h-1 bg-white/30 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
                       </div>
 
-                      {/* Content */}
-                      <div className="p-6">
-                        {/* Title */}
-                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-1 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors duration-300">
-                          {project.title}
-                        </h3>
-
-                        {/* Description - 2 lines */}
-                        <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-2 leading-relaxed">
-                          {project.description}
-                        </p>
-
-                        {/* Technologies - 3 tags */}
-                        <div className="flex flex-wrap gap-2">
-                          {project.tags.map((tag, tagIndex) => (
-                            <span
-                              key={tagIndex}
-                              className="px-3 py-1 bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-300 rounded-full text-xs font-medium transition-colors duration-300 hover:bg-indigo-100 hover:text-indigo-700 dark:hover:bg-indigo-900/30 dark:hover:text-indigo-400"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Click Area */}
+                      {/* Click Area para abrir modal */}
                       <div 
-                        className="absolute inset-0 cursor-pointer"
+                        className="absolute inset-0 cursor-pointer z-10"
                         onClick={(e) => {
                           // Only open modal if not dragging
                           if (!isDragging && Math.abs(dragOffset) < 10) {
@@ -478,7 +484,7 @@ const ProjectsSection = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
           >
             <span className="text-sm text-gray-500 dark:text-gray-400">
-              {currentIndex + 1} de {totalSlides} grupos
+              {currentIndex + 1} de {totalSlides} páginas
             </span>
           </motion.div>
         </div>
@@ -512,22 +518,28 @@ const ProjectsSection = () => {
                 <X className="w-5 h-5" />
               </button>
 
-              {/* Modal Header */}
-              <div className={`relative h-64 bg-gradient-to-br ${selectedProject ? selectedProject.gradient : 'from-blue-500 to-purple-600'} flex items-center justify-center overflow-hidden`}>
-                <div className="absolute inset-0 bg-black/20" />
-                <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center opacity-10" />
+              {/* Modal Header con imagen - cubriendo todo el espacio superior */}
+              <div className="relative h-96 overflow-hidden bg-gray-100 dark:bg-slate-700">
+                {/* Imagen de fondo - se ve completa sin recortar */}
+                <img 
+                  src={selectedProject.image} 
+                  alt={selectedProject.title}
+                  className="w-full h-full object-contain object-center"
+                />
+                {/* Overlay con gradiente elegante */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80" />
                 
-                <div className="relative z-10 text-center text-white">
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-8">
                   <motion.div
-                    className="w-20 h-20 mx-auto mb-4 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/30"
+                    className="w-20 h-20 mx-auto mb-4 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/30 shadow-xl"
                     initial={{ scale: 0, rotate: -180 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ delay: 0.2, duration: 0.6, type: "spring" }}
                   >
-                    <selectedProject.icon className="w-10 h-10" />
+                    <selectedProject.icon className="w-10 h-10 text-white" />
                   </motion.div>
                   <motion.h2
-                    className="text-3xl font-bold mb-2"
+                    className="text-3xl md:text-4xl font-bold mb-4 text-center drop-shadow-2xl"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.5 }}
@@ -535,20 +547,20 @@ const ProjectsSection = () => {
                     {selectedProject.title}
                   </motion.h2>
                   <motion.div
-                    className="flex items-center justify-center gap-4 text-sm opacity-90"
+                    className="flex items-center justify-center gap-4 text-sm opacity-90 flex-wrap"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4, duration: 0.5 }}
                   >
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/20">
                       <Users className="w-4 h-4" />
                       {selectedProject.client}
                     </div>
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/20">
                       <Calendar className="w-4 h-4" />
                       {selectedProject.duration}
                     </div>
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-1 bg-white/10 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/20">
                       <TrendingUp className="w-4 h-4" />
                       {selectedProject.year}
                     </div>
@@ -621,32 +633,6 @@ const ProjectsSection = () => {
                         <div className="w-2 h-2 bg-indigo-500 rounded-full flex-shrink-0" />
                         <span className="text-gray-700 dark:text-gray-300">{feature}</span>
                       </motion.div>
-                    ))}
-                  </div>
-                </motion.div>
-
-                {/* Complete Tech Stack */}
-                <motion.div
-                  className="mb-8"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6, duration: 0.5 }}
-                >
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                    Stack Tecnológico Completo
-                  </h3>
-                  <div className="flex flex-wrap gap-3">
-                    {selectedProject.allTags.map((tag: any, index: number) => (
-                      <motion.span
-                        key={index}
-                        className="px-4 py-2 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 rounded-lg font-medium"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.7 + index * 0.05, duration: 0.3 }}
-                        whileHover={{ scale: 1.05 }}
-                      >
-                        {tag}
-                      </motion.span>
                     ))}
                   </div>
                 </motion.div>

@@ -32,22 +32,22 @@ const Footer = () => {
   const socialLinks = [
     {
       name: 'Instagram',
-      href: 'https://instagram.com/nixoncodes.ai',
+      href: 'https://instagram.com/soynixonlopez',
       color: 'hover:text-pink-400'
     },
     {
       name: 'Facebook',
-      href: 'https://facebook.com/nixoncodes.ai',
+      href: 'https://facebook.com/soynixonlopez',
       color: 'hover:text-blue-400'
     },
     {
       name: 'TikTok',
-      href: 'https://tiktok.com/@nixoncodes.ai',
+      href: 'https://tiktok.com/@soynixonlopez',
       color: 'hover:text-gray-400'
     },
     {
       name: 'YouTube',
-      href: 'https://youtube.com/@nixoncodes.ai',
+      href: 'https://youtube.com/@soynixonlopez',
       color: 'hover:text-red-400'
     }
   ]
@@ -55,15 +55,14 @@ const Footer = () => {
   const quickLinks = [
     { name: 'Servicios', href: '#services' },
     { name: 'Sobre Mí', href: '#about' },
-    { name: 'Skills', href: '#skills' },
     { name: 'Proyectos', href: '#projects' },
     { name: 'Contacto', href: '#contact' },
   ]
 
   const services = [
-    { name: 'Desarrollo Web con IA', href: '/servicios/desarrollo-web' },
-    { name: 'Desarrollo de Apps', href: '/servicios/desarrollo-apps' },
-    { name: 'Automatizaciones', href: '/servicios/automatizaciones' },
+    { name: 'Desarrollo Web', href: '#services' },
+    { name: 'Aplicaciones Móviles', href: '#services' },
+    { name: 'Automatizaciones con IA', href: '#services' },
     { name: 'Consultoría Técnica', href: '#contact' }
   ]
 
@@ -88,18 +87,16 @@ const Footer = () => {
             {/* Brand Section */}
             <div className="md:col-span-1">
               <motion.div
-                className="flex items-center space-x-2 mb-6"
+                className="flex items-center mb-6"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
-                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">N</span>
-                </div>
-                <div>
-                  <div className="font-bold text-xl">Nixon López</div>
-                  <div className="text-sm text-gray-400">Desarrollo Web & IA</div>
-                </div>
+                <img 
+                  src="/images/logo-blanco.png" 
+                  alt="Nixon López Logo" 
+                  className="h-14 w-auto object-contain"
+                />
               </motion.div>
               
               <motion.p
@@ -398,7 +395,7 @@ const Footer = () => {
                 <h3 className="text-xl font-semibold text-white mb-3">7. Contacto</h3>
                 <p className="text-sm leading-relaxed">
                   Si tienes preguntas sobre esta política de privacidad o nuestras prácticas de privacidad, 
-                  contáctanos en: infonixoncodes@gmail.com
+                  contáctanos en: soynixonlopez@gmail.com
                 </p>
               </div>
 
@@ -525,7 +522,7 @@ const Footer = () => {
                 <h3 className="text-xl font-semibold text-white mb-3">7. Contacto</h3>
                 <p className="text-sm leading-relaxed">
                   Si tienes preguntas sobre nuestra política de cookies o cómo utilizamos las cookies en nuestro sitio, 
-                  contáctanos en: infonixoncodes@gmail.com
+                  contáctanos en: soynixonlopez@gmail.com
                 </p>
               </div>
 

@@ -13,6 +13,7 @@ import {
   Workflow
 } from 'lucide-react'
 import Link from 'next/link'
+import TechLogo from './TechLogo'
 
 const ServicesSection = () => {
   const ref = useRef(null)
@@ -21,45 +22,45 @@ const ServicesSection = () => {
   const services = [
     {
       icon: Globe,
-      title: 'Desarrollo de Sitios Web',
-      description: 'Sitios web modernos, responsivos y optimizados que convierten visitantes en clientes.',
+      title: 'Creación y Diseño de Sitio Web',
+      description: 'Diseñamos y desarrollamos sitios web profesionales, modernos y completamente responsivos que representan perfectamente tu marca y atraen a tus clientes.',
       features: [
-        'Interfaces intuitivas y responsive',
-        'Performance optimizada',
-        'SEO avanzado',
-        'CMS intuitivo'
+        'Diseño profesional y personalizado',
+        'Diseño responsive para todos los dispositivos',
+        'Optimizado para Google (SEO)',
+        'Fácil de administrar y actualizar'
       ],
       color: 'from-blue-500 to-cyan-500',
       delay: 0,
-      link: '/servicios/desarrollo-web'
+      link: '#services'
     },
     {
-      icon: Bot,
-      title: 'Desarrollo de Apps Móviles',
-      description: 'Aplicaciones móviles nativas y multiplataforma que destacan en las tiendas de apps.',
+      icon: MessageSquare,
+      title: 'Implementación de Formularios y Reservas',
+      description: 'Sistemas de formularios de contacto y reservas online que facilitan la gestión de citas y consultas de tus clientes de forma automatizada.',
       features: [
-        'iOS y Android nativo',
-        'React Native y Flutter',
-        'UX móvil optimizada',
-        'Integración de APIs'
+        'Formularios de contacto personalizados',
+        'Sistema de reservas online',
+        'Notificaciones automáticas',
+        'Integración con calendarios'
       ],
       color: 'from-green-500 to-teal-500',
       delay: 0.2,
-      link: '/servicios/desarrollo-apps'
+      link: '#services'
     },
     {
-      icon: Zap,
-      title: 'Integración de Sistemas y Automatizaciones',
-      description: 'Sistemas inteligentes que automatizan procesos y conectan todas tus herramientas empresariales.',
+      icon: Bot,
+      title: 'Automatizaciones con IA',
+      description: 'Implementamos automatizaciones inteligentes con Inteligencia Artificial que optimizan procesos, mejoran la atención al cliente y aumentan la eficiencia de tu negocio.',
       features: [
-        'Chatbots inteligentes',
-        'Workflows automatizados',
-        'Integración de sistemas',
-        'Analytics avanzado'
+        'Chatbots inteligentes con IA',
+        'Automatización de procesos',
+        'Asistentes virtuales',
+        'Análisis y optimización continua'
       ],
       color: 'from-purple-500 to-pink-500',
       delay: 0.4,
-      link: '/servicios/automatizaciones'
+      link: '#services'
     }
   ]
 
@@ -115,15 +116,15 @@ const ServicesSection = () => {
           </motion.div>
           
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Soluciones que{' '}
-            <span className="gradient-text">Transforman</span>
+            Servicios que{' '}
+            <span className="gradient-text">Atraen Más Clientes</span>
             <br />
-            tu Negocio
+            a tu Negocio
           </h2>
           
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Combino mi experiencia como desarrollador web e IT Teacher para crear 
-            soluciones tecnológicas que impulsan el crecimiento de tu empresa.
+            Especialistas en crear páginas web profesionales para negocios de servicios. 
+            Convertimos visitantes en clientes y clientes en ventas recurrentes.
           </p>
         </motion.div>
 
@@ -195,16 +196,20 @@ const ServicesSection = () => {
 
                   {/* CTA Button - Always at bottom */}
                   <div className="mt-auto">
-                    <Link href={service.link}>
-                      <motion.div
-                        className="w-full bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-600 text-gray-900 dark:text-white py-4 rounded-2xl font-semibold hover:from-blue-500 hover:to-purple-600 hover:text-white transition-all duration-500 flex items-center justify-center gap-2 shadow-sm hover:shadow-lg border border-gray-200 dark:border-gray-600 hover:border-transparent group/btn block cursor-pointer"
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        <span>Explorar Servicio</span>
-                        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                      </motion.div>
-                    </Link>
+                    <motion.button
+                      onClick={() => {
+                        const phoneNumber = '+50768252312'
+                        const message = encodeURIComponent(`Hola, estoy interesado en ${service.title.toLowerCase()}`)
+                        const whatsappUrl = `https://wa.me/${phoneNumber.replace(/[^0-9]/g, '')}?text=${message}`
+                        window.open(whatsappUrl, '_blank')
+                      }}
+                      className="w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded-full font-semibold transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-green-500/50"
+                      whileHover={{ scale: 1.02, y: -2 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <TechLogo name="WhatsApp" size={24} />
+                      <span>Contactar por WhatsApp</span>
+                    </motion.button>
                   </div>
                 </div>
 
@@ -235,21 +240,26 @@ const ServicesSection = () => {
           <div className="relative z-10">
             <h3 className="text-3xl font-bold mb-4 text-white">
               ¿Listo para{' '}
-              <span className="text-blue-400 font-extrabold">Transformar</span> tu Negocio?
+              <span className="text-blue-400 font-extrabold">Conseguir Más Clientes</span>?
             </h3>
             
             <p className="text-lg text-gray-200 mb-6 max-w-2xl mx-auto font-medium">
-              Conversemos sobre cómo mis servicios pueden impulsar tu empresa al siguiente nivel.
+              Contacta con nosotros ahora por WhatsApp y descubre cómo podemos crear la página web perfecta para tu negocio.
             </p>
 
             <motion.button
-              className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center gap-2 mx-auto shadow-lg"
-              whileHover={{ scale: 1.05 }}
+              className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 flex items-center gap-3 mx-auto shadow-lg hover:shadow-green-500/50"
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                const phoneNumber = '+50768252312'
+                const message = encodeURIComponent('Hola, estoy interesado en solicitar una cotización')
+                const whatsappUrl = `https://wa.me/${phoneNumber.replace(/[^0-9]/g, '')}?text=${message}`
+                window.open(whatsappUrl, '_blank')
+              }}
             >
-              <ArrowRight className="w-5 h-5" />
-              Contactar Ahora
+              <TechLogo name="WhatsApp" size={28} />
+              Contactar por WhatsApp
             </motion.button>
           </div>
         </motion.div>

@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Nixon López - Desarrollo Web con IA',
     description: 'Especialista en desarrollo web con IA, ChatBots y automatizaciones',
-    creator: '@nixoncodes.ai',
+    creator: '@soynixonlopez',
     images: ['/images/nixonprofile.png'],
   },
   robots: {

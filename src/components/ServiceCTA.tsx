@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Calculator, Globe, Smartphone, Bot } from 'lucide-react'
+import TechLogo from './TechLogo'
 
 interface ServiceCTAProps {
   serviceType: 'web' | 'mobile' | 'automation'
@@ -46,13 +47,18 @@ const ServiceCTA = ({ serviceType, title, highlightedText, onQuoteClick }: Servi
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <motion.button
-              onClick={onQuoteClick}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center gap-3"
-              whileHover={{ scale: 1.05 }}
+              onClick={() => {
+                const phoneNumber = '+50768252312'
+                const message = encodeURIComponent('Hola, estoy interesado en solicitar una cotización')
+                const whatsappUrl = `https://wa.me/${phoneNumber.replace(/[^0-9]/g, '')}?text=${message}`
+                window.open(whatsappUrl, '_blank')
+              }}
+              className="bg-green-500 hover:bg-green-600 text-white font-semibold py-4 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-green-500/50 flex items-center justify-center gap-3"
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Calculator className="w-5 h-5" />
-              Obtener Cotización
+              <TechLogo name="WhatsApp" size={28} />
+              Contactar por WhatsApp
             </motion.button>
             
             <motion.button

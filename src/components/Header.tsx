@@ -39,21 +39,11 @@ const Header = () => {
 
   const scrollToSection = (href: string) => {
     if (href.startsWith('#')) {
-      // Verificar si estamos en una página de servicios
-      const currentPath = window.location.pathname
-      const isServicePage = currentPath.includes('/servicios/')
-      
-      if (isServicePage) {
-        // Si estamos en una página de servicios, ir al homepage con la sección
-        window.location.href = `/${href}`
+      // Hacer scroll a la sección
+      const element = document.querySelector(href)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
         setIsMenuOpen(false)
-      } else {
-        // Si estamos en el homepage, hacer scroll a la sección
-        const element = document.querySelector(href)
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' })
-          setIsMenuOpen(false)
-        }
       }
     } else {
       // Enlace externo - navegar a la página
@@ -82,18 +72,17 @@ const Header = () => {
               <div className="container-padding">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <motion.div
-            className="flex items-center space-x-2"
+          <motion.a
+            href="/"
+            className="flex items-center space-x-3"
             whileHover={{ scale: 1.05 }}
           >
-            <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">N</span>
-            </div>
-            <div className="text-white">
-              <div className="font-bold text-lg leading-none">Nixon López</div>
-              <div className="text-xs text-gray-400">Web Developer & AI</div>
-            </div>
-          </motion.div>
+            <img 
+              src="/images/logo-blanco.png" 
+              alt="Nixon López Logo" 
+              className="h-12 w-auto object-contain"
+            />
+          </motion.a>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
@@ -165,9 +154,11 @@ const Header = () => {
             {/* Header del menú móvil */}
             <div className="flex items-center justify-between p-6 border-b border-white/10">
               <div className="flex items-center space-x-3">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">N</span>
-                </div>
+                <img 
+                  src="/images/logo-blanco.png" 
+                  alt="Nixon López Logo" 
+                  className="h-10 w-auto object-contain"
+                />
                 <span className="text-white font-semibold">Menú</span>
               </div>
               <button

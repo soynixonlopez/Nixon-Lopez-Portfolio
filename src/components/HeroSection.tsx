@@ -6,6 +6,7 @@ import { ChevronDown, Sparkles, Bot, Code, Zap, Calculator, Star } from 'lucide-
 import Image from 'next/image'
 import { useQuoteModal } from '@/hooks/useQuoteModal'
 import QuoteModal from './QuoteModal'
+import TechLogo from './TechLogo'
 
 const HeroSection = () => {
   const [currentText, setCurrentText] = useState('')
@@ -14,10 +15,10 @@ const HeroSection = () => {
   const { isOpen, serviceType, openModal, closeModal } = useQuoteModal()
   
   const texts = [
-    'Desarrollo Web con IA',
-    'ChatBots Inteligentes',
-    'Automatizaciones',
-    'Soluciones Innovadoras'
+    'Páginas Web para Negocios',
+    'Más Clientes para tu Negocio',
+    'WhatsApp Integrado',
+    'Sitios que Venden'
   ]
 
   useEffect(() => {
@@ -152,7 +153,7 @@ const HeroSection = () => {
               className="mb-6"
             >
               <span className="text-blue-400 font-mono text-2xl tracking-wider">
-                ¡Hola! Soy
+                ¿Tu Negocio Necesita Más Clientes?
               </span>
             </motion.div>
 
@@ -161,7 +162,7 @@ const HeroSection = () => {
               variants={itemVariants}
               className="text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-bold mb-6"
             >
-              <span className="gradient-text">Nixon López</span>
+              <span className="gradient-text">Hola, Soy Nixon</span>
             </motion.h1>
 
             {/* Animated subtitle */}
@@ -170,7 +171,7 @@ const HeroSection = () => {
               className="mb-8"
             >
               <h2 className="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-2">
-                Especialista en{' '}
+                Especialistas en{' '}
                 <span className="text-blue-400 font-semibold">
                   {currentText}
                   <motion.span
@@ -183,7 +184,7 @@ const HeroSection = () => {
                 </span>
               </h2>
               <p className="pt-5 text-gray-400 max-w-2xl mx-auto lg:mx-0 text-lg"> 
-                Desarrollo web, ChatBots inteligentes y automatizaciones que impulsan tu negocio al futuro.
+                Creamos páginas web profesionales para negocios de servicios. Conecta con más clientes, integra WhatsApp y convierte visitantes en ventas.
               </p>
             </motion.div>
 
@@ -193,13 +194,18 @@ const HeroSection = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-8"
             >
               <motion.button
-                className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 flex items-center justify-center gap-2"
-                whileHover={{ scale: 1.05 }}
+                className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-green-500/50"
+                whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => openModal('web')}
+                onClick={() => {
+                  const phoneNumber = '+50768252312'
+                  const message = encodeURIComponent('Hola, estoy interesado en solicitar una cotización')
+                  const whatsappUrl = `https://wa.me/${phoneNumber.replace(/[^0-9]/g, '')}?text=${message}`
+                  window.open(whatsappUrl, '_blank')
+                }}
               >
-                <Calculator className="w-5 h-5" />
-                Solicitar Cotización
+                <TechLogo name="WhatsApp" size={28} />
+                Contactar por WhatsApp
               </motion.button>
               
               <motion.button
@@ -214,7 +220,7 @@ const HeroSection = () => {
                 }}
               >
                 <Star className="w-5 h-5" />
-                Ver Portafolio
+                Ver Proyectos
               </motion.button>
             </motion.div>
           </motion.div>
@@ -233,7 +239,7 @@ const HeroSection = () => {
               <div className="absolute inset-0 w-full h-full">
                 <Image
                   src="/images/nixonprofile.png"
-                  alt="Nixon López - Desarrollador Web y Especialista en IA"
+                  alt="Páginas Web Profesionales para Negocios de Servicios"
                   fill
                   className="object-contain object-bottom"
                   priority
